@@ -1,18 +1,19 @@
 {
-    "name": "undefined.kr",
-    "private": true,
-    "version": "0.0.0",
-    "description": "undefined.kr community site",
-    "dependencies": {
-        "sails": "0.8.94",
-        "optimist": "0.4.0"
-    },
-    "scripts": {
-        "start": "node app.js",
-        "debug": "node debug app.js"
-    },
-    "main": "app.js",
-    "repository": "",
-    "author": "",
-    "license": "MIT"
+  "name": "undefined.kr",
+  "private": true,
+  "version": "0.0.0",
+  "description": "undefined.kr community site",
+  "dependencies": {
+    "sails": "0.8.94",
+    "optimist": "0.4.0",
+    "sails-mongo": "0.0.3"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "debug": "node debug app.js"
+  },
+  "main": "app.js",
+  "repository": "",
+  "author": "",
+  "license": "MIT"
 }

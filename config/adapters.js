@@ -39,7 +39,7 @@ module.exports.adapters = {
   // sails v.0.8.94
   mongo: {
     module   : 'sails-mongo',
-    url      : 'mongodb://localhost:undefinedkr'
+    url      : 'mongodb://localhost:27017/undefinedkr'
   }
 
 
