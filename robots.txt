@@ -1,0 +1,11 @@
+# undefine:D robots.txt
+
+User-agent: *
+Disallow: /login/
+Disallow: /tmp/
+Disallow: /mypage/
+Disallow: /admin/
+Disallow: /private/
+
+#Sitemap: http://www.undefined.kr/sitemap.xml
+
