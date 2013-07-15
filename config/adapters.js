@@ -36,13 +36,10 @@ module.exports.adapters = {
 		database	: 'YOUR_MYSQL_DB'
 	},
 
-  // sails v.0.9.0
+  // sails v.0.8.94
   mongo: {
     module   : 'sails-mongo',
-    host     : 'localhost',
-    //user     : 'username',
-    //password : 'password',
-    database : 'undefinedkr'
+    url      : 'mongodb://localhost:undefinedkr'
   }
 
 
