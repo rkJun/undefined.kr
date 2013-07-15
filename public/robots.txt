@@ -1,6 +1,11 @@
-# The robots.txt file is used to control how search engines index your live URLs.
-# See http://www.robotstxt.org/wc/norobots.html for more information.
-#
-# To prevent search engines from seeing the site altogether, uncomment the next two lines:
-# User-Agent: *
-# Disallow: /
+# undefine:D robots.txt
+
+User-agent: *
+Disallow: /login/
+Disallow: /tmp/
+Disallow: /mypage/
+Disallow: /admin/
+Disallow: /private/
+
+#Sitemap: http://www.undefined.kr/sitemap.xml
+

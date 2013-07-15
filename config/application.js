@@ -1,7 +1,7 @@
 module.exports = {
 	
 	// Name of the application (used as default <title>)
-	appName: "Sails Application",
+	appName: "undefined.kr",
 
 	// Port this Sails application will live on
 	port: 1337,
@@ -24,7 +24,7 @@ module.exports = {
 	// - verbose
 	//
 	log: {
-		level: 'info'
+		level: 'verbose'
 	}
 
 };
