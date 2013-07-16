@@ -21,4 +21,6 @@
     }
 }());
 
-// Place any jQuery/helper plugins in here.
+$('a[rel=tooltip]').tooltip({
+  'placement': 'bottom'
+});
