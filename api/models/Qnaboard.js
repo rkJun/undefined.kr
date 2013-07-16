@@ -5,10 +5,25 @@
 module.exports = {
 
 	attributes: {
-
+ 
 		// Simple attribute:
-		 name: 'STRING'
-
+		 authorId: 'STRING',
+		 title: 'STRING',
+		 contents: 'STRING',
+		 tag: [ { type: 'STRING' }],
+		 viewCount: 'NUMBER',
+		 goodCount: 'NUMBER' //,
+		 // comments: [
+		 // 	{
+		 // 		authorId: 'STRING',
+		 // 		comment: 'STRING',
+		 // 		viewCount: 'NUMBER',
+		 // 		goodCount: 'NUMBER',
+		 // 		createdAt: 'DATE',
+		 // 		updatedAt: 'DATE'
+		 // 	}
+		 // ]
+		 
 		// Or for more flexibility:
 		// phoneNumber: {
 		//	type: 'STRING',
