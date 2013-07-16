@@ -13,7 +13,7 @@
     "debug": "node debug app.js"
   },
   "main": "app.js",
-  "repository": "",
-  "author": "",
+  "repository": "undefinedkr",
+  "author": "rkJun<rkjun@undefined.kr>(http://rkjun.wordpress.com)",
   "license": "MIT"
 }
