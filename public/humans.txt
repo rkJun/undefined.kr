@@ -15,6 +15,7 @@ oooo  oooo  ooo. .oo.    .oooo888   .ooooo.  o888oo  oooo  ooo. .oo.    .ooooo. 
   Last update: 07/11/2013
   Doctype: HTML5
   IDE: Sublime Text 2, Spring Tool Suite
+  Back-end: nodejs, sailsjs, mongodb, sails-mongo  Front-end: jquery, bootstrap, bootswatch, fontawesome, google web fonts
 
 /* SPECIAL THANKS */
   //Designer: undefined

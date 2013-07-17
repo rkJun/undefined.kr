@@ -7,15 +7,16 @@ module.exports = {
 	attributes: {
 
 		// Simple attribute:
-		 name: 'STRING',
+		 username: 'STRING',
+		 password: 'STRING',
 		 email: 'STRING',
 		 birthDate: 'DATE',
+		 ipAddress: 'STRING',
 		// Or for more flexibility:
-		 phoneNumber: {
-			type: 'STRING',
-			defaultsTo: '555-555-5555'
+		activityScore: {
+			type: 'NUMBER',
+			defaultsTo: '0'
 		}
-		
 	}
 
 };

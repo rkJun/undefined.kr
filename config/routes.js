@@ -28,7 +28,45 @@ module.exports.routes = {
 	},
 		'/bootstrap' : {
 		controller	: 'bootstrap'
-	}
+	},
+
+	'get /user': {
+		controller	: 'user',
+		action		: 'index'
+	},
+	'get /user/:id': {
+		controller	: 'user',
+		action		: 'find'
+	},
+	'post /user': {
+		controller	: 'user',
+		action		: 'create'
+	},
+	'put /user/:id': {
+		controller	: 'user',
+		action		: 'update'
+	},
+	'delete /user/:id': {
+		controller	: 'user',
+		action		: 'destroy'
+	},
+
+	'get /login': {
+		controller : 'user',
+		action		: 'login'
+	},
+	'post /login': {
+		controller : 'user',
+		action		: 'auth'
+	},
+	'get /signup': {
+		controller : 'user',
+		action		: 'signup'
+	},
+	'post /signup': {
+		controller : 'user',
+		action		: 'create'
+	},
 
 
 	// If you want to set up a route only for a particular HTTP method/verb 
