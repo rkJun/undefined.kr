@@ -49,7 +49,7 @@ var UserController = {
 
     login: function(req, res) {
       console.log('login');
-      res.view(); //user/auth
+      res.view(); //user/login
     },
 
     auth: function(req, res) {
