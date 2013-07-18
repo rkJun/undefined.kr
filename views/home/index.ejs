@@ -4,47 +4,7 @@ $(document).ready(function() {
 });
 </script>
 
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-            <a class="brand" href="./">undefine:D</a>
-            <div class="nav-collapse collapse">
-                <ul class="nav"  role="navigation">
-                    <li><a href="">Organizers</a></li>
-                    <li><a href="../#qna">Q&A</a></li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" id="drop1" role="button" data-toggle="dropdown" data-target="#" href="../">Board <b class="caret"></b></a>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://google.com">Q&A</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#anotherAction">frontend 지식창고</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">frontend trend</a></li>
-                            <li role="presentation" class="divider"></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">생존신고</a></li>
-                        </ul>
-                    </li>
-               </ul>
-               <form class="navbar-search pull-left" action="">
-                 <input type="text" class="search-query span2" placeholder="Search">
-               </form>
-
-
-                <ul class="nav pull-right" id="main-menu-right">
-                    <li><a rel="tooltip" target="_blank" href="https://www.facebook.com/groups/html5jsstudy/" title="undefine:D facebook group"></i><i class="icon-facebook-sign"></i> undefine:D facebook group</i></a></li>
-                </ul>
-                <ul class="nav pull-right" id="">
-                  <li><a href="/user/login">log in</a></li>
-                  <li><a>sign up</a></li>
-                </ul>
-
-            </div>
-        </div>
-    </div>
-</div>
+<%- partial('header') %>
 
 <div class="container">
 
@@ -102,16 +62,8 @@ $(document).ready(function() {
   </div>
 
 </section>
+      
+     <%- partial('footer') %>
 
-     <!-- Footer
-      ================================================== -->
-      <hr>
-
-      <footer id="footer">
-        <p class="pull-right"><a href="#top">Back to top</a></p>
-         Made by <a href="http://twitter.com/rkjun">Juntai Park</a>.<br/>
-        
-        Based on <a href="http://twitter.github.com/bootstrap/">Bootstrap</a>. Icons from <a href="http://fortawesome.github.com/Font-Awesome/">Font Awesome</a>. Web fonts from <a href="http://www.google.com/webfonts">Google</a>. nodeJS and sailsJS.</p>
-      </footer>
-
-    </div><!-- /container -->
+    </div>
+<!-- /container -->

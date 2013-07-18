@@ -8,17 +8,19 @@ oooo  oooo  ooo. .oo.    .oooo888   .ooooo.  o888oo  oooo  ooo. .oo.    .ooooo. 
 
 /* MAIN */
   Develop & Main Design : Juntai Park
-  Twitter: @rkJun
+  Twitter: rkJun
   Site: http://undefined.kr
 
 /* SITE */
   Last update: 07/11/2013
   Doctype: HTML5
   IDE: Sublime Text 2, Spring Tool Suite
-  Back-end: nodejs, sailsjs, mongodb, sails-mongo  Front-end: jquery, bootstrap, bootswatch, fontawesome, google web fonts
+  Back-end: nodejs, sailsjs, mongodb, sails-mongo  
+  Front-end: jquery, bootstrap, bootswatch, fontawesome, google web fonts, tipJS
 
 /* SPECIAL THANKS */
   //Designer: undefined
+  official logo and favicon: iMaZiNe
 
   And, of course, all undefine:D Organizers!
 
