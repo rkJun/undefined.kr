@@ -5,7 +5,7 @@
 module.exports = {
 
 	attributes: {
- 
+
 		// Simple attribute:
 		 authorId: 'STRING',
 		 title: 'STRING',
@@ -23,13 +23,6 @@ module.exports = {
 		 // 		updatedAt: 'DATE'
 		 // 	}
 		 // ]
-		 
-		// Or for more flexibility:
-		// phoneNumber: {
-		//	type: 'STRING',
-		//	defaultsTo: '555-555-5555'
-		// }
-		
 	}
 
 };

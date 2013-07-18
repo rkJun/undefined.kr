@@ -10,18 +10,31 @@ var UserController = {
     },
     create: function(req, res) {
 
+      var check = require('anchor');
+
+      var passwordHash = require('password-hash');
+
       var user = {};
       user.username = req.param('username');
-      user.password = req.param('password');
-      console.log('UserController.create');
-  
-      var passwordHash = require('password-hash');
-      var hashedPassword = passwordHash.generate(user.password);
+      user.password = passwordHash.generate(req.param('password')); // hashedPassword
 
-      User.create({
-        username: user.username,
-        password: hashedPassword 
-      }).done(function(err, user) {
+      user.id = req.param('id');
+      user.email = req.param('email');
+      user.birthDate = req.param('birthDate');
+      user.ipAddress = req.header('x-forwarded-for') || req.connection.remoteAddress;
+
+      //Validate user input
+      try {
+        req.check('id', 'Please enter a valid id').len(5,20).isInt();
+        req.check('password', 'Please enter a password').len(8,30);
+        req.check('email', 'Please enter a valid email').len(6,64).isEmail();
+      } catch (e) {
+        console.log("error:"+e.message);
+      }
+
+      User.create(
+        user
+      ).done(function(err, user) {
           // Error handling
           if (err) {
             return console.log(err);
@@ -30,10 +43,6 @@ var UserController = {
           }
       });
     },
-    // find: function(req, res) {
-    //     console.log('find nothing');
-    // },
-
     find: function(req, res) {
       User.find().done(function (err, user) {
           if (err) {
@@ -46,7 +55,6 @@ var UserController = {
       });
       
     },
-
     login: function(req, res) {
       console.log('login');
       res.view(); //user/login

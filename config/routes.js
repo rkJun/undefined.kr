@@ -34,10 +34,10 @@ module.exports.routes = {
 		controller	: 'user',
 		action		: 'index'
 	},
-	'get /user/:id': {
-		controller	: 'user',
-		action		: 'find'
-	},
+	// 'get /user/:id': {
+	// 	controller	: 'user',
+	// 	action		: 'find'
+	// },
 	'post /user': {
 		controller	: 'user',
 		action		: 'create'
