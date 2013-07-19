@@ -7,11 +7,14 @@ module.exports = {
 	attributes: {
 
 		// Simple attribute:
-		_id: 'STRING',
-		 username: 'STRING',
+		 userId: 'STRING',
+		 userName: 'STRING',
 		 password: 'STRING',
 		 email: 'STRING',
 		 birthDate: 'STRING',
+		 userUrl: 'STRING',
+		 userCompany: 'STRING',
+		 userLocation: 'STRING',
 		 ipAddress: 'STRING',
 		// Or for more flexibility:
 		activityScore: {

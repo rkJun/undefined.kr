@@ -21,6 +21,9 @@
     }
 }());
 
-$('a[rel=tooltip]').tooltip({
-  'placement': 'bottom'
+$(document).ready(function(){
+    console.log('plugins.js');
+    $('a[rel=tooltip]').tooltip({
+      'placement': 'bottom'
+    });
 });

@@ -1,13 +1,73 @@
-<form action="/signup" method="post">
-<div>
-<label>Username:</label>
-<input type="text" name="username"/><br/>
+<script>
+$(document).ready(function() {
+  
+  var $form = $('#frmSign');
+
+  tipJS.loadApp("user"); 
+  $form.submit(function(e) {
+    e.preventDefault();
+    tipJS.action("user.userC", $form, "sign");
+  });
+});
+</script>
+
+<%- partial('header') %>
+<div class="container">
+<header>
+  <div class="row">
+	<!--       <div class="well">
+	        <img src="/images/undefined_kr_logo_for_light_background.png" witdh="100px" height="100px"/>
+	      </div>
+ -->
+  </div>
+</header>
+
+<section id="section-signup">
+		<div class="container-fluid">
+			<div class="span9">
+				<form action="/signup" method="post" class="form-horizontal well" id="frmSign">
+					<fieldset>
+						<legend>Sign up</legend>
+						<div class="control-group">
+							<label class="control-label" for="txtUserId">User ID:</label>
+							<div class="controls">
+								<input type="text" name="userId" id="txtUserId" class="input-xlarge" placeholder="user id..." />
+								<p class="help-inline"></p>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="txtUserName">User Name:</label>
+							<div class="controls">
+								<input type="text" name="userName" id="txtUserName" class="input-xlarge" placeholder="Full name..." />
+								<p class="help-inline"></p>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="txtUserName">Password:</label>
+							<div class="controls">
+								<input type="password" name="password" id="txtPassword" class="input-xlarge" placeholder="Minimum 8 Characters" />
+								<p class="help-inline"></p>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="chkAgree"><!--이용동의--></label>
+							<div class="controls">
+								<label class="checkbox">
+									<input type="checkbox" id="chkAgree" name="agreeYn" value="Y" >
+									I agree all your <a rel="tooltip" href="#" title="undefined yet">Terms of Services</a>
+								</label>
+							</div>
+						</div>
+						<div class="form-actions">
+ 							<button class="btn btn-primary btn-large" type="submit">Sign up for undefine:D</button>
+						<div>
+			        </fieldset>
+				</form>
+			</div>
+		</div>
+
+</section>
+      
+<%- partial('footer') %>
 </div>
-<div>
-<label>Password:</label>
-<input type="password" name="password"/>
-</div>
-<div>
-<input type="submit" value="Submit"/>
-</div>
-</form>
+<!-- /container -->

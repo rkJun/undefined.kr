@@ -29,28 +29,31 @@ module.exports.routes = {
 		'/bootstrap' : {
 		controller	: 'bootstrap'
 	},
-
 	'get /user': {
 		controller	: 'user',
 		action		: 'index'
 	},
-	// 'get /user/:id': {
-	// 	controller	: 'user',
-	// 	action		: 'find'
-	// },
+	'get /user/:userId': {
+		controller	: 'user',
+		action		: 'find'
+	},
 	'post /user': {
 		controller	: 'user',
-		action		: 'create'
+		action		: 'index' //'create'
 	},
-	'put /user/:id': {
+	'post /user/:userId': {
+		controller	: 'user',
+		action		: 'update' //'update'
+	},
+	'put /user/:userId': {
 		controller	: 'user',
 		action		: 'update'
 	},
-	'delete /user/:id': {
+	'delete /user/:userId': {
 		controller	: 'user',
 		action		: 'destroy'
 	},
-
+	
 	'get /login': {
 		controller : 'user',
 		action		: 'login'

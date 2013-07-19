@@ -10,4 +10,4 @@ tipJS.config({
 		user : '/js/app/user',
 		qnaboard : 'js/app/qnaboard'
  	}
- } );
+});
