@@ -1,33 +1,13 @@
 <script>
 $(document).ready(function() {
   
-  var $form = $('#frmSign');
+  var $frmSign = $("#frmSign");
+  tipJS.loadApp("user");
 
-  tipJS.loadApp("user"); 
-
-  $form.submit(function(e) {
-    e.preventDefault();
-    // tipJS.action("user.userC", $form, "sign");
-    tipJS.action("user.userC", "sign");
+  $frmSign.submit(function(e) {
+	  e.preventDefault();
+	  tipJS.action("user.userC", "sign");
 	});
-
-	// var check = require(['js/common/validator-min']).check;
-	// var validCheck = function() {
-	// 	try {
-	// 		check('rkaaaa', 'hi').len(5,20);
-	// 	} catch (validError) {
-	// 		console.log (validError.message);
-	// 	}
-	// }
-
-
-
-
-  // $form.find('input[type="text"]').keyup(function(ev) {
-    tipJS.action("user.userC", "fieldCheck");
-  $
-  // });
-
 });
 </script>
 

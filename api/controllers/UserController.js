@@ -7,7 +7,7 @@ var check = require('validator').check;
 
 var resultJson = {
   type: '',
-  message: ''
+  message: '',
   json: {}  
 };
 
@@ -46,7 +46,10 @@ var UserController = {
         // Error handling
         if (err) {
           console.log(err);
-          return res.view('500', { errors: {error:'DB Error'} });
+          // return res.view('500', { errors: {error:'DB Error'} });
+          resultJson.type = 'error';
+          resultJson.message = 'DB Error';
+          return res.json(resultJson);
         }else {
           if(existUser) {
             console.log("동일 아이디가 존재합니다.");
@@ -68,11 +71,14 @@ var UserController = {
             // Error handling
             if (err) {
               console.log(err);
-              return res.view('500', { errors: {error:'DB Error'} });
+              // return res.view('500', { errors: {error:'DB Error'} });
+              resultJson.type = 'error';
+              resultJson.message = 'DB Error';
+              return res.json(resultJson);
             }else {
               console.log('User created:', user);
               req.session.user = user;
-              return res.json( { result : { type: "success", message : "정상등록했습니다." , user: user } } );
+              return res.json( {type: "success", message : "정상등록했습니다." , user: user });
               //return res.redirect('/');
             }
         });
@@ -82,7 +88,7 @@ var UserController = {
       User.findAll( {userId: req.param('userId')} ).done(function (err, user) {
           if (err) {
             return console.log(err);
-              res.send(500, { error: 'DB Error' });
+              //res.send(500, { error: 'DB Error' });
           }else {
             console.log('User find:', user);
           }
