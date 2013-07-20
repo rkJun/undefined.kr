@@ -1,6 +1,12 @@
 tipJS.model({
 	__name : "user.userM",
-	clear : function () {
-		localStorage.clear();
+  frmSign : {
+    userId : "",
+    userName : "",
+    email : "",
+    password : ""
+  },
+	setFrmSignModel : function (frm) {
+		this.frmSign = frm;
 	}
 });

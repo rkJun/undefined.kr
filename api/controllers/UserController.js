@@ -5,6 +5,12 @@
 
 var check = require('validator').check;
 
+var resultJson = {
+  type: '',
+  message: ''
+  json: {}  
+};
+
 var UserController = {
 
     signup: function(req, res) {
@@ -15,8 +21,8 @@ var UserController = {
       var user = {};      
       var passwordHash = require('password-hash');
 
-      user.userId = req.param('id');
-      user.userName = req.param('username');
+      user.userId = req.param('userId');
+      user.userName = req.param('userName');
       user.password = passwordHash.generate(req.param('password')); // hashedPassword
       user.email = req.param('email');
       user.birthDate = req.param('birthDate');
@@ -27,10 +33,13 @@ var UserController = {
         check(user.userName, '사용자명은 최소 5자리, 최대 30자리입니다.').len(5,30);
         check(req.param('password'), '비밀번호는 최소 8자리, 최대 30자리입니다.').len(8,30);
         check(user.email, { len: '이메일주소는 최소 6자리, 최대 64자리입니다.', isEmail: '이메일 형식이 맞지 않습니다.'}).len(6,64).isEmail();
-        check(user.birthDate, '날짜 형식이 맞지 않습니다.').isDate();
+        // check(user.birthDate, '날짜 형식이 맞지 않습니다.').isDate();
       } catch (e) {
         console.log('error:'+e.message);
-        return res.view('user/signup', { errors: { type: 'error', message: e.message } } );
+        //return res.view('user/signup', { errors: { type: 'error', message: e.message } } );
+        resultJson.type = 'error';
+        resultJson.message = e.message;
+        return res.json(resultJson);
       }
 
       User.find({ userId: user.userId }, function(err, existUser) {
@@ -41,8 +50,10 @@ var UserController = {
         }else {
           if(existUser) {
             console.log("동일 아이디가 존재합니다.");
-            message = "동일 아이디가 존재합니다.";
-            return res.view('user/signup', { errors: { type: 'error', message: e.message } } );
+            resultJson.type = 'error';
+            resultJson.message = "동일 아이디가 존재합니다.";
+            return res.json(resultJson);
+            // return res.view('user/signup', { errors: { type: 'error', message: message } } );
           } else {
             console.log("callBackCreate");
             callBackCreate(user);
@@ -61,7 +72,8 @@ var UserController = {
             }else {
               console.log('User created:', user);
               req.session.user = user;
-              return res.redirect('/');
+              return res.json( { result : { type: "success", message : "정상등록했습니다." , user: user } } );
+              //return res.redirect('/');
             }
         });
       }; //end of Callback
