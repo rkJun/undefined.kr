@@ -1,7 +1,6 @@
 // configuring tipJS
 tipJS.config({
 	commonLib:[
-		"/js/common/require.js",
 		"/js/common/jquery-2.0.3.js",
 		"/js/common/bootstrap.min.js",
 		"/js/common/plugins/jquery.pjax.js",

@@ -30,7 +30,7 @@ module.exports.adapters = {
     //user     : 'username',
     //password : 'password',
     database : 'undefinedkr'
-  }
+  },
 
   // Persistent adapter for DEVELOPMENT ONLY
   // (data IS preserved when the server shuts down)

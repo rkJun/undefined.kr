@@ -1,39 +1,41 @@
 <!DOCTYPE html>
 <html lang="ko">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title><%- title %></title>
-		<meta name="description" content="undefine:D,undefined,javascript,html5,css3,frontend">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-		<script src="/js/common/tipJS-MVC-dev.js"></script>
-		<%- assets.css() %>
-	</head>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title><%- title %></title>
+    <meta name="description" content="undefine:D,undefined,javascript,html5,css3,frontend">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <!--STYLES-->
+    <link rel="stylesheet" href="/linker/styles/bootstrap-responsive.css">
+    <link rel="stylesheet" href="/linker/styles/bootstrap.css">
+    <link rel="stylesheet" href="/linker/styles/common.css">
+    <link rel="stylesheet" href="/linker/styles/font-awesome.min.css">
+    <link rel="stylesheet" href="/linker/styles/normalize.css">
+    <!--STYLES END-->
+    <script "text/javascript" src="js/common/tipJS-MVC-dev.js"></script>
+    </head>
 
-	<body style="padding-top: 100px;">
+    <body style="padding-top: 100px;">
   
-		<%- body %>
+      <%- body %>
 
-		<!-- Templates from your view path are included here -->
-		<% /* - assets.templateLibrary() */ %>
-		<!-- Javascripts from your assets folder are included here -->
-		<%- assets.js() %>
+      <!--SCRIPTS-->
+      <script src="/linker/js/socket.io.js"></script>
+      <script src="/linker/js/sails.io.js"></script>
+      <script src="/linker/js/app.js"></script>
+      <!--SCRIPTS END-->
+      
 
-    <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>-->
-    <!--<script>window.jQuery || document.write('<script src="/js/jquery-2.0.3.min.js"><\/script>')</script>-->
-    
-    <!--<script src="/js/bootstrap.min.js"></script>-->
-    <!--<script src="/js/plugins.js"></script>-->
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-    <script>
-    
-        // (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-        // function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-        // e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-        // e.src='//www.google-analytics.com/analytics.js';
-        // r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-        // ga('create','UA-XXXXX-X');ga('send','pageview');
-    </script>
-	</body>
+      <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+      <script>
+      
+          // (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+          // function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+          // e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+          // e.src='//www.google-analytics.com/analytics.js';
+          // r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+          // ga('create','UA-XXXXX-X');ga('send','pageview');
+      </script>
+    </body>
 </html>
