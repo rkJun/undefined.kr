@@ -1,10 +1,5 @@
-                              .o8             .o88o.  o8o                        o888o oooooooooo.
-                             "888             888 `"  `"'                         888  `888'   `Y8b
-oooo  oooo  ooo. .oo.    .oooo888   .ooooo.  o888oo  oooo  ooo. .oo.    .ooooo.         888      888
-`888  `888  `888P"Y88b  d88' `888  d88' `88b  888    `888  `888P"Y88b  d88' `88b        888      888
- 888   888   888   888  888   888  888ooo888  888     888   888   888  888ooo888        888      888
- 888   888   888   888  888   888  888    .o  888     888   888   888  888    .o  888   888     d88'
- `V88V"V8P' o888o o888o `Y8bod88P" `Y8bod8P' o888o   o888o o888o o888o `Y8bod8P' o888o o888bood8P'
+
+ undefine:D
 
 /* MAIN */
   Develop & Main Design : Juntai Park

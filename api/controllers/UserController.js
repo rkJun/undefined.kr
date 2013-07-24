@@ -5,6 +5,8 @@
  * @description :: Contains logic for handling requests.
  */
 var check = require('validator').check;
+var passport = require('passport');
+
 var resultJson = {
   type: '',
   message: '',
@@ -42,7 +44,7 @@ module.exports = {
       return res.json(resultJson);
     }
 
-    User.find({ userId: user.userId }, function(err, existUser) {
+    User.findOne({ userId: user.userId }, function(err, existUser) {
       // Error handling
       if (err) {
         console.log(err);
@@ -52,7 +54,7 @@ module.exports = {
         return res.json(resultJson);
       }else {
         if(existUser) {
-          console.log("동일 아이디가 존재합니다.");
+          console.log("동일 아이디가 존재합니다.:"+existUser);
           resultJson.type = 'error';
           resultJson.message = "동일 아이디가 존재합니다.";
           return res.json(resultJson);
@@ -85,7 +87,7 @@ module.exports = {
     }; //end of Callback
   },
   find: function(req, res) {
-    User.findAll( {userId: req.param('userId')} ).done(function (err, user) {
+    User.findOne( {userId: req.param('userId')} ).done(function (err, user) {
         if (err) {
           return console.log(err);
             //res.send(500, { error: 'DB Error' });
@@ -131,12 +133,41 @@ module.exports = {
   login: function(req, res) {
     console.log('login');
     res.view("user/login", { testJson : "hi"}); //user/login
+      console.log(req.session);
+  //
+  // req.user 는 아래에서 설명한다.
+  // 처음에 undefined 이나, 로그인 성공하면, profile 정보가 저장된다.
+  //
+  console.log(req.user);
+  },
+  logout: function(req, res) {
+    req.logout();
+    res.send('logout successful');
   },
 
   auth: function(req, res) {
     var username = req.param('username');
     var password = req.param('password');
 
+    // passport authenticate
+    passport.authenticate('local', function(err, user, info){
+
+      console.log('user:'+user);
+      if ((err) || (!user)) {
+        res.send({message: 'err'});
+      }
+
+      req.logIn(user, function(err){
+        if(err) {
+          // res.send(err);
+          res.send({message: 'err'});
+        }
+        return res.send({ message: 'login successful'});
+      });
+    })(req, res);
+    //
+    if (true) return;
+    
     User.find({'userName': username}).done(function (err, user) {
       if (err) {
          console.error(err);
@@ -149,7 +180,7 @@ module.exports = {
         if (user) {
           var hasher = require('password-hash');
           if (hasher.verify(password, user.password)) {
-              req.session.user = user;
+              // req.session.user = user;
               res.send(user);
           } else {
               res.send(400, { error: 'Wrong Password' });
@@ -165,5 +196,33 @@ module.exports = {
   nothing: function(req, res) {
     console.log("nothing:acces denied");
     res.view('500', { errors: {error:'Access Denied'} });
+  },
+  twitter: function(req, res) {
+    console.log('twitter start');
+    passport.authenticate('twitter', function(err, user, info){
+
+      console.log('user:'+user);
+      if ((err) || (!user)) {
+        res.send({message: 'err'});
+      }
+
+      req.logIn(user, function(err){
+        if(err) {
+          // res.send(err);
+          res.send({message: 'err'});
+        }
+        return res.send({ message: 'login successful'});
+      });
+    })(req, res);
+
+
+
+  },
+  twitterCallback: function(req, res) {
+    passport.authenticate('twitter', {
+      successRedirect: '/',
+      failureRedirect: '/'
+    });
   }
+
 };

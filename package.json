@@ -10,7 +10,10 @@
     "optimist": "0.4.0",
     "password-hash": "1.2.1",
     "validator": "1.3.0",
-    "ejs": "0.8.4"
+    "ejs": "0.8.4",
+    "passport": "latest",
+    "passport-local": "latest",
+    "passport-twitter": "~0.1.5"
   },
   "scripts": {
     "start": "node app.js",

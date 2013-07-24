@@ -10,18 +10,26 @@ module.exports = {
 
   attributes: {
   
-    userId: 'STRING',
-    userName: 'STRING',
-    password: 'STRING',
-    email: 'STRING',
-    birthDate: 'STRING',
-    userUrl: 'STRING',
-    userCompany: 'STRING',
-    userLocation: 'STRING',
-    ipAddress: 'STRING',
+    userId: {
+      type: 'string',
+      required: true,
+      unique: true
+    },
+
+    userName: 'string',
+    password: 'string',
+    email: 'string',
+    birthDate: 'string',
+    userUrl: 'string',
+    userCompany: 'string',
+    userLocation: 'string',
+    ipAddress: 'string',
+    facebookId: 'string',
+    twitterId: 'string',
+    githubId: 'string',
     activityScore: {
-      type: 'NUMBER',
-      defaultsTo: '0'
+      type: 'INTEGER',
+      defaultsTo: 0
     },
     isDelete: {
       type: 'BOOLEAN',

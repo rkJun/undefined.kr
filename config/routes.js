@@ -65,20 +65,36 @@ module.exports.routes = {
   },
   
   'get /login': {
-  	controller : 'user',
-  	action		: 'login'
+  	controller : 'UserController',
+  	action		 : 'login'
   },
   'post /login': {
-  	controller : 'user',
+  	controller : 'UserController',
   	action		: 'auth'
   },
   'get /signup': {
-  	controller : 'user',
+  	controller : 'UserController',
   	action		: 'signup'
   },
   'post /signup': {
-  	controller : 'user',
+  	controller : 'UserController',
   	action		: 'create'
+  },
+  'get /logout': {
+    controller : 'UserController',
+    action    : 'logout'
+  },
+
+  'get /auth/twitter': {
+    controller : 'UserController',
+    action : 'twitter'
+  },
+  //
+  // redirect 실패/성공의 주소를 기입한다.
+  //
+  'get /auth/twitter/callback': {
+    controller : 'UserController',
+    action : 'twitterCallback'
   }
 
   /*
