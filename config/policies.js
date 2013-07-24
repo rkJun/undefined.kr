@@ -17,9 +17,9 @@ module.exports.policies = {
   '*': true,
 
   UserController: {
-  //   '*': 'authenticated',
+    // '*': 'authenticated',
   //   'create': true,
-       'get logout': 'authenticated'
+       'logout': 'authenticated'
   },
   // AuthController: {
   //   'post login': true,

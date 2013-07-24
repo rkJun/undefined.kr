@@ -13,6 +13,4 @@ tipJS.view({
     getFrmSignId: function() {
       return "frmSign";
     }
-
-
 });

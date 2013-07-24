@@ -25,9 +25,14 @@ $(document).ready(function() {
 <section id="section-signup">
 		<div class="container-fluid">
 			<div class="span9">
-				<form action="/signup" method="post" class="form-horizontal well" id="frmSign">
-					<fieldset>
-						<legend>Sign up</legend>
+				<form action="/signup" method="post" class="form-horizontal" id="frmSign">
+				  <h4 class="heading">가입하기</h4>
+					<!-- <fieldset> -->
+						<!-- <legend>Sign up</legend> -->
+						<div id="divAlert" class="alert hide">
+						  <button type="button" class="close" data-dismiss="alert">&times;</button>
+						  <strong id="returnType"></strong><span id="returnMessage"></span>
+						</div>
 						<div class="control-group">
 							<label class="control-label" for="txtUserId">User ID:</label>
 							<div class="controls">
@@ -68,7 +73,7 @@ $(document).ready(function() {
 						<div class="form-actions">
  							<button class="btn btn-primary btn-large" type="submit">Sign up for undefine:D</button>
 						<div>
-			        </fieldset>
+			        <!-- </fieldset> -->
 				</form>
 			</div>
 		</div>

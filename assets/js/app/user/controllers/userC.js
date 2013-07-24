@@ -1,7 +1,8 @@
 tipJS.controller({
 	name : "user.userC",
 
-	beforeClickHandler : function () {
+	beforeInvoke : function () {
+		$("#divAlert").removeClass("alert-error").hide();
 	},
 	invoke : function(act){
 
@@ -15,7 +16,9 @@ tipJS.controller({
 	sign : function() {
 
 		if ( !$("#chkAgree").prop('checked') ) {
-			alert("이용약관은 필수입니다.");
+			$("#divAlert").addClass("alert-error").show();
+			$("#returnType").html("error!");
+			$("#returnMessage").html(" 이용약관은 필수입니다.");
 			return false;
 		}
 		var reqData = $("#frmSign").serialize();
@@ -29,7 +32,9 @@ tipJS.controller({
 				alert(  resultJson.message );
 				document.location.href = "/";
 			} else {
-				alert(  resultJson.message );
+				$("#divAlert").addClass("alert-error").show();
+				$("#returnType").html(resultJson.type +"!");
+				$("#returnMessage").html(" "+resultJson.message);
 			}
 		});
 

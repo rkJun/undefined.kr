@@ -79,8 +79,19 @@ module.exports = {
             return res.json(resultJson);
           }else {
             console.log('User created:', user);
-            req.session.user = user;
-            return res.json( {type: "success", message : "정상등록했습니다." , user: user });
+
+            req.logIn(user, function(err){
+              if(err) {
+                resultJson.type = 'error';
+                resultJson.message = 'DB Error';
+                return res.json(resultJson);
+              }
+
+               // var returnUser = { userName: user.userName, userId: user.userId, id: user.id };
+               return res.json( {type: "success", message : "정상등록했습니다." , user: user });
+             });
+
+            //return res.json( {type: "success", message : "정상등록했습니다." , user: user });
             //return res.redirect('/');
           }
       });
@@ -134,11 +145,10 @@ module.exports = {
     console.log('login');
     res.view("user/login", { testJson : "hi"}); //user/login
       console.log(req.session);
-  //
-  // req.user 는 아래에서 설명한다.
-  // 처음에 undefined 이나, 로그인 성공하면, profile 정보가 저장된다.
-  //
-  console.log(req.user);
+      console.log("passport:"+JSON.stringify(req.session.passport));
+
+    // 처음에 undefined 이나, 로그인 성공하면, profile 정보가 저장된다.
+    console.log(req.user);
   },
   logout: function(req, res) {
     req.logout();
@@ -152,7 +162,6 @@ module.exports = {
     // passport authenticate
     passport.authenticate('local', function(err, user, info){
 
-      console.log('user:'+user);
       if ((err) || (!user)) {
         res.send({message: 'err'});
       }
@@ -197,32 +206,55 @@ module.exports = {
     console.log("nothing:acces denied");
     res.view('500', { errors: {error:'Access Denied'} });
   },
-  twitter: function(req, res) {
-    console.log('twitter start');
-    passport.authenticate('twitter', function(err, user, info){
+  // twitter: function(req, res) {
+  //   console.log('twitter start');
 
-      console.log('user:'+user);
-      if ((err) || (!user)) {
-        res.send({message: 'err'});
-      }
+  //   passport.authenticate('twitter',
+  //       function (err, user) {
+  //         console.log('test123s');
 
-      req.logIn(user, function(err){
-        if(err) {
-          // res.send(err);
-          res.send({message: 'err'});
-        }
-        return res.send({ message: 'login successful'});
-      });
-    })(req, res);
+  //           req.logIn(user, function (err) {
+  //               if (err) {
+  //                   res.view();
+  //                   return;
+  //               }
 
+  //               res.redirect('/');
+  //               return;
+  //           });
+  //       })(req, res);
 
+  //   console.log('twitter end');
 
+  // },
+  // twitterCallback: function(req, res) {
+  //   passport.authenticate('twitter', {
+  //     successRedirect: '/',
+  //     failureRedirect: '/'
+  //   });
+  // },
+
+  //github---
+  'github': function (req, res) {
+      passport.authenticate('github', { failureRedirect: '/login' },
+          function (err, user) {
+              req.logIn(user, function (err) {
+                  if (err) {
+                      res.view();
+                      return;
+                  }
+
+                  res.redirect('/');
+                  return;
+              });
+          })(req, res);
   },
-  twitterCallback: function(req, res) {
-    passport.authenticate('twitter', {
-      successRedirect: '/',
-      failureRedirect: '/'
-    });
+  'github/callback': function (req, res) {
+      passport.authenticate('github',
+          function (req, res) {
+              res.send({message: 'ok'});
+          })(req, res);
   }
+  //github--
 
 };

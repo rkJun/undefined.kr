@@ -1,8 +1,10 @@
 var passport    = require('passport'),
     passwordHash = require('password-hash'),
     LocalStrategy = require('passport-local').Strategy,
+    GitHubStrategy = require('passport-github').Strategy,
     TwitterStrategy = require('passport-twitter').Strategy;
   // bcrypt      = require('bcrypt');
+var oauth = require('../../config/local').oauth;
 
 // helper functions
 function findById(id, fn) {
@@ -41,9 +43,9 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(id, done) {
-  // findById(id, function (err, user) {
+  findById(id, function (err, user) {
     done(err, user);
-  // });
+  });
 });
 
 
@@ -51,7 +53,7 @@ passport.deserializeUser(function(id, done) {
 // Strategies in passport require a `verify` function, which accept
 // credentials (in this case, a username and password), and invoke a callback
 // with a user object.
-passport.use('local', new LocalStrategy(
+passport.use(new LocalStrategy(
   function(username, password, done) {
     // asynchronous verification, for effect...
     process.nextTick(function () {
@@ -60,36 +62,76 @@ passport.use('local', new LocalStrategy(
       // indicate failure and set a flash message. Otherwise, return the
       // authenticated `user`.
       findByUserId(username, function(err, user) {
-        console.log('findByUserId start');
-        if (err) { return done(null, err); }
-         console.log('findByUserId start err passed');
-        if (!user) { return done(null, false, { message: 'Unknown user ' + username }); }
-         console.log('findByUserId start !user passed');
+        if (err) {
+          return done(null, err);
+        }
+        if (!user) {
+          return done(null, false, { message: 'Unknown user ' + username }); 
+        }
         if (passwordHash.verify(password, user.password)) {
-          console.log('findByUserId start verified');
-          var returnUser = { username: user.username, createdAt: user.createdAt, id: user.id };
+          var returnUser = { userName: user.userName, userId: user.userId, id: user.id };
           return done(null, returnUser, { message: 'Logged In Successfully'} );
         } else {
-          console.log('findByUserId start invalid password');
           return done(null, false, { message: 'Invalid Password'});
         }
-
-    //     bcrypt.compare(password, user.password, function(err, res) {
-    //     if (!res) return done(null, false, { message: 'Invalid Password'});
-    //     var returnUser = { username: user.username, createdAt: user.createdAt, id: user.id };
-    //     return done(null, returnUser, { message: 'Logged In Successfully'} );
-    // });
       })
     });
 
   }
 ));
 
-passport.use('twitter', new TwitterStrategy({
+var verifyHandler = function (token, tokenSecret, profile, done) {
+    process.nextTick(function () {
+        User.find({uid:profile.id}, function (err, user) {
+            if (user) {
+                return done(null, user);
+            } else {
+                User.create({
+                    provider: profile.provider,
+                    uid: profile.id,
+                    name: profile.displayName
+                }).done(function (err, user) {
+                        if (err) {
+                            console.log(user);
+                            throw err;
+                        }
+                        return done(null, user);
+                    });
+            }
+        })
+    })
+};
+
+
+passport.use(new TwitterStrategy({
   consumerKey: ' ', //local.oauth.twitter.TWITTER_CONSUMER_KEY,
   consumerSecret: ' ', //local.oauth.twitter.TWITTER_CONSUMER_SECRET,
   callbackURL: 'http://localhost:1337/auth/twitter/callback' //local.oauth.twitter.callbackURL
-}, function(token, tokenSecret, profile, done) {
-    console('hhhhhhhhhhhhhhhhhhhhhhhh');
-    return done(null, profile, next);        
+}, verifyHandler
+));
+
+passport.use(new GitHubStrategy({
+  clientID: oauth.github.clientID,
+  clientSecret: oauth.github.clientSecret,
+  callbackURL: oauth.github.callbackURL
+}, function (token, tokenSecret, profile, done) {
+    process.nextTick(function () {
+      User.find({githubId:profile.id}, function (err, user) {
+        if (user) {
+          return done(null, user);
+        } else {
+          User.create({
+            provider: profile.provider,
+            githubId: profile.id,
+            userName: profile.displayName
+          }).done(function (err, user) {
+            if (err) {
+                console.log(user);
+                throw err;
+            }
+            return done(null, user);
+          });
+        }
+      })
+    })
 }));

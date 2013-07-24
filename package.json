@@ -13,7 +13,8 @@
     "ejs": "0.8.4",
     "passport": "latest",
     "passport-local": "latest",
-    "passport-twitter": "~0.1.5"
+    "passport-twitter": "~0.1.5",
+    "passport-github": "~0.1.5"
   },
   "scripts": {
     "start": "node app.js",
