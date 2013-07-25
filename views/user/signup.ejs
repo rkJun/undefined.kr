@@ -24,57 +24,67 @@ $(document).ready(function() {
 
 <section id="section-signup">
 		<div class="container-fluid">
-			<div class="span9">
-				<form action="/signup" method="post" class="form-horizontal" id="frmSign">
-				  <h4 class="heading">가입하기</h4>
-					<!-- <fieldset> -->
-						<!-- <legend>Sign up</legend> -->
-						<div id="divAlert" class="alert hide">
-						  <button type="button" class="close" data-dismiss="alert">&times;</button>
-						  <strong id="returnType"></strong><span id="returnMessage"></span>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="txtUserId">User ID:</label>
-							<div class="controls">
-								<input type="text" name="userId" id="txtUserId" class="input-xlarge" placeholder="user id..." />
-								<p class="help-inline"></p>
+			<div class="row-fluid">
+				<div class="span8">
+					<form action="/signup" method="post" class="form-horizontal" id="frmSign">
+					  <h4 class="heading">가입하기</h4>
+						<!-- <fieldset> -->
+							<!-- <legend>Sign up</legend> -->
+							<div id="divAlert" class="alert hide">
+							  <button type="button" class="close" data-dismiss="alert">&times;</button>
+							  <strong id="returnType"></strong><span id="returnMessage"></span>
 							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="txtUserName">User Name:</label>
-							<div class="controls">
-								<input type="text" name="userName" id="txtUserName" class="input-xlarge" placeholder="Full name..." />
-								<p class="help-inline"></p>
+							<div class="control-group">
+								<label class="control-label" for="txtUserId">User ID:</label>
+								<div class="controls">
+									<input type="text" name="userId" id="txtUserId" class="input-xlarge" placeholder="user id..." />
+									<p class="help-inline"></p>
+								</div>
 							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="txtUserName">Email:</label>
-							<div class="controls">
-								<input type="text" name="email" id="txtEmail" class="input-xlarge" placeholder="email@domain.com" />
-								<p class="help-inline"></p>
+							<div class="control-group">
+								<label class="control-label" for="txtUserName">User Name:</label>
+								<div class="controls">
+									<input type="text" name="userName" id="txtUserName" class="input-xlarge" placeholder="Full name..." />
+									<p class="help-inline"></p>
+								</div>
 							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="txtUserName">Password:</label>
-							<div class="controls">
-								<input type="password" name="password" id="txtPassword" class="input-xlarge" placeholder="Minimum 8 Characters" />
-								<p class="help-inline"></p>
+							<div class="control-group">
+								<label class="control-label" for="txtUserName">Email:</label>
+								<div class="controls">
+									<input type="text" name="email" id="txtEmail" class="input-xlarge" placeholder="email@domain.com" />
+									<p class="help-inline"></p>
+								</div>
 							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="chkAgree"><!--이용동의--></label>
-							<div class="controls">
-								<label class="checkbox">
-									<input type="checkbox" id="chkAgree" name="agreeYn" value="Y" >
-									I agree all your <a rel="tooltip" href="#" title="undefined yet">Terms of Services</a>
-								</label>
+							<div class="control-group">
+								<label class="control-label" for="txtUserName">Password:</label>
+								<div class="controls">
+									<input type="password" name="password" id="txtPassword" class="input-xlarge" placeholder="Minimum 8 Characters" />
+									<p class="help-inline"></p>
+								</div>
 							</div>
-						</div>
-						<div class="form-actions">
- 							<button class="btn btn-primary btn-large" type="submit">Sign up for undefine:D</button>
-						<div>
-			        <!-- </fieldset> -->
-				</form>
+							<div class="control-group">
+								<label class="control-label" for="chkAgree"><!--이용동의--></label>
+								<div class="controls">
+									<label class="checkbox">
+										<input type="checkbox" id="chkAgree" name="agreeYn" value="Y" >
+										I agree all your <a rel="tooltip" href="#" title="undefined yet">Terms of Services</a>
+									</label>
+								</div>
+							</div>
+							<div class="form-actions">
+	 							<button class="btn btn-primary btn-large" type="submit">Sign up for undefine:D</button>
+							</div>
+				        <!-- </fieldset> -->
+					</form>
+				</div>
+				<div class="span4">
+					<h4 class="heading">SNS 계정으로 로그인하기</h4>
+				<p>
+					<a href="/auth/github"><i class="icon-github-sign"></i> Github 계정으로 로그인</a>
+				</p><p>
+					<a href="/auth/twitter"><i class="icon-twitter-sign"></i> Twitter 계정으로 로그인</a>
+				</p>
+				</div>
 			</div>
 		</div>
 

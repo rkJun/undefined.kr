@@ -80,34 +80,55 @@ passport.use(new LocalStrategy(
   }
 ));
 
-var verifyHandler = function (token, tokenSecret, profile, done) {
-    process.nextTick(function () {
-        User.find({uid:profile.id}, function (err, user) {
-            if (user) {
-                return done(null, user);
-            } else {
-                User.create({
-                    provider: profile.provider,
-                    uid: profile.id,
-                    name: profile.displayName
-                }).done(function (err, user) {
-                        if (err) {
-                            console.log(user);
-                            throw err;
-                        }
-                        return done(null, user);
-                    });
-            }
-        })
-    })
-};
+// var verifyHandler = function (token, tokenSecret, profile, done) {
+//     process.nextTick(function () {
+//         User.find({twitter:profile.id}, function (err, user) {
+//             if (user) {
+//                 return done(null, user);
+//             } else {
+//                 User.create({
+//                     provider: profile.provider,
+//                     uid: profile.id,
+//                     name: profile.displayName
+//                 }).done(function (err, user) {
+//                         if (err) {
+//                             console.log(user);
+//                             throw err;
+//                         }
+//                         return done(null, user);
+//                     });
+//             }
+//         })
+//     })
+// };
 
 
 passport.use(new TwitterStrategy({
   consumerKey: oauth.twitter.TWITTER_CONSUMER_KEY,
   consumerSecret: oauth.twitter.TWITTER_CONSUMER_SECRET,
   callbackURL: oauth.twitter.callbackURL
-}, verifyHandler
+}, function (token, tokenSecret, profile, done) {
+    process.nextTick(function () {
+      User.findOne({twitterId:profile.username}, function (err, user) {
+        if (user) {
+          return done(null, user);
+        } else {
+          User.create({
+            twitterId: profile.username,  // id number
+            userName: profile.displayName,
+            email: profile._json.email,
+            photoUrl: profile.photos[0].value
+          }).done(function (err, user) {
+            if (err) {
+                console.log(user);
+                throw err;
+            }
+            return done(null, user);
+          });
+        }
+      })
+    })
+}
 ));
 
 passport.use(new GitHubStrategy({
@@ -116,14 +137,20 @@ passport.use(new GitHubStrategy({
   callbackURL: oauth.github.callbackURL
 }, function (token, tokenSecret, profile, done) {
     process.nextTick(function () {
-      User.find({githubId:profile.id}, function (err, user) {
+      User.findOne( { githubId:profile.username }, function (err, user) {
+        if (err) {
+          console.log('github id findOne error');
+          return done(null, user);
+        }
         if (user) {
           return done(null, user);
         } else {
           User.create({
-            provider: profile.provider,
-            githubId: profile.id,
-            userName: profile.displayName
+            // userId:   profile.username,
+            githubId: profile.username, // id - number
+            userName: profile.displayName,
+            email: profile._json.email,
+            photoUrl: profile._json.avatar_url
           }).done(function (err, user) {
             if (err) {
                 console.log(user);

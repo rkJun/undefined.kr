@@ -234,8 +234,6 @@ module.exports = {
           })(req, res, new Function());
       return res.send({message: 'return'});
   },
-
-  //github---
   'github': function (req, res) {
       passport.authenticate('github', { failureRedirect: '/login' },
           function (err, user) {
@@ -253,11 +251,8 @@ module.exports = {
   'github/callback': function (req, res) {
       passport.authenticate('github',
           function (req) {
-            console.log('are you ok?');
               return res.send({message: 'ok'});
           })(req, res, new Function() );
       return res.send({message: 'return'});
   }
-  //github--
-
 };

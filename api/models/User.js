@@ -11,9 +11,9 @@ module.exports = {
   attributes: {
   
     userId: {
-      type: 'string',
-      required: true,
-      unique: true
+      type: 'string'
+      // required: true,
+      // unique: true
     },
 
     userName: 'string',
@@ -24,9 +24,11 @@ module.exports = {
     userCompany: 'string',
     userLocation: 'string',
     ipAddress: 'string',
-    facebookId: 'string',
-    twitterId: 'string',
     githubId: 'string',
+    twitterId: 'string',
+    photoUrl: {
+      type: 'string'
+    },
     activityScore: {
       type: 'INTEGER',
       defaultsTo: 0
