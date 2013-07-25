@@ -1,17 +1,69 @@
-<form action="/login" method="post">
-<div>
-<label>Username:</label>
-<input type="text" name="username"/><br/>
-</div>
-<div>
-<label>Password:</label>
-<input type="password" name="password"/>
-</div>
-<div>
-<input type="submit" value="Submit"/>
-</div>
-<input type="hidden" name="_csrf" value="<%= _csrf %>1" />
-</form>
 <script>
-	alert('<%= testJson ? testJson : ""%>')
+$(document).ready(function() {
+  
+  var $frmLogin = $("#frmLogin");
+  tipJS.loadApp("user");
+
+  $frmLogin.submit(function(e) {
+	  e.preventDefault();
+	  tipJS.action("user.userC", "login");
+	});
+});
 </script>
+
+<%- partial('../header') %>
+<div class="container">
+<header>
+  <div class="row">
+  </div>
+</header>
+
+<section id="section-signup">
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="span8">
+					<form action="/login" method="post" class="form-horizontal" id="frmLogin">
+						<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+					  <h4 class="heading">로그인하기</h4>
+						<!-- <fieldset> -->
+							<!-- <legend>Sign up</legend> -->
+							<div id="divAlert" class="alert hide">
+							  <button type="button" class="close" data-dismiss="alert">&times;</button>
+							  <strong id="returnType"></strong><span id="returnMessage"></span>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="txtUserId">User ID 또는 이메일</label>
+								<div class="controls">
+									<input type="text" name="username" id="txtUserId" class="input-xlarge" placeholder="user id or user email" />
+									<p class="help-inline"></p>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="txtUserName">Password:</label>
+								<div class="controls">
+									<input type="password" name="password" id="txtPassword" class="input-xlarge" placeholder="Minimum 8 Characters" />
+									<p class="help-inline"></p>
+								</div>
+							</div>
+							<div class="form-actions">
+	 							<button class="btn btn-primary btn-large btn-success" type="submit">undefine:D 로그인</button>
+							</div>
+				        <!-- </fieldset> -->
+					</form>
+				</div>
+				<div class="span4">
+					<h4 class="heading">SNS 계정으로 로그인하기</h4>
+				<p>
+					<a href="/auth/github"><i class="icon-github-sign"></i> Github 계정으로 로그인</a>
+				</p><p>
+					<a href="/auth/twitter"><i class="icon-twitter-sign"></i> Twitter 계정으로 로그인</a>
+				</p>
+				</div>
+			</div>
+		</div>
+
+</section>
+      
+<%- partial('../footer') %>
+</div>
+<!-- /container -->

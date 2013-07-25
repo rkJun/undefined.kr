@@ -10,17 +10,17 @@ var passport = require('passport');
 var resultJson = {
   type: '',
   message: '',
-  json: {}  
+  json: {}
 };
 
 module.exports = {
 
   signup: function(req, res) {
     return res.view();
-  }, 
+  },
   create: function(req, res) {
 
-    var user = {};      
+    var user = {};
     var passwordHash = require('password-hash');
 
     user.userId = req.param('userId');
@@ -113,10 +113,12 @@ module.exports = {
     /**
      * v0.1 Password Change 기능만 구현
      */
-    var user = {};      
+    var user = {};
     var passwordHash = require('password-hash');
 
     user.userId = req.param('id');
+
+
     user.password = passwordHash.generate(req.param('password')); // hashedPassword
 
     try {
@@ -143,11 +145,14 @@ module.exports = {
   },
   login: function(req, res) {
     console.log('login');
-    res.view("user/login", { testJson : "hi"}); //user/login
-      console.log(req.session);
-      console.log("passport:"+JSON.stringify(req.session.passport));
+    if (!req.user) {
+      res.view('user/login'); //user/login
+    } else {
+      res.view('home');
+    }
 
-    // 처음에 undefined 이나, 로그인 성공하면, profile 정보가 저장된다.
+    console.log(req.session);
+    console.log("passport:"+JSON.stringify(req.session.passport));
     console.log(req.user);
   },
   logout: function(req, res) {
@@ -159,48 +164,36 @@ module.exports = {
     var username = req.param('username');
     var password = req.param('password');
 
+    try {
+      /**
+       * 추후, email 로도 로그인가능하도록 할꺼임.
+       */
+      check(username, '아이디는 최소 5자리, 최대 20자리입니다.').len(5,20);
+      check(password, '비밀번호는 최소 8자리, 최대 30자리입니다.').len(8,30);
+    } catch (e) {
+      resultJson.type = 'error';
+      resultJson.message = e.message;
+      return res.json(resultJson);
+    }
+
     // passport authenticate
     passport.authenticate('local', function(err, user, info){
 
       if ((err) || (!user)) {
-        res.send({message: 'err'});
+        return res.json(info);
       }
 
       req.logIn(user, function(err){
         if(err) {
           // res.send(err);
-          res.send({message: 'err'});
+          resultJson.type = 'error';
+          resultJson.message = 'login Error';
+          return res.json(resultJson);
         }
-        return res.send({ message: 'login successful'});
+        return res.json(info);
+        //return res.send({ message: 'login successful'});
       });
     })(req, res);
-    //
-    if (true) return;
-    
-    User.find({'userName': username}).done(function (err, user) {
-      if (err) {
-         console.error(err);
-         //res.send(500, { error: 'DB Error' });
-         res.view('500', { errors: {error:'DB Error'} });
-      }else {
-
-        console.log('User find:', user);
-
-        if (user) {
-          var hasher = require('password-hash');
-          if (hasher.verify(password, user.password)) {
-              // req.session.user = user;
-              res.send(user);
-          } else {
-              res.send(400, { error: 'Wrong Password' });
-              //res.redirect('/login');
-              return;
-          }
-        }
-      }
-    });
-  
-    console.log('auth');
   },
   nothing: function(req, res) {
     console.log("nothing:acces denied");

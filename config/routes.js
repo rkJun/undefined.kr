@@ -93,14 +93,10 @@ module.exports.routes = {
     controller : 'UserController',
     action : 'twitter/callback'
   },
-
   'get /auth/github': {
     controller : 'UserController',
     action : 'github'
   },
-  //
-  // redirect 실패/성공의 주소를 기입한다.
-  //
   'get /auth/github/callback': {
     controller : 'UserController',
     action : 'github/callback'

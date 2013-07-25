@@ -18,12 +18,14 @@ function findById(id, fn) {
 }
 
 function findByUserId(u, fn) {
+
   User.findOne({
     userId: u
   }).done(function(err, user) {
     // Error handling
     if (err) {
       return fn(null, null);
+
     // The User was found successfully!
     }else{
       console.log("The User was found successfully!"+JSON.stringify(user));
@@ -62,17 +64,26 @@ passport.use(new LocalStrategy(
       // indicate failure and set a flash message. Otherwise, return the
       // authenticated `user`.
       findByUserId(username, function(err, user) {
+
+        var returnInfo = {};
+
         if (err) {
-          return done(null, err);
+          returnInfo = { type: 'error', message: 'DB오류입니다. 관리자에게 문의하세요.'};
+          return done(err, false, returnInfo);
         }
         if (!user) {
-          return done(null, false, { message: 'Unknown user ' + username }); 
+          returnInfo = { type: 'error', message: '사용자가 없습니다.'};
+          return done(null, false, returnInfo); 
         }
+        console.log('verify:'+password);
+        console.log('verify:'+user.password);
         if (passwordHash.verify(password, user.password)) {
           var returnUser = { userName: user.userName, userId: user.userId, id: user.id };
-          return done(null, returnUser, { message: 'Logged In Successfully'} );
+          returnInfo = { type: 'success', message: '정상 로그인 되었습니다.'};
+          return done(null, returnUser, returnInfo);
         } else {
-          return done(null, false, { message: 'Invalid Password'});
+          returnInfo = { type: 'error', message: '사용자가 없거나, 패스워드가 맞지 않습니다.'};
+          return done(null, false, returnInfo);
         }
       })
     });
