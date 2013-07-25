@@ -206,33 +206,34 @@ module.exports = {
     console.log("nothing:acces denied");
     res.view('500', { errors: {error:'Access Denied'} });
   },
-  // twitter: function(req, res) {
-  //   console.log('twitter start');
+  twitter: function(req, res) {
+    console.log('twitter start');
 
-  //   passport.authenticate('twitter',
-  //       function (err, user) {
-  //         console.log('test123s');
+    passport.authenticate('twitter', { failureRedirect: '/login' },
+        function (err, user) {
+            req.logIn(user, function (err) {
+                if (err) {
+                    res.view();
+                    return;
+                }
 
-  //           req.logIn(user, function (err) {
-  //               if (err) {
-  //                   res.view();
-  //                   return;
-  //               }
+                res.redirect('/');
+                return;
+            });
+        })(req, res);
 
-  //               res.redirect('/');
-  //               return;
-  //           });
-  //       })(req, res);
+    console.log('twitter end');
+    // return res.send('hi');
 
-  //   console.log('twitter end');
-
-  // },
-  // twitterCallback: function(req, res) {
-  //   passport.authenticate('twitter', {
-  //     successRedirect: '/',
-  //     failureRedirect: '/'
-  //   });
-  // },
+  },
+  'twitter/callback': function(req, res) {
+      console.log ('hello, twitterCallback')
+      return passport.authenticate('twitter',
+          function (req) {
+              return res.send({message: 'ok'});
+          })(req, res, new Function());
+      return res.send({message: 'return'});
+  },
 
   //github---
   'github': function (req, res) {
@@ -251,9 +252,11 @@ module.exports = {
   },
   'github/callback': function (req, res) {
       passport.authenticate('github',
-          function (req, res) {
-              res.send({message: 'ok'});
-          })(req, res);
+          function (req) {
+            console.log('are you ok?');
+              return res.send({message: 'ok'});
+          })(req, res, new Function() );
+      return res.send({message: 'return'});
   }
   //github--
 

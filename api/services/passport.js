@@ -3,7 +3,7 @@ var passport    = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
     GitHubStrategy = require('passport-github').Strategy,
     TwitterStrategy = require('passport-twitter').Strategy;
-  // bcrypt      = require('bcrypt');
+
 var oauth = require('../../config/local').oauth;
 
 // helper functions
@@ -104,9 +104,9 @@ var verifyHandler = function (token, tokenSecret, profile, done) {
 
 
 passport.use(new TwitterStrategy({
-  consumerKey: ' ', //local.oauth.twitter.TWITTER_CONSUMER_KEY,
-  consumerSecret: ' ', //local.oauth.twitter.TWITTER_CONSUMER_SECRET,
-  callbackURL: 'http://localhost:1337/auth/twitter/callback' //local.oauth.twitter.callbackURL
+  consumerKey: oauth.twitter.TWITTER_CONSUMER_KEY,
+  consumerSecret: oauth.twitter.TWITTER_CONSUMER_SECRET,
+  callbackURL: oauth.twitter.callbackURL
 }, verifyHandler
 ));
 

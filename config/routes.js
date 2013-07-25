@@ -85,14 +85,14 @@ module.exports.routes = {
     action    : 'logout'
   },
 
-  // 'get /auth/twitter': {
-  //   controller : 'UserController',
-  //   action : 'twitter'
-  // },
-  // 'get /auth/twitter/callback': {
-  //   controller : 'UserController',
-  //   action : 'twitterCallback'
-  // },
+  'get /auth/twitter': {
+    controller : 'UserController',
+    action : 'twitter'
+  },
+  'get /auth/twitter/callback': {
+    controller : 'UserController',
+    action : 'twitter/callback'
+  },
 
   'get /auth/github': {
     controller : 'UserController',
