@@ -1,0 +1,82 @@
+<script>
+$(document).ready(function() {
+  tipJS.loadApp("qnaboard");
+
+  $("#frmWrite").submit(function(e) {
+      e.preventDefault();
+      tipJS.action("qnaboard.qnaboardC", "write");
+    });
+  });
+
+});
+</script>
+
+<%- partial('../header') %>
+
+<div class="container">
+
+<header>
+  <div class="row">
+    <div class="span6">
+      <h1 class="hidden">undefine:D </h1>
+      <p class="lead hidden">JavaScript, HTML5, CSS3, Developer, Designer, 한달에 한번씩 각자의 관심사를 공부, 공유합니다.</p>
+      <p>undefine:D 사이트를 베타 오픈 합니다. By <a href="http://twitter.com/rkjun">rkJun</a></p>
+    </div>
+    <div class="span4 offset2 hidden">
+      <div class="well">
+        <img src="/images/undefined_kr_logo_for_light_background.png" />
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="top-section-list">
+  <div class="container-fluid margin-top5 border-bottom-hr">
+    <div class="row">
+      <div class="span10 well">
+          <h4 class="heading">글 작성하기</h4>
+          <div id="divAlert" class="alert hide">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong id="returnType"></strong><span id="returnMessage">hello</span>
+          </div>
+          <form id="frmWrite" action="/board/write" accept-charset="UTF-8"  class="form-horizontal" method="POST">
+            <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+            <div class="control-group">
+              <label class="control-label required" for="txtTitle">제목</label>
+              <div class="controls">
+                <input type="text" name="title" id="txtTitle" class="input-xlarge" placeholder="글 제목" />
+                <!-- <p class="help-inline"></p> -->
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="txtContents">내용</label>
+              <div class="controls">
+                <textarea class="span7" id="txtContents" name="contents"
+                placeholder="내용" rows="9"></textarea>
+                <p class="help-inline"></p>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label required" for="txtTag">태그</label>
+              <div class="controls">
+                <input type="text" name="tag" id="txtTag" class="input-xlarge" placeholder="태그모음 복수입력시 , 쉼표 구분" />
+                <!-- <p class="help-inline"></p> -->
+              </div>
+            </div>
+              <div class="form-actions">
+                <button class="btn btn-info" type="submit">글 올리기</button>
+                <a id="btn_cancel" href="/" class="btn btn-cancel">취소</a>
+              </div>
+            <!-- </div> -->
+          </form>              
+      </div>
+    </div>
+  </div>
+
+
+</section>
+      
+     <%- partial('../footer') %>
+
+    </div>
+<!-- /container -->

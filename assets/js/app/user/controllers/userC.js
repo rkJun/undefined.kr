@@ -44,7 +44,7 @@ tipJS.controller({
 			data: reqData
 		}).done(function( resultJson ) {
 			if (resultJson.type === 'success') {
-				alert(  resultJson.message );
+				alert( resultJson.message );
 				document.location.href = "/";
 			} else {
 				$("#divAlert").addClass("alert-error").show();

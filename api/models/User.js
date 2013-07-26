@@ -30,11 +30,15 @@ module.exports = {
       type: 'string'
     },
     activityScore: {
-      type: 'INTEGER',
+      type: 'integer',
       defaultsTo: 0
     },
     isDelete: {
-      type: 'BOOLEAN',
+      type: 'boolean',
+      defaultsTo: false
+    },
+    isAdmin: {
+      type: 'boolean',
       defaultsTo: false
     }
     

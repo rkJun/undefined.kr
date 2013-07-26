@@ -27,6 +27,7 @@ $(document).ready(function() {
 			<div class="row-fluid">
 				<div class="span8">
 					<form action="/signup" method="post" class="form-horizontal" id="frmSign">
+						<input type="hidden" name="_csrf" value="<%= _csrf %>" />
 					  <h4 class="heading">가입하기</h4>
 						<!-- <fieldset> -->
 							<!-- <legend>Sign up</legend> -->

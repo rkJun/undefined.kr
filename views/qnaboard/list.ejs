@@ -27,6 +27,22 @@ $(document).ready(function() {
 ================================================== -->
 <section id="top-section-list">
   <a href="/board/write"><button type="button" id="btn_write" class="btn btn-primary pull-right" data-loading-text="Loading..."><i class="icon-pencil"></i> 글쓰기</button></a>
+
+  
+  <% _.each(users, function (user) { %>
+    <li><%= user.authorId %></li>
+    <li><%= user.title %></li>
+    <li><%= user.contents %></li>
+    <li><%= user.tag %></li>
+    <li><%= user.viewCount %></li>
+    <li><%= user.goodCount %></li>
+    <li><%= user.isDelete %></li>
+    <li><%= user.createdAt %></li>
+    <li><%= user.updatedAt %></li>
+    <li><%= user.id %></li>
+    <% }) %>
+  
+
   <div class="container-fluid margin-top5 border-bottom-hr">
     <div class="row">
       <div class="span1">

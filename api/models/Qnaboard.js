@@ -1,28 +1,39 @@
-/*---------------------
-	:: Qnaboard
-	-> model
----------------------*/
+/**
+ * User
+ *
+ * @module      :: Model
+ * @description :: A short summary of how this model works and what it represents.
+ *
+ */
+
 module.exports = {
 
-	attributes: {
+  attributes: {
 
-		// Simple attribute:
-		 authorId: 'STRING',
-		 title: 'STRING',
-		 contents: 'STRING',
-		 tag: [ { type: 'STRING' }],
-		 viewCount: 'NUMBER',
-		 goodCount: 'NUMBER' //,
-		 // comments: [
-		 // 	{
-		 // 		authorId: 'STRING',
-		 // 		comment: 'STRING',
-		 // 		viewCount: 'NUMBER',
-		 // 		goodCount: 'NUMBER',
-		 // 		createdAt: 'DATE',
-		 // 		updatedAt: 'DATE'
-		 // 	}
-		 // ]
-	}
+    authorId: {
+      type: 'string',
+      required: true
+    }, 
+    title: 'string',
+    contents: 'string',
+    tag: 'array',
+    viewCount: {
+    	type: 'integer',
+    	defaultsTo: 0
+    },
+    goodCount: {
+    	type: 'integer',
+    	defaultsTo: 0
+    },
+    badCount: {
+    	type: 'integer',
+    	defaultsTo: 0
+    },
+    isDelete: {
+        type: 'boolean',
+        defaultsTo: false
+    }
+
+  }
 
 };

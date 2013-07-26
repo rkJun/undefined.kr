@@ -22,6 +22,10 @@ module.exports.policies = {
        'logout': 'authenticated',
        'update': 'authenticated'
   },
+  QnaboardController: {
+        'writesend': 'authenticated'
+  }
+
   // AuthController: {
   //   'post login': true,
   //   'get logout': 'authenticated'

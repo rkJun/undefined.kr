@@ -8,6 +8,6 @@ tipJS.config({
 	],
 	applicationPath:{
 		user : '/js/app/user',
-		// qnaboard : 'js/app/qnaboard'
+		qnaboard : '/js/app/qnaboard'
  	}
 });

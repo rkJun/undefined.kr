@@ -100,6 +100,14 @@ module.exports.routes = {
   'get /auth/github/callback': {
     controller : 'UserController',
     action : 'github/callback'
+  },
+
+  'get /board/write': {
+    view: 'qnaboard/write'
+  },
+  'post /board/write': {
+    controller : 'QnaboardController',
+    action : 'writesend'
   }
 
   /*
