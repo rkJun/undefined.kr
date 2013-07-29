@@ -2,7 +2,7 @@
 tipJS.config({
 	commonLib:[
 		"/js/common/jquery-2.0.3.js",
-		"/js/common/bootstrap.min.js",
+		"/js/common/bootstrap.js",
 		"/js/common/plugins/jquery.pjax.js",
 		"/js/common/plugins/plugins.js"
 	],
