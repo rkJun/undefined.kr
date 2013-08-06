@@ -11,14 +11,23 @@ module.exports = {
   attributes: {
   
     userId: {
-      type: 'string'
-      // required: true,
-      // unique: true
+      type: 'string',
+      required: true,
+      unique: true
     },
-
-    userName: 'string',
-    password: 'string',
-    email: 'string',
+    userName: {
+      type: 'string',
+      required: true,
+    },
+    password: {
+      type: 'string',
+      columnName: 'encryptedPassword'
+    },
+    email: {
+      type: 'string',
+      required: true,
+      unique: true
+    },
     birthDate: 'string',
     userUrl: 'string',
     userCompany: 'string',
@@ -40,7 +49,11 @@ module.exports = {
     isAdmin: {
       type: 'boolean',
       defaultsTo: false
-    }
-    
+    },
+    toJSON: function() {
+      var obj = this.toObject();
+      delete obj.password;
+      return obj;
+    }    
   }
 };

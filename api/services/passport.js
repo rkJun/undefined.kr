@@ -1,4 +1,5 @@
 var passport    = require('passport'),
+    bcrypt = require('bcrypt'),
     passwordHash = require('password-hash'),
     LocalStrategy = require('passport-local').Strategy,
     GitHubStrategy = require('passport-github').Strategy,
@@ -77,14 +78,26 @@ passport.use(new LocalStrategy(
         }
         console.log('verify:'+password);
         console.log('verify:'+user.password);
-        if (passwordHash.verify(password, user.password)) {
+
+        bcrypt.compare(password, user.password, function(err, res) {
+          if (!res) {
+              // invalid password. but, message should doesn't know it.
+              returnInfo = { type: 'error', message: '사용자가 없거나, 패스워드가 맞지 않습니다.'};
+              return done(null, false, returnInfo);
+          }
           var returnUser = { userName: user.userName, userId: user.userId, id: user.id };
           returnInfo = { type: 'success', message: '정상 로그인 되었습니다.'};
           return done(null, returnUser, returnInfo);
-        } else {
-          returnInfo = { type: 'error', message: '사용자가 없거나, 패스워드가 맞지 않습니다.'};
-          return done(null, false, returnInfo);
-        }
+         });
+        //password check method changed password-hash to bcrypt.
+        //if (passwordHash.verify(password, user.password)) {
+        //   var returnUser = { userName: user.userName, userId: user.userId, id: user.id };
+        //   returnInfo = { type: 'success', message: '정상 로그인 되었습니다.'};
+        //   return done(null, returnUser, returnInfo);
+        // } else {
+        //   returnInfo = { type: 'error', message: '사용자가 없거나, 패스워드가 맞지 않습니다.'};
+        //   return done(null, false, returnInfo);
+        // }
       })
     });
 

@@ -6,6 +6,7 @@
  */
 var check = require('validator').check;
 var passport = require('passport');
+var bcrypt = require('bcrypt');
 
 var resultJson = {
   type: '',
@@ -25,14 +26,15 @@ module.exports = {
 
     user.userId = req.param('userId');
     user.userName = req.param('userName');
-    user.password = passwordHash.generate(req.param('password')); // hashedPassword
+    //user.password = passwordHash.generate(req.param('password')); // hashedPassword
+    user.password = req.param('password');
     user.email = req.param('email');
     user.birthDate = req.param('birthDate');
     user.ipAddress = req.header('x-forwarded-for') || req.connection.remoteAddress;
 
     try {
       check(user.userId, '아이디는 최소 5자리, 최대 20자리입니다.').len(5,20);
-      check(user.userName, '사용자명은 최소 5자리, 최대 30자리입니다.').len(5,30);
+      check(user.userName, '사용자명은 최소 3자리, 최대 30자리입니다.').len(3,30);
       check(req.param('password'), '비밀번호는 최소 8자리, 최대 30자리입니다.').len(8,30);
       check(user.email, { len: '이메일주소는 최소 6자리, 최대 64자리입니다.', isEmail: '이메일 형식이 맞지 않습니다.'}).len(6,64).isEmail();
       // check(user.birthDate, '날짜 형식이 맞지 않습니다.').isDate();
@@ -61,7 +63,20 @@ module.exports = {
           // return res.view('user/signup', { errors: { type: 'error', message: message } } );
         } else {
           console.log("callBackCreate");
-          callBackCreate(user);
+
+          bcrypt.genSalt(10, function (err, salt) {
+            bcrypt.hash(user.password, salt, function(err, hash) {
+              if (err) {
+                console.log(err);
+              }else {
+                console.log('hash::::'+hash);
+                user.password = hash;
+                callBackCreate(user);
+              }
+            })
+          });
+
+          
         }
       }
     });
