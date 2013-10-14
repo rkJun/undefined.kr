@@ -1,5 +1,4 @@
-tipJS.controller({
-	name : "user.userC",
+tipJS.controller("userC", {
 
 	beforeInvoke : function () {
 		$("#divAlert").removeClass("alert-error").hide();

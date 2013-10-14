@@ -1,7 +1,13 @@
+/*
 .margin-top5 {
   margin-top: 5px; 
 }
 
 .border-bottom-hr {
   border-bottom: 1px solid #D9D9D9;
+}
+*/
+
+body {
+  padding-top: 70px;
 }

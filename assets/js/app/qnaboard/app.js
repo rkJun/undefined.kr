@@ -1,0 +1,13 @@
+tipJS.app({
+	appPath:"/js/app/qnaboard",
+	noCache:true,
+	noCacheParam:"tipJS",
+	noCacheAuto:true,
+	controllers:[
+		"qnaboardC.js",
+	],
+	models:[
+	],
+	views:[
+	]
+});

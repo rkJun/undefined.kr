@@ -1,36 +1,41 @@
 <script>
-$(document).ready(function() {
-  tipJS.loadApp("user");
-});
+//$(document).ready(function() {
+//  tipJS.loadApp("user");
+//});
 </script>
 
 <%- partial('../header') %>
 
 <div class="container">
-
-<header>
-  <div class="row">
-    <div class="span6">
-      <h1 class="hidden">undefine:D </h1>
-      <p class="lead hidden">JavaScript, HTML5, CSS3, Developer, Designer, 한달에 한번씩 각자의 관심사를 공부, 공유합니다.</p>
-      <p>undefine:D 사이트를 베타 오픈 합니다. By <a href="http://twitter.com/rkjun">rkJun</a></p>
-    </div>
-    <div class="span4 offset2 hidden">
-      <div class="well">
-        <img src="/images/undefined_kr_logo_for_light_background.png" />
+  <header>
+    <div class="row">
+      <div class="col-md-3">
+        <h1 class="well">
+          <!-- <img src="/images/undefined_kr_logo_for_light_background.png" /> -->
+          undef<img src="/favicon.ico" height="25px" width="25px" title="i"/>ne:D
+        </h1>
+      </div>
+      <div class="col-md-9 col-md-offset0">
+        <p class="lead">undefine:D - 한달에 한번, 각자의 관심사를 공유합니다.</p>
+        <p>undefine:D 사이트를 베타 오픈 합니다. By <a href="http://twitter.com/rkjun">rkJun</a></p>
       </div>
     </div>
-  </div>
-</header>
+  </header>
 
-<section id="top-section-list">
-  <a href="/board/write"><button type="button" id="btn_write" class="btn btn-primary pull-right" data-loading-text="Loading..."><i class="icon-pencil"></i> 글쓰기</button></a>
-  <div class="container-fluid margin-top5 border-bottom-hr">
-  </div>
-
-</section>
-      
-     <%- partial('../footer') %>
-
+  <section id="top-section-list">
+    <a href="/">
+      <button type="button" id="btn_reg19" class="btn btn-lg btn-primary">
+        <span class="glyphicon glyphicon-record"></span> 19번째 모임 참가신청
+      </button>
+    </a>
+    <a href="/board/write">
+      <button type="button" id="btn_write" class="btn btn-primary pull-right" data-loading-text="Loading...">
+        <span class="glyphicon glyphicon-pencil"></span> 글쓰기</button>
+    </a>
+    <div class="container">
     </div>
+  </section>
+
+  <%- partial('../footer') %>
+</div>
 <!-- /container -->

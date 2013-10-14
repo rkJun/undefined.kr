@@ -1,6 +1,5 @@
-tipJS.view({
+tipJS.view("userV", {  
     // choose an attribute data between name or __name
-    name:"user.userV",
     getFrmSign: function() {
       // var userModel = this.loadModel("userM");
       var frmSign = this.getById("frmSign");

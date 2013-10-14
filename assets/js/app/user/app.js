@@ -1,8 +1,8 @@
-tipJS.define({
+tipJS.app({
+	appPath:"/js/app/user",
 	noCache:true,
 	noCacheParam:"tipJS",
 	noCacheAuto:true,
-	name:"user",
 	controllers:[
 		"userC.js"
 	],
@@ -11,8 +11,5 @@ tipJS.define({
 	],
 	views:[
 		"userV.js"
-	],
-	onLoad:function(params){
-	}
+	]
 });
-

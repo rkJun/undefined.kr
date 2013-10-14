@@ -1,5 +1,4 @@
-tipJS.controller({
-	name : "qnaboard.qnaboardC",
+tipJS.controller("qnaboardC", {
 
 	beforeInvoke: function() {
 		// $("#divAlert").removeClass("alert-error").hide();

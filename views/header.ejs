@@ -1,56 +1,53 @@
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-            <a class="brand" href="/">undefine:D</a>
-            <div class="nav-collapse collapse">
-                <ul class="nav"  role="navigation">
-                    <li><a href="">Organizers</a></li>
-                    <li><a href="../#qna">Q&A</a></li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" id="drop1" role="button" data-toggle="dropdown" data-target="#" href="../">Board <b class="caret"></b></a>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="/qnaboard/list">Q&A</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#anotherAction">frontend 지식창고</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">frontend trend</a></li>
-                            <li role="presentation" class="divider"></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">생존신고</a></li>
-                        </ul>
-                    </li>
-               </ul>
-               <form class="navbar-search pull-left" action="">
-                 <input type="text" class="search-query span2" placeholder="Search">
-               </form>
-
-
-                <ul class="nav pull-right" id="main-menu-right">
-                    <li><a rel="tooltip" target="_blank" href="https://www.facebook.com/groups/html5jsstudy/" title="undefine:D facebook group"></i><i class="icon-facebook-sign"></i> undefine:D facebook group</i></a></li>
-                </ul>
-
-                <ul class="nav pull-right" id="">
-                <% var userId = req.user ? req.user.userId : null;
-                   if ( userId != null) { %>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" id="drop2" role="button" data-toggle="dropdown" data-target="#" href="../"><%= userId %><b class="caret"></b></a>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
-                            <li><a href="/user/<%= userId %>">사용자 정보</a></li>
-                            <li role="presentation" class="divider"></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="/logout">로그아웃</a></li>
-                        </ul>
-                    </li>
-
-                <% } else { %>
-                    <li><a href="/login">log in</a></li>
-                    <li><a href="/signup">sign up</a></li>
-                <% } %>
-                  
-                </ul>
-
-            </div>
-        </div>
+  <!-- Fixed navbar -->
+  <div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"><img height="14px" width="14px" src="/favicon.ico"/><%- title %></a>
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="">Organizers</a></li>
+          <li><a href="../#qna">Q&A</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="/qnaboard/list">Q&A</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li class="dropdown-header">Nav header</li>
+              <li><a href="#">Separated link</a></li>
+              <li><a href="#">One more separated link</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right" id="main-menu-right">
+          <li><a rel="tooltip" target="_blank" href="https://www.facebook.com/groups/html5jsstudy/" title="undefine:D facebook group"><span class="glyphicon glyphicon-thumbs-up"></span> undefine:D facebook group</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <% var userId = req.user ? req.user.userId : null;
+             if ( userId != null) { %>
+              <li class="dropdown">
+                  <a class="dropdown-toggle" id="drop2" role="button" data-toggle="dropdown" data-target="#" href="../"><%= userId %><b class="caret"></b></a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
+                      <li><a href="/user/<%= userId %>">사용자 정보</a></li>
+                      <li role="presentation" class="divider"></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="/logout">로그아웃</a></li>
+                  </ul>
+              </li>
+          <% } else { %>
+              <li><a href="/login">Log in</a></li>
+              <li><a href="/signup">Sign up</a></li>
+          <% } %>
+        </ul>
+      </div><!--/.nav-collapse -->
     </div>
-</div>
+  </div>
+
+
+

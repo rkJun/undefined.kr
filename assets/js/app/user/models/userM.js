@@ -1,5 +1,4 @@
-tipJS.model({
-	__name : "user.userM",
+tipJS.model("userM", { 
   frmSign : {
     userId : "",
     userName : "",
