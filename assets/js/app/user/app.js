@@ -11,5 +11,12 @@ tipJS.app({
 	],
 	views:[
 		"userV.js"
-	]
+	],
+	onLoad:function(){
+		console.log('user onload');
+	}
 });
+
+$(document).ready(function(e){
+	console.log ('hi, user');
+}); 

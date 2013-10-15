@@ -36,9 +36,6 @@ module.exports.routes = {
     view: 'home/index'
   },
 
-  '/bootstrap' : {
-  	controller	: 'bootstrap'
-  },
   // 'get /user': {
   // 	controller	: 'user',
   // 	action		: 'index'
@@ -108,7 +105,16 @@ module.exports.routes = {
   'post /board/write': {
     controller : 'QnaboardController',
     action : 'writesend'
+  },
+
+  'get /offline/off19': {
+    view: 'offline/offline19'
   }
+
+  // 'get /offline/lists': {
+  //   controller : 'OfflineController',
+  //   action : 'lists'
+  // }
 
   /*
   // But what if you want your home page to display

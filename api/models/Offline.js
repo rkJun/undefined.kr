@@ -10,9 +10,17 @@ module.exports = {
 
   attributes: {
   
-    authorId: 'string',
+    userId: 'string',
+    userName: 'string',
+    userNick: 'string',
+    offlineNo: 'number',
     isDelete: 'boolean',
-    comment: 'string'
+    comment: 'string',
+    email: 'string',
+    password: {
+      type: 'string',
+      columnName: 'encryptedPassword'
+    }
   }
 
 };

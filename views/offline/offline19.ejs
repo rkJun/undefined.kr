@@ -1,0 +1,130 @@
+<header>
+<%- partial('../header') %>
+</header>
+
+<section id="section-offline">
+  <form action="/offline/" method="post" class="form-horizontal" id="frmOffline">
+    <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+    <input type="hidden" name="offlineNo" value="19" />
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <h3>undefine:D 19번째 모임 안내 (2013년 10월 25일)</h3>
+          <h5>일시 : 2013년 10월 25일 (금) 오후 7시반 ~ 9시반</h5>
+          <h5>장소 : 토즈 강남 2호점 (신논현역 인근) <small><a href="http://place.map.daum.net/8563513" target="_blank">약도보기</a></small></h5>
+          <h5>( 장소후원 : 정보통신산업진흥원 <a href="http://www.nipa.kr">http://www.nipa.kr</a> )</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <h4>* Time table</h4>
+          <table class="table table-striped table-bordered">
+            <thead>
+              <th>시간</th>
+              <th>내용</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>19:30 - 19:40 (10분)</td>
+                <td>모임소개</td>
+              </tr>
+              <tr>
+                <td>19:40 - 19:50 (10분)</td>
+                <td>참가자 자기소개</td>
+              </tr>
+              <tr>
+                <td>19:50 - 20:40 (50분)</td>
+                <td>김성원님 - Asdf.js JavaScript Library 소개<br/>
+                JavaScript Functional Programming 가능성과 방향성에 대해 논의
+                </td>
+              </tr>
+              <tr>
+                <td>20:40 - 20:45 (05분)</td>
+                <td>휴식</td>
+              </tr>
+              <tr>
+                <td>20:45 - 21:30 (45분)</td>
+                <td>미정</td>
+              </tr>
+           </tbody>
+          </table>
+
+          <p>김성원님 - 
+            SK컴즈 재직중, 사내 JavaScript Framework, Library, Web Editor, Web Application 개발</p>
+
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-7">
+          <h4>* 참가자 목록</h4>
+          <ol>
+            <li>test 홍길동 ju***@test.com</li>
+            <li>test 홍길동 ju***@test.com</li>
+            <li>test 홍길동 ju***@test.com</li>
+            <li>test 홍길동 ju***@test.com</li>
+          </ol>
+          <h5>* 대기자 목록 <small>참가자 20명외에는 모두 대기자가 됩니다.</small></h5> 
+          <ul>
+            <li>test 홍길동 ju***@test.com</li>
+            <li>test 홍길동 ju***@test.com</li>
+            <li>test 홍길동 ju***@test.com</li>
+            <li>test 홍길동 ju***@test.com</li>
+          </ul>
+  
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-7">
+          <h4>* 참가신청 (취소)</h4>
+  <!--
+      isDelete: 'boolean',
+      comment: 'string',
+  -->
+            <div id="divAlert" class="alert alert-dismissable hide">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <strong id="returnType"></strong><span id="returnMessage"></span>
+            </div>
+  
+            <div class="input-group input-group-sm">
+              <span class="input-group-addon">이메일</span>
+              <input type="text" class="form-control" placeholder="E-mail Address" name="userName" id="txtUserName">
+              <span class="input-group-addon">(필수)</span>
+            </div>
+            <div class="input-group input-group-sm">
+              <span class="input-group-addon">신청자명</span>
+              <input type="text" class="form-control" placeholder="신청자 이름" name="userName" id="txtUserName">
+              <span class="input-group-addon">(필수)</span>
+            </div>
+            <div class="input-group input-group-sm">
+              <span class="input-group-addon">닉네임</span>
+              <input type="text" class="form-control" placeholder="닉네임" name="userNick" id="txtUserNick">
+            </div>
+            <div class="input-group input-group-sm">
+              <span class="input-group-addon">한마디</span>
+              <input type="text" class="form-control" placeholder="한마디" name="comment" id="txtComment">
+            </div>
+  
+            <small>※ 비밀번호는 참가취소시 필요합니다.</small>
+            <div class="input-group input-group-sm">
+              <span class="input-group-addon">비밀번호</span>
+              <input type="password" class="form-control" placeholder="비밀번호 (4 자리 이상)" name="password" id="txtPassword">
+              <span class="input-group-addon">(필수)</span>
+            </div>
+           <br/>
+           <div class="text-center" id="div_btn_area">
+             <button class="btn btn-primary btn-lg" type="submit" id="btn_join">참가신청</button>
+             <button class="btn btn-cancel btn-lg hidden" type="submit" id="btn_cancel">참가취소</button>
+           </div>
+        </div>
+        
+      </div>
+    </div>
+  </form>
+</section>
+      
+<%- partial('../footer') %>
+</div>
+<!-- /container -->
