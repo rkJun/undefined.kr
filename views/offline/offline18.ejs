@@ -1,9 +1,10 @@
 <script src="/js/app/offline/app.js"></script>
 
 <script>
-//socket.get('/offline', function (response) {
-//  $(#"ol_confirmlist").html(response);
-//});
+ socket.get('/offline', function (response) {
+   console.log("test1:"+response.offlines.length);
+  $("#span_personCount").html(response.offlines.length);
+ });
 </script>
 
 <header>
@@ -66,7 +67,7 @@
   
       <div class="row">
         <div class="col-md-7">
-          <h4>* 참가자 목록</h4>
+          <h4>* 참가자 목록 <span id="span_personCount"></span></h4>
           <ol id="ol_confirmlist">
             <% _.each(offlines, function (offline) { 
               var emailAtPos = offline.email.indexOf('@');

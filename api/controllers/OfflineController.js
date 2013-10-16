@@ -45,7 +45,7 @@ module.exports = {
     offline.email = req.param('email');
 
     offline.comment = req.param('comment');
-    offline.ipAddress = req.header('x-forwarded-for') || req.connection.remoteAddress;
+   offline.ipAddress = req.header('x-forwarded-for') || req.connection.remoteAddress;
 
     try {
       check(offline.email, { len: '이메일주소는 최소 6자리, 최대 64자리입니다.', isEmail: '이메일 형식이 맞지 않습니다.'}).len(6,64).isEmail();
@@ -63,7 +63,6 @@ module.exports = {
       // Error handling
       if (err) {
         console.log(err);
-        // return res.view('500', { errors: {error:'DB Error'} });
         resultJson.type = 'error';
         resultJson.message = 'DB Error';
         return res.json(resultJson);
@@ -71,9 +70,8 @@ module.exports = {
         if(existUser) {
           console.log("동일 이메일이 존재합니다.:"+existUser);
           resultJson.type = 'warning';
-          resultJson.message = "동일 이메일이 존재합니다.";
+          resultJson.message = "동일 이메일이 존재합니다. (기신청자)";
           return res.json(resultJson);
-          // return res.view('user/signup', { errors: { type: 'error', message: message } } );
         } else {
           console.log("callBackCreate");
 
@@ -93,6 +91,7 @@ module.exports = {
     });
 
     var callBackCreate = function(offline) {
+
       Offline.create(
         offline
       ).done(function(err, offline) {
@@ -104,6 +103,7 @@ module.exports = {
             resultJson.message = 'DB Error';
             return res.json(resultJson);
           }else {
+            Offline.publishCreate({ id:'offCreated', name:offline.userName});
             console.log('Offline created:', offline);
             return res.json( {type: "success", message : "정상등록했습니다." , offline: offline });
           }
@@ -111,6 +111,7 @@ module.exports = {
     }; //end of Callback
   }, // end of create:
   find: function(req, res) {
+
     Offline.find()
     .limit(24)
     .sort('createdAt')
@@ -124,6 +125,7 @@ module.exports = {
         resultJson.type = 'success';
         resultJson.message = '정상조회했습니다.';
         resultJson.offlines = offlines;
+        Offline.subscribe( req.socket );
         return res.json(resultJson);
       }
     });
