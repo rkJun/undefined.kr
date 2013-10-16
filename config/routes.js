@@ -107,8 +107,8 @@ module.exports.routes = {
     action : 'writesend'
   },
 
-  'get /offline/off19': {
-    view: 'offline/offline19'
+  'get /offline/off18': {
+    view: 'offline/offline18'
   }
 
   // 'get /offline/lists': {

@@ -5,7 +5,7 @@ tipJS.controller("offline_ctrl_init", {
 		var view = this.getView("offline_view");
 		var $frmOffline = view.getForm();
 
-		view.Initialize();
+		view.initialize();
 
 		$frmOffline.submit(function(e) {
 			e.preventDefault();

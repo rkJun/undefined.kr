@@ -7,7 +7,7 @@ tipJS.app({
 		"offline_ctrl_list.js",
 		"offline_ctrl_search.js",
 		"offline_ctrl_insert.js",
-		"offline_ctrl_update,js",
+		"offline_ctrl_update.js",
 		"offline_ctrl_init.js"
 	],
 	models:[
