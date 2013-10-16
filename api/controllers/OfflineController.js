@@ -49,7 +49,7 @@ module.exports = {
 
     try {
       check(offline.email, { len: '이메일주소는 최소 6자리, 최대 64자리입니다.', isEmail: '이메일 형식이 맞지 않습니다.'}).len(6,64).isEmail();
-      check(offline.userName, '신청자명은 최소 3자리, 최대 30자리입니다.').len(3,30);
+      check(offline.userName, '신청자명은 최소 2자리, 최대 30자리입니다.').len(2,30);
       check(offline.userNick, '닉네임은 최대 30자리입니다.').len(0,30);
       check(req.param('password'), '비밀번호는 최소 4자리, 최대 30자리입니다.').len(4,30);
     } catch (e) {
