@@ -1,5 +1,11 @@
 <script src="/js/app/offline/app.js"></script>
 
+<script>
+//socket.get('/offline', function (response) {
+//  $(#"ol_confirmlist").html(response);
+//});
+</script>
+
 <header>
 <%- partial('../header') %>
 </header>
@@ -61,38 +67,47 @@
       <div class="row">
         <div class="col-md-7">
           <h4>* 참가자 목록</h4>
-          <ol>
-            <li>test 홍길동 ju***@test.com</li>
-            <li>test 홍길동 ju***@test.com</li>
-            <li>test 홍길동 ju***@test.com</li>
-            <li>test 홍길동 ju***@test.com</li>
+          <ol id="ol_confirmlist">
+            <% _.each(offlines, function (offline) { 
+              var emailAtPos = offline.email.indexOf('@');
+              var maskingChar = "";
+              for (var i = 2 ; i < emailAtPos; i++) {
+                maskingChar += '*';
+              }
+              offline.email = offline.email.substring(0,2) + maskingChar + offline.email.substring(emailAtPos);
+            %>
+              <li><%=offline.userName %> (<%=offline.userNick%>) <%=offline.email%> / 
+                  <%=offline.createdAt.getFullYear()%>.<%=offline.createdAt.getMonth()+1%>.
+                  <%=offline.createdAt.getDate()%>
+                  <% if (offline.comment != undefined) { %>
+                    <blockquote><%=offline.comment%></blockquote>
+                  <% } %>
+              </li>
+            <% }); %>
           </ol>
+          <!--
           <h5>* 대기자 목록 <small>참가자 20명외에는 모두 대기자가 됩니다.</small></h5> 
           <ul>
-            <li>test 홍길동 ju***@test.com</li>
-            <li>test 홍길동 ju***@test.com</li>
-            <li>test 홍길동 ju***@test.com</li>
-            <li>test 홍길동 ju***@test.com</li>
           </ul>
-  
+          -->
         </div>
       </div>
   
       <div class="row">
         <div class="col-md-7">
-          <h4>* 참가신청 (취소)</h4>
+          <h4>* 참가신청</h4>
   <!--
       isDelete: 'boolean',
       comment: 'string',
   -->
-            <div id="divAlert" class="alert alert-dismissable hide">
+            <div id="divAlert" class="alert">
               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
               <strong id="returnType"></strong><span id="returnMessage"></span>
             </div>
   
             <div class="input-group input-group-sm">
               <span class="input-group-addon">이메일</span>
-              <input type="text" class="form-control" placeholder="E-mail Address" name="userName" id="txtUserName">
+              <input type="text" class="form-control" placeholder="E-mail Address" name="email" id="txtEmail">
               <span class="input-group-addon">(필수)</span>
             </div>
             <div class="input-group input-group-sm">

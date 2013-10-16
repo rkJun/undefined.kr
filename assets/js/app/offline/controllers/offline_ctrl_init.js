@@ -11,6 +11,7 @@ tipJS.controller("offline_ctrl_init", {
 			e.preventDefault();
 		});
 
+		// add button event handler (tipJS.action)
 		$("#div_btn_area")
 		.on("click", "button", function(e) {
 		

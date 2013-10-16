@@ -17,12 +17,10 @@ tipJS.app({
 		"offline_view.js"
 	],
 	onLoad:function(){
-		console.log('offline onload');
 		tipJS.action.offline_ctrl_init();
 	}
 });
 
 $(document).ready(function(e){
 	tipJS.loadApp();
-	console.log('hi offline');
 }); 

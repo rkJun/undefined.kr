@@ -13,13 +13,31 @@ module.exports = {
     userId: 'string',
     userName: 'string',
     userNick: 'string',
-    offlineNo: 'number',
-    isDelete: 'boolean',
+    offlineNo: 'string',
+    isDelete: {
+        type: 'boolean',
+        defaultsTo: false
+    },
     comment: 'string',
     email: 'string',
     password: {
       type: 'string',
       columnName: 'encryptedPassword'
+    },
+    ipAddress: 'string',
+     toJSON: function() {
+      var obj = this.toObject();
+      delete obj.password;
+      
+      //email masking
+      var emailAtPos = obj.email.indexOf('@');
+      var maskingChar = "";
+      for (var i = 2 ; i < emailAtPos; i++) {
+        maskingChar += '*';
+      }
+      obj.email = obj.email.substring(0,2) + maskingChar + obj.email.substring(emailAtPos);
+
+      return obj;
     }
   }
 

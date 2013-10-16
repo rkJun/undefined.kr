@@ -108,7 +108,8 @@ module.exports.routes = {
   },
 
   'get /offline/off18': {
-    view: 'offline/offline18'
+    controller : 'OfflineController',
+    action : 'offline18'
   }
 
   // 'get /offline/lists': {
