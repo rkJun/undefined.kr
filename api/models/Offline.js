@@ -31,11 +31,14 @@ module.exports = {
       
       //email masking
       var emailAtPos = obj.email.indexOf('@');
-      var maskingChar = "";
+      var maskingChar = '';
       for (var i = 2 ; i < emailAtPos; i++) {
         maskingChar += '*';
       }
       obj.email = obj.email.substring(0,2) + maskingChar + obj.email.substring(emailAtPos);
+
+      //ip masking
+      obj.ipAddress = '***.***.***.***';
 
       return obj;
     }
