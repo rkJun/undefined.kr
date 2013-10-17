@@ -12,6 +12,8 @@
  * http://sailsjs.org/#documentation
  */
 
+  var mongohq = require('./local').mongohq;
+
 module.exports.adapters = {
 
   // If you leave the adapter config unspecified 
@@ -26,10 +28,12 @@ module.exports.adapters = {
   // sails v.0.9.0
   mongo: {
     module   : 'sails-mongo',
-    host     : 'localhost',
-    // user     : 'username',
-    // password : 'password',
-    database : 'undefinedkr'
+    // host     : mongohq.HOST, //'localhost',
+    // user     : mongohq.USER,
+    // password : mongohq.PASSWORD,
+    // database : mongohq.DATABASE,
+    // port     : '10064'
+    url: process.env.MONGOHQ_URL
   },
 
   // Persistent adapter for DEVELOPMENT ONLY
