@@ -141,6 +141,51 @@ module.exports = {
       resultJson.offlines = offlines;
       return res.view('offline/offline18', resultJson);
     });
+  },
+  cancel: function(req, res) {
+
+    var offlineInput = {};
+
+    offlineInput.password = req.param('password');
+    offlineInput.email = req.param('email');
+
+     try {
+       check(offlineInput.email, { len: '이메일주소는 최소 6자리, 최대 64자리입니다.', isEmail: '이메일 형식이 맞지 않습니다.'}).len(6,64).isEmail();
+       check(offlineInput.password, '비밀번호는 최소 4자리, 최대 30자리입니다.').len(4,30);
+     } catch (e) {
+       console.log('warning:'+e.message);
+       resultJson.type = 'warning';
+       resultJson.message = e.message;
+       return res.json(resultJson);
+     }
+
+
+    Offline.findOne({
+       email: offlineInput.email
+    }).done(function(err, offline) {
+
+      resultJson.type = 'warning';
+
+      if(!err) {
+        bcrypt.compare(req.param('password'), offline.password, function(err, _res) {
+          if (!_res) {
+          }
+          offline.isDelete = true;
+
+          offline.save(function(err) {
+            if (!err) {
+              resultJson.type = 'success';
+              resultJson.message = '정상 처리했습니다.';
+              resultJson.offline = offline;
+               return res.json(resultJson);
+            }
+          });
+
+
+        });
+      }
+
+    });
   }
 
 };

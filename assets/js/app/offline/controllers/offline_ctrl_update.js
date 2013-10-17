@@ -5,9 +5,20 @@ tipJS.controller("offline_ctrl_update", {
 		var view = this.getView("offline_view");
 		var $frmOffline = view.getForm();
 
-		view.Initialize();
+		view.modalInitialize();
 
-		alert('hi, update');
+		$.ajax({
+			type: "PUT",
+			url: "/offline/cancel",
+			data: {
+				email : $("#txtEmail_mod").val(),
+				password : $("#txtPassword_mod").val()
+			}
+		}).done(function( resultJson ) {
+			$("#divAlert_mod").addClass("alert-"+resultJson.type).show();
+			$("#returnType_mod").html(resultJson.type);
+			$("#returnMessage_mod").html(" "+resultJson.message);
+		});
 
 	}
 });

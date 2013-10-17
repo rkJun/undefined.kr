@@ -110,7 +110,12 @@ module.exports.routes = {
   'get /offline/off18': {
     controller : 'OfflineController',
     action : 'offline18'
-  }
+  },
+  'put /offline/cancel': {
+    controller : 'OfflineController',
+    action : 'cancel'
+  },
+
 
   // 'get /offline/lists': {
   //   controller : 'OfflineController',

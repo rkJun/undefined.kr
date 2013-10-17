@@ -13,5 +13,11 @@ tipJS.view("offline_view", {
 	},
 	showAlert: function() {
 		$(".alert").show();
-	}
+	},
+	modalInitialize: function() {
+		$("#div_alertType_mod").html("");
+		$("#div_alertMsg_mod").html("");
+		this.hideAlert();
+	},
+
 });
