@@ -59,7 +59,7 @@ module.exports = {
       return res.json(resultJson);
     }
 
-    Offline.findOne({ email: offline.email }, function(err, existUser) {
+    Offline.findOne({ email: offline.email, isDelete: false }, function(err, existUser) {
       // Error handling
       if (err) {
         console.log(err);
@@ -112,7 +112,10 @@ module.exports = {
   }, // end of create:
   find: function(req, res) {
 
-    Offline.find()
+    var isRdy = req.param('isRdy') || false; //대기자조회여부
+
+    Offline.find({isDelete: false})
+    .skip(isRdy?24:0)
     .limit(24)
     .sort('createdAt')
     .exec(function(err, offlines) {
@@ -161,15 +164,28 @@ module.exports = {
 
 
     Offline.findOne({
-       email: offlineInput.email
+       email: offlineInput.email,
+       isDelete: false
     }).done(function(err, offline) {
 
-      resultJson.type = 'warning';
+      if(offline == undefined) {
+        resultJson.type = 'warning';
+        resultJson.message = '참가신청한 email이 아닙니다.';
+         return res.json(resultJson);
+      }
 
-      if(!err) {
-        bcrypt.compare(req.param('password'), offline.password, function(err, _res) {
-          if (!_res) {
-          }
+      if (err) {
+        resultJson.type = 'warning';
+        resultJson.message = 'DB error.';
+         return res.json(resultJson);        
+      } else {
+        bcrypt.compare(req.param('password'), offline.password, function(err, pwdRes) {
+        if (!pwdRes) {
+          resultJson.type = 'warning';
+          resultJson.message = '패스워드가 맞지 않습니다.';
+           return res.json(resultJson);          
+        }
+
           offline.isDelete = true;
 
           offline.save(function(err) {

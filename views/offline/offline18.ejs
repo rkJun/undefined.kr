@@ -94,8 +94,7 @@
                    <span class="label label-default"><%=offline.userNick%></span>
                  <% } %>
                   <span class="label label-default"><%=offline.email%></span>
-                  <%=offline.createdAt.getFullYear()%>.<%=offline.createdAt.getMonth()+1%>.
-                  <%=offline.createdAt.getDate()%>
+                  <span class="label label-success"><%=offline.createdAt.getFullYear()%>.<%=offline.createdAt.getMonth()+1%>.<%=offline.createdAt.getDate()%></span>
 
                   <% if (offline.comment != '') { %>
                     <small><blockquote><%=offline.comment%></blockquote>
@@ -107,7 +106,7 @@
           </ol>
 
           <div class="page-header">
-            <h4>참여율 <span id="span_personCount"></span> <small>(정원 24명중 <%=offlines.length%> 명 참여중)</small></h4>
+            <h4>참여율 <span id="span_personCount"></span> <small>참여신청 <%=offlines.length%>명 / 정원 24명</small></h4>
           </div>
 
           <% var joinProgressValue = (offlines.length / 24)*100 %>

@@ -18,6 +18,10 @@ tipJS.controller("offline_ctrl_update", {
 			$("#divAlert_mod").addClass("alert-"+resultJson.type).show();
 			$("#returnType_mod").html(resultJson.type);
 			$("#returnMessage_mod").html(" "+resultJson.message);
+			
+			if (resultJson.type === 'success') {
+				$("#modalc").modal({'show':false});
+			}			
 		});
 
 	}
