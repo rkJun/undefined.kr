@@ -1,0 +1,64 @@
+<script src="/js/app/board/app.js"></script>
+
+<section id="section-board">
+  <form action="/board/" method="post" class="form-horizontal" id="frmBoard">
+    <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+    <input type="hidden" name="offlineNo" value="19" />
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="page-header">
+            <h3>Tech-tip Board<small>share your tech-tip</small></h3>
+          </div>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-7">
+          <div class="page-header">
+            <h4>Create tip <small>팁 올리기</small></h4>
+          </div>
+
+            <div id="divAlert" class="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <strong id="returnType"></strong><span id="returnMessage"></span>
+            </div>
+  
+            <div class="input-group input-group-sm">
+              <span class="input-group-addon">이메일</span>
+              <input type="text" class="form-control" placeholder="E-mail Address" name="email" id="txtEmail">
+              <span class="input-group-addon">(필수)</span>
+            </div>
+            <div class="input-group input-group-sm">
+              <span class="input-group-addon">신청자명</span>
+              <input type="text" class="form-control" placeholder="신청자 이름" name="userName" id="txtUserName">
+              <span class="input-group-addon">(필수)</span>
+            </div>
+            <div class="input-group input-group-sm">
+              <span class="input-group-addon">닉네임</span>
+              <input type="text" class="form-control" placeholder="닉네임" name="userNick" id="txtUserNick">
+            </div>
+            <div class="input-group input-group-sm">
+              <span class="input-group-addon">한마디</span>
+              <input type="text" class="form-control" placeholder="한마디" name="comment" id="txtComment">
+            </div>
+  
+            <small>※ 비밀번호는 참가취소시 필요합니다.</small>
+            <div class="input-group input-group-sm">
+              <span class="input-group-addon">비밀번호</span>
+              <input type="password" class="form-control" placeholder="비밀번호 (4 자리 이상)" name="password" id="txtPassword">
+              <span class="input-group-addon">(필수)</span>
+            </div>
+           <br/>
+           <div class="text-center" id="div_btn_area">
+             <button class="btn btn-primary btn-lg" type="submit" id="btn_write">글쓰기</button>
+             <button class="btn btn-default btn-lg" type="submit" id="btn_cancel">취소</button>
+           </div>
+        </div>
+        
+      </div>
+    </div>
+  </form>
+
+</section>
