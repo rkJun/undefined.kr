@@ -1,3 +1,4 @@
+<header>
   <!-- Fixed navbar -->
   <div class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -7,10 +8,11 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/"><img height="14px" width="14px" src="/favicon.ico"/><%- title %></a>
+        <a class="navbar-brand" href="/"><img height="14px" width="14px" src="/favicon.ico"/><%- title %> <%=new Date() %></a>
       </div>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
+          <li><a href="/history">History</a></li>
           <li><a href="/offline/off18">18번째 모임 신청</a></li>
           <!--
           <li><a href="">Organizers</a></li>
@@ -53,6 +55,4 @@
       </div><!--/.nav-collapse -->
     </div>
   </div>
-
-
-
+</header>

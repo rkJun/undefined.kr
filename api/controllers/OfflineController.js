@@ -134,6 +134,9 @@ module.exports = {
     });
   },
   offline18: function(req, res) {
+    //pjax check
+    var isPjax = req.header('X-PJAX');
+
     Offline.find()
     .where({ isDelete: false })
     .limit(24)
@@ -142,7 +145,12 @@ module.exports = {
       resultJson.type = 'success';
       resultJson.message = '정상조회했습니다.';
       resultJson.offlines = offlines;
-      return res.view('offline/offline18', resultJson);
+
+      if(isPjax) {
+        return res.view({'_layoutFile':'../blanklayout.ejs' ,'offlines':offlines}, resultJson);
+      } else {
+        return res.view('offline/offline18', resultJson);
+      }
     });
   },
   cancel: function(req, res) {

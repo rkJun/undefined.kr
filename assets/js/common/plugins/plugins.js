@@ -21,9 +21,13 @@
     }
 }());
 
-//jQuery and Bootstrap dependency
 $(document).ready(function(){
-    $('a[rel=tooltip]').tooltip({
-      'placement': 'bottom'
-    });
+  //jQuery and Bootstrap dependency
+  $('a[rel=tooltip]').tooltip({
+    'placement': 'bottom'
+  });
+
+  //pjax enabled
+  $(document).pjax('a', '#body-pjax-container');
+
 });

@@ -52,8 +52,6 @@ module.exports.views = {
 
   layout: 'layout'
 
-
-
   // Using Multiple Layouts with EJS
   //
   // If you're using the default engine, `ejs`, Sails supports the use of multiple

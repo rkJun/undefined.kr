@@ -21,17 +21,22 @@
     <script src="/js/common/tipJS.dev.js"></script>
     <script src="/js/common/jquery-2.0.3.js"></script>
     <script src="/js/common/bootstrap.js"></script>
+    <script src="/js/common/plugins/jquery.pjax.js"></script>
     <script src="/js/common/plugins/plugins.js"></script>
     <!--SCRIPTS END-->
 
   </head>
 
   <body>
+    <%- partial('header') %>
 
-    <div id="wrap">
+    <div id="body-pjax-container">
     <%- body %>
     </div>
     
+    <%- partial('footer') %>
+
+
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
     

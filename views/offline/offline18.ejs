@@ -2,14 +2,9 @@
 
 <script>
  socket.get('/offline', function (response) {
-   console.log("test1:"+response.offlines.length);
   $("#span_personCount").html(response.offlines.length);
  });
 </script>
-
-<header>
-<%- partial('../header') %>
-</header>
 
 <section id="section-offline">
   <form action="/offline/" method="post" class="form-horizontal" id="frmOffline">
@@ -205,7 +200,3 @@
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
 </section>
-      
-<%- partial('../footer') %>
-</div>
-<!-- /container -->

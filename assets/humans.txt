@@ -7,16 +7,14 @@
   Site: http://undefined.kr
 
 /* SITE */
-  Last update: 07/11/2013
+  Last update: 10/18/2013 (dd/mm/yyyy)
   Doctype: HTML5
   IDE: Sublime Text 2, Spring Tool Suite
-  Back-end: nodejs, sailsjs, mongodb, sails-mongo  
-  Front-end: jquery, bootstrap, bootswatch, fontawesome, google web fonts, tipJS
+  Back-end: nodejs, sailsjs, mongodb, sails-mongo
+  Front-end: jquery, bootstrap, tipJS
 
 /* SPECIAL THANKS */
   //Designer: undefined
   official logo and favicon: iMaZiNe
 
   And, of course, all undefine:D Organizers!
-
-
