@@ -115,7 +115,9 @@ module.exports.routes = {
     controller : 'OfflineController',
     action : 'cancel'
   },
-
+  '/board/tip': {
+    view: 'board/board'
+  },
 
   // 'get /offline/lists': {
   //   controller : 'OfflineController',
