@@ -37,19 +37,26 @@
         <ul class="nav navbar-nav navbar-right">
           <% var userId = req.user ? req.user.userId : null;
              if ( userId != null) { %>
-              <li class="dropdown">
-                  <a class="dropdown-toggle" id="drop2" role="button" data-toggle="dropdown" data-target="#" href="../"><%= userId %><b class="caret"></b></a>
-                  <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
-                      <li><a href="/user/<%= userId %>">사용자 정보</a></li>
-                      <li role="presentation" class="divider"></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="/logout">로그아웃</a></li>
-                  </ul>
+             <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <img src="<%=req.user.photoUrl%>" height="15" width="15" />
+                  <%= req.user.displayName %><b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <!--
+                  <li><a href="/user/<%= userId %>">User Info</a></li>
+                  -->
+                  <li><a href="/logout">LogOut</a></li>
+                  <!--
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li class="dropdown-header">Nav header</li>
+                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">One more separated link</a></li>
+                -->
+                </ul>
               </li>
           <% } else { %>
-              <!--
-              <li><a href="/login">Log in</a></li>
-              <li><a href="/signup">Sign up</a></li>
-              -->
+              <li><a href="/auth/github"><i class="icon-github-sign"></i> Github Login</a></li>
           <% } %>
         </ul>
       </div><!--/.nav-collapse -->

@@ -173,6 +173,7 @@ module.exports = {
   logout: function(req, res) {
     req.logout();
     res.send('logout successful');
+    // res.redirect('/');
   },
 
   auth: function(req, res) {
