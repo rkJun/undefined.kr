@@ -9,55 +9,63 @@
       <div class="row">
         <div class="col-md-8">
           <div class="page-header">
-            <h3>Tech-tip Board<small>share your tech-tip</small></h3>
+            <h3>Tech-tip Board<small> share your tech-tips</small></h3>
           </div>
         </div>
       </div>
-  
-      <div class="row">
-        <div class="col-md-7">
-          <div class="page-header">
-            <h4>Create tip <small>팁 올리기</small></h4>
-          </div>
 
-            <div id="divAlert" class="alert">
+      <div class="row">
+        <div class="col-md-12">
+          <button class="btn btn-primary" id="btn_listAll">
+            전체 글 보기
+          </button>
+          <button class="btn btn-primary" id="btn_tags">
+            태그 조회
+          </button>
+          <button class="btn btn-primary pull-right" id="btn_write">
+            글쓰기
+          </button>
+        </div>
+      </div>
+
+      <!-- write form -->
+      <div class="row" id="_write_area">
+        <div class="col-md-10 form-horizontal">
+          <div class="page-header">
+            <h4>글쓰기</h4>
+          </div>
+            <div id="divAlert" class="alert hidden">
               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
               <strong id="returnType"></strong><span id="returnMessage"></span>
             </div>
-  
-            <div class="input-group input-group-sm">
-              <span class="input-group-addon">이메일</span>
-              <input type="text" class="form-control" placeholder="E-mail Address" name="email" id="txtEmail">
-              <span class="input-group-addon">(필수)</span>
+            <div class="form-group">
+              <label class="col-lg-2 control-label" for="txtTitle">글 제목</label>
+              <div class="col-lg-10">
+                <input type="text" class="form-control" placeholder="새로운 글 제목" name="title" id="txtTitle" />
+              </div>
+
+              <label class="col-lg-2 control-label" for="txtContents">글 내용</label>
+              <div class="col-lg-10">
+                <textarea class="form-control" rows="5"  name="contents" id="txtContents"></textarea>
+              </div>
             </div>
-            <div class="input-group input-group-sm">
-              <span class="input-group-addon">신청자명</span>
-              <input type="text" class="form-control" placeholder="신청자 이름" name="userName" id="txtUserName">
-              <span class="input-group-addon">(필수)</span>
+
+            <div class="input-group">
+              <span class="input-group-addon">태그</span>
+              <input type="text" class="form-control" placeholder="태그 쉼표 , 로 구분" name="userNick" id="txtUserNick">
             </div>
-            <div class="input-group input-group-sm">
-              <span class="input-group-addon">닉네임</span>
-              <input type="text" class="form-control" placeholder="닉네임" name="userNick" id="txtUserNick">
-            </div>
-            <div class="input-group input-group-sm">
-              <span class="input-group-addon">한마디</span>
-              <input type="text" class="form-control" placeholder="한마디" name="comment" id="txtComment">
-            </div>
-  
-            <small>※ 비밀번호는 참가취소시 필요합니다.</small>
-            <div class="input-group input-group-sm">
-              <span class="input-group-addon">비밀번호</span>
-              <input type="password" class="form-control" placeholder="비밀번호 (4 자리 이상)" name="password" id="txtPassword">
-              <span class="input-group-addon">(필수)</span>
-            </div>
-           <br/>
+            <span class="help-block">태그와 태그 사이에는 쉼표 (,) 를 넣어 구분해 주세요.</span>
+
+          
            <div class="text-center" id="div_btn_area">
-             <button class="btn btn-primary btn-lg" type="submit" id="btn_write">글쓰기</button>
-             <button class="btn btn-default btn-lg" type="submit" id="btn_cancel">취소</button>
+             <button class="btn btn-default btn-sm" type="submit" id="btn_create">글 올리기</button>
+             <button class="btn btn-default btn-sm" type="submit" id="btn_preview">미리보기</button>
+             <button class="btn btn-default btn-sm" type="submit" id="btn_cancel">참가취소</button>
            </div>
+
         </div>
-        
       </div>
+
     </div>
   </form>
 

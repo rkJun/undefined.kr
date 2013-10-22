@@ -99,13 +99,13 @@ module.exports.routes = {
     action : 'github/callback'
   },
 
-  'get /board/write': {
-    view: 'qnaboard/write'
-  },
-  'post /board/write': {
-    controller : 'QnaboardController',
-    action : 'writesend'
-  },
+  // 'get /board/write': {
+  //   view: 'qnaboard/write'
+  // },
+  // 'post /board/write': {
+  //   controller : 'QnaboardController',
+  //   action : 'writesend'
+  // },
 
   'get /offline/off18': {
     controller : 'OfflineController',

@@ -10,14 +10,18 @@ module.exports = {
 
   attributes: {
   
+    authorProvider: {
+      type: 'string',
+      required: true
+    },
     authorId: {
       type: 'string',
       required: true
-    }, 
+    },
     category: {
       type: 'string'
     },
-    title: { 
+    title: {
       type: 'string',
       required: true
     },

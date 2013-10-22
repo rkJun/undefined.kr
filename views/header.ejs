@@ -3,36 +3,32 @@
   <div class="navbar navbar-default navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                data-target=".navbar-collapse">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/"><img height="14px" width="14px" src="/favicon.ico"/><%- title %></a>
+        <a class="navbar-brand" href="/">
+          <img height="14px" width="14px" src="/favicon.ico"/>
+            <%- title %>
+        </a>
       </div>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
           <!-- <li><a href="/history">History</a></li> -->
+          <!-- <li><a href="/history">Organizers</a></li> -->
           <li><a href="/offline/off18">18번째 모임 신청</a></li>
-          <!--
-          <li><a href="">Organizers</a></li>
-          <li><a href="../#qna">Q&A</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="/qnaboard/list">Q&A</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li class="dropdown-header">Nav header</li>
-              <li><a href="#">Separated link</a></li>
-              <li><a href="#">One more separated link</a></li>
-            </ul>
-          </li>
-        -->
+          <!-- <li><a href="/board/freeboard">자유 게시판</a><li> -->
+          <!-- 모임후기, 기술팁 공유 게시판, Q&A,  -->
         </ul>
         <ul class="nav navbar-nav navbar-right" id="main-menu-right">
-          <li><a rel="tooltip" target="_blank" href="https://www.facebook.com/groups/html5jsstudy/" title="undefine:D facebook group"><i class="icon-facebook-sign"></i> </span> undefine:D facebook group</a></li>
+          <li><a rel="tooltip" target="_blank"
+                href="https://www.facebook.com/groups/html5jsstudy/"
+                title="undefine:D facebook group">
+                <i class="icon-facebook-sign"></i>
+                undefine:D facebook group</a>
+          </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <% var userId = req.user ? req.user.userId : null;
@@ -40,7 +36,9 @@
              <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="<%=req.user.photoUrl%>" height="15" width="15" />
-                  <%= req.user.displayName %><b class="caret"></b></a>
+                  <%= req.user.displayName %>
+                  <b class="caret"></b>
+                </a>
                 <ul class="dropdown-menu">
                   <!--
                   <li><a href="/user/<%= userId %>">User Info</a></li>
@@ -56,7 +54,9 @@
                 </ul>
               </li>
           <% } else { %>
-              <li><a href="/auth/github"><i class="icon-github-sign"></i> Github Login</a></li>
+              <li><a href="/auth/github">
+                <i class="icon-github-sign"></i> Github Login</a>
+              </li>
           <% } %>
         </ul>
       </div><!--/.nav-collapse -->

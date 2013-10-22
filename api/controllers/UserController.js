@@ -172,10 +172,8 @@ module.exports = {
   },
   logout: function(req, res) {
     req.logout();
-    res.send('logout successful');
-    // res.redirect('/');
+    return res.view('home/index');
   },
-
   auth: function(req, res) {
     var username = req.param('username');
     var password = req.param('password');
