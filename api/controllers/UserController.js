@@ -163,12 +163,12 @@ module.exports = {
     if (!req.user) {
       res.view('user/login'); //user/login
     } else {
-      res.view('home');
+      res.view('user/login'); //user/login
+      // res.view('home');
     }
-
-    console.log(req.session);
-    console.log("passport:"+JSON.stringify(req.session.passport));
-    console.log(req.user);
+    // console.log(req.session.passport.user);
+    // console.log("passport:"+JSON.stringify(req.session.passport));
+    // console.log(req.user);
   },
   logout: function(req, res) {
     req.logout();
@@ -243,24 +243,18 @@ module.exports = {
       return res.send({message: 'return'});
   },
   'github': function (req, res) {
-      passport.authenticate('github', { failureRedirect: '/login' },
-          function (err, user) {
-              req.logIn(user, function (err) {
-                  if (err) {
-                      res.view();
-                      return;
-                  }
-
-                  res.redirect('/');
-                  return;
-              });
-          })(req, res);
+     passport.authenticate('github', { failureRedirect: '/login' },
+       new Function() )(req, res);
   },
   'github/callback': function (req, res) {
-      passport.authenticate('github',
-          function (req) {
-              return res.send({message: 'ok'});
-          })(req, res, new Function() );
-      return res.send({message: 'return'});
+     passport.authenticate('github', function (err, user) {
+       req.logIn(user, function (err) {
+         if (err) {
+           return res.view('500');
+         }
+         return res.redirect('/');
+       });
+
+     })(req, res, new Function() );
   }
 };

@@ -40,24 +40,23 @@ function findByUserId(u, fn) {
 // serialize users into and deserialize users out of the session. Typically,
 // this will be as simple as storing the user ID when serializing, and finding
 // the user by ID when deserializing.
-passport.serializeUser(function(user, done) {
-  // done(null, user.id);
+passport.serializeUser(function (user, done) {
   done(null, user);
 });
 
-passport.deserializeUser(function(id, done) {
-  findById(id, function (err, user) {
-    done(err, user);
-  });
+passport.deserializeUser(function (obj, done) {
+  // findById(id, function (err, user) {
+  //   done(err, user);
+  // });
+  done(null, obj);
 });
-
 
 // Use the LocalStrategy within Passport.
 // Strategies in passport require a `verify` function, which accept
 // credentials (in this case, a username and password), and invoke a callback
 // with a user object.
 passport.use(new LocalStrategy(
-  function(username, password, done) {
+  function (username, password, done) {
     // asynchronous verification, for effect...
     process.nextTick(function () {
       // Find the user by username. If there is no user with the given
@@ -104,29 +103,6 @@ passport.use(new LocalStrategy(
   }
 ));
 
-// var verifyHandler = function (token, tokenSecret, profile, done) {
-//     process.nextTick(function () {
-//         User.find({twitter:profile.id}, function (err, user) {
-//             if (user) {
-//                 return done(null, user);
-//             } else {
-//                 User.create({
-//                     provider: profile.provider,
-//                     uid: profile.id,
-//                     name: profile.displayName
-//                 }).done(function (err, user) {
-//                         if (err) {
-//                             console.log(user);
-//                             throw err;
-//                         }
-//                         return done(null, user);
-//                     });
-//             }
-//         })
-//     })
-// };
-
-
 passport.use(new TwitterStrategy({
   consumerKey: oauth.twitter.TWITTER_CONSUMER_KEY,
   consumerSecret: oauth.twitter.TWITTER_CONSUMER_SECRET,
@@ -161,25 +137,35 @@ passport.use(new GitHubStrategy({
   callbackURL: oauth.github.callbackURL
 }, function (token, tokenSecret, profile, done) {
     process.nextTick(function () {
-      User.findOne( { githubId:profile.username }, function (err, user) {
+      User.findOne({ 
+        provider: profile.provider,
+        userId: ''+profile.id
+      }).done(function(err, user) {
         if (err) {
-          console.log('github id findOne error');
-          return done(null, user);
+          return done(err, user);
         }
         if (user) {
+            console.log("git auth OK - user exist"); //update Date 예정
           return done(null, user);
         } else {
           User.create({
-            // userId:   profile.username,
-            githubId: profile.username, // id - number
-            userName: profile.displayName,
-            email: profile._json.email,
-            photoUrl: profile._json.avatar_url
+            provider: profile.provider,
+            userId:   profile.id,
+            userName: profile.username,
+            displayName: profile.displayName,
+            profileUrl: profile.profileUrl,
+            photoUrl: profile._json.avatar_url,
+            blog: profile._json.blog,
+            company: profile._json.company,
+            bio: profile._json.bio
           }).done(function (err, user) {
+
             if (err) {
-                console.log(user);
-                throw err;
+                console.log(err);
+                // throw err;
+                return done(err, user);
             }
+            console.log("git auth OK");
             return done(null, user);
           });
         }

@@ -10,14 +10,20 @@ module.exports = {
 
   attributes: {
   
+    provider: {
+      type: 'string',
+      required: true
+    },    
     userId: {
       type: 'string',
-      required: true,
-      unique: true
+      required: true
     },
     userName: {
       type: 'string',
-      required: true,
+      required: true
+    },
+    displayName: {
+      type: 'string'
     },
     password: {
       type: 'string',
@@ -25,19 +31,13 @@ module.exports = {
     },
     email: {
       type: 'string',
-      required: true,
       unique: true
     },
-    birthDate: 'string',
-    userUrl: 'string',
-    userCompany: 'string',
-    userLocation: 'string',
-    ipAddress: 'string',
-    githubId: 'string',
-    twitterId: 'string',
-    photoUrl: {
-      type: 'string'
-    },
+    profileUrl: 'string',
+    photoUrl: 'string',
+    blog: 'string',
+    company: 'string',
+    bio: 'string',
     activityScore: {
       type: 'integer',
       defaultsTo: 0
