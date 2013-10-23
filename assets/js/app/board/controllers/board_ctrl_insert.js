@@ -1,18 +1,18 @@
-tipJS.controller("offline_ctrl_insert", {
+tipJS.controller("board_ctrl_insert", {
 
 	invoke : function(){
 
-		var view = this.getView("offline_view");
-		var $frmOffline = view.getForm();
+		// var view = this.getView("offline_view");
+		// var $frmOffline = view.getForm();
 
-		view.initialize();
+		// view.initialize();
 
 		// join
-		var reqData = $frmOffline.serialize();
+		var reqData = $("#frmBoard").serialize();
 
 		$.ajax({
 			type: "POST",
-			url: "/offline",
+			url: "/board/create",
 			data: reqData
 		}).done(function( resultJson ) {
 			$("#divAlert").addClass("alert-"+resultJson.type).show();
@@ -20,7 +20,7 @@ tipJS.controller("offline_ctrl_insert", {
 			$("#returnMessage").html(" "+resultJson.message);
 
 			if (resultJson.type === "success") {
-				location.href = "/offline/off18";
+				location.href = "/board/list";
 			}
 		});
 	}

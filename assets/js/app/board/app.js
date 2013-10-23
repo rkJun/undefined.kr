@@ -6,7 +6,7 @@ tipJS.app({
 	controllers:[
 		// "board_ctrl_list.js",
 		// "board_ctrl_search.js",
-		// "board_ctrl_insert.js",
+		"board_ctrl_insert.js",
 		// "board_ctrl_update.js",
 		"board_ctrl_init.js"
 	],

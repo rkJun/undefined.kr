@@ -16,12 +16,14 @@ tipJS.controller("board_ctrl_init", {
 		
 			var btnActName = $(this).attr("id");
 
-			if (btnActName === "btn_write") {
-				alert('test');
-				
-				// tipJS.action.board_ctrl_insert();
+			if (btnActName === "btn_write_view") {
+				$("#write_area").toggle();
+				$("#write_area").removeClass("hidden");
+			} else if (btnActName === "btn_create") {
+				alert("btn_create");
+				tipJS.action.board_ctrl_insert();
 			} else if (btnActName === "btn_cancel") {
-				tipJS.action.board_ctrl_update();
+				// tipJS.action.board_ctrl_update();
 			} else if (btnActName === "btn_update") {
 				
 			} else if (btnActName ==="btn_open_modalc" ) {

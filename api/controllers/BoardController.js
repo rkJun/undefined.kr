@@ -53,12 +53,13 @@ module.exports = {
   create: function(req, res) {
     var board = {};
 
-    board.authorProvider = req.user.authorProvider;
+    board.authorProvider = req.user.provider;
     board.authorId = req.user.userId;
-    board.authorId = req.param('category');
+    board.authorName = req.user.displayName;
+    board.category = req.param('category');
     board.title = sanitize(req.param('title')).xss();
-    board.contents = sanitize(req.param('contents')).xss();
-    board.tag = req.param('tag').split(',');
+    board.contents = sanitize(req.param('contents')).xss();    
+    //board.tags = req.param('tag').split(',');
 
     try {
       check(board.title, '제목은 필수항목입니다.').notEmpty();

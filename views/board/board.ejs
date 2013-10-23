@@ -22,14 +22,14 @@
           <button class="btn btn-primary" id="btn_tags">
             태그 조회
           </button>
-          <button class="btn btn-primary pull-right" id="btn_write">
+          <button class="btn btn-primary pull-right" id="btn_write_view">
             글쓰기
           </button>
         </div>
       </div>
 
       <!-- write form -->
-      <div class="row" id="_write_area">
+      <div class="row hidden" id="write_area">
         <div class="col-md-10 form-horizontal">
           <div class="page-header">
             <h4>글쓰기</h4>
@@ -65,6 +65,35 @@
 
         </div>
       </div>
+      <!-- end of write form -->
+
+      <!-- list form -->
+      <div class="row" id="list_area">
+        <div class="col-md-10">
+          <div class="page-header">
+            <h4>글목록</h4>
+          </div>
+          <% _.each(boards, function (board) { %>
+          <div class="row">
+            <div class="col-md-2">
+              <label class="label label-default">조회수</label>
+              <label class="badge"><%= board.viewCount %></label><br/>
+              <label class="label label-default">Like</label>
+              <label class="badge"><%= board.likeCount %></label><br/>
+              <label class="label label-default">Unlike</label>
+              <label class="badge"><%= board.unlikeCount %></label>
+              <br/>
+            </div>
+            <div class="col-md-8">
+              <%= board.title %> <br/>
+              <%= board.createdAt %> , <i class="icon-<%= board.authorProvider %>-sign"></i> ,
+              <%= board.authorId %> , <%= board.category %> 
+            </div>
+          </div>
+          <% }); %>
+        </div>
+      </div>
+      <!-- end of list form -->
 
     </div>
   </form>

@@ -18,6 +18,10 @@ module.exports = {
       type: 'string',
       required: true
     },
+    authorName: {
+      type: 'string',
+      required: true
+    },
     category: {
       type: 'string'
     },
@@ -26,7 +30,7 @@ module.exports = {
       required: true
     },
     contents: 'string',
-    tag: 'array',
+    tags: 'array',
     viewCount: {
     	type: 'integer',
     	defaultsTo: 0
