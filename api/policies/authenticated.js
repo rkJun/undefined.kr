@@ -12,6 +12,11 @@ module.exports = function (req, res, ok) {
 
   // User is not allowed
   else {
+
+    if ( req.header('X-Requested-With') === 'XMLHttpRequest' ) {
+      return  res.json({type:'error', message:'You are not permitted to perform this action.'});
+    }
+
     return res.send("You are not permitted to perform this action.", 403);
   }
 };
