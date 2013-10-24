@@ -6,34 +6,23 @@
     <input type="hidden" name="offlineNo" value="19" />
 
     <div class="container">
-      <div class="row">
-        <div class="col-md-8">
+      <div class="row col-md-12">
+        <div class="col-md-12">
           <div class="page-header">
-            <h3>Tech-tip Board<small> share your tech-tips</small></h3>
+            <h3>Temporary Board<small> test only</small></h3>
           </div>
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-md-12">
-          <button class="btn btn-primary" id="btn_listAll">
-            전체 글 보기
-          </button>
-          <button class="btn btn-primary" id="btn_tags">
-            태그 조회
-          </button>
-          <button class="btn btn-primary pull-right" id="btn_write_view">
-            글쓰기
-          </button>
-        </div>
+      <div class="col-md-12">
+        <button class="btn btn-primary pull-right" id="btn_write_view">
+          글쓰기
+        </button>
       </div>
 
       <!-- write form -->
       <div class="row hidden" id="write_area">
-        <div class="col-md-10 form-horizontal">
-          <div class="page-header">
-            <h4>글쓰기</h4>
-          </div>
+        <div class="col-md-9 form-horizontal">
             <div id="divAlert" class="alert hidden">
               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
               <strong id="returnType"></strong><span id="returnMessage"></span>
@@ -69,28 +58,34 @@
 
       <!-- list form -->
       <div class="row" id="list_area">
-        <div class="col-md-10">
+        <div class="col-md-12">
           <div class="page-header">
             <h4>글목록</h4>
           </div>
+          <div class="list-group">
           <% _.each(boards, function (board) { %>
-          <div class="row">
-            <div class="col-md-2">
-              <label class="label label-default">조회수</label>
-              <label class="badge"><%= board.viewCount %></label><br/>
-              <label class="label label-default">Like</label>
-              <label class="badge"><%= board.likeCount %></label><br/>
-              <label class="label label-default">Unlike</label>
-              <label class="badge"><%= board.unlikeCount %></label>
-              <br/>
-            </div>
-            <div class="col-md-8">
-              <a href="/board/find?id=<%=board.id%>"><%= board.title %></a> <br/>
-              <%= board.createdAt %> , <i class="icon-<%= board.authorProvider %>-sign"></i> ,
-              <%= board.authorName %> , <%= board.category %> 
-            </div>
-          </div>
+            <a href="/board/find?id=<%=board.id%>" class="list-group-item">
+              <h5 class="list-group-item-heading"><%= board.title %>
+                <small>
+                  <label class="label label-default">조회수</label>
+                  <span class="badge"><%= board.viewCount %></span>
+                  <label class="label label-default">Like</label>
+                  <span class="badge"><%= board.likeCount %></span>
+                  <label class="label label-default">Unlike</label>
+                  <label class="badge"><%= board.unlikeCount %></label>
+                  <label class="label label-primary">
+                    <i class="icon-<%= board.authorProvider %>-sign"></i> 
+                    <%= board.authorName %>
+                  </label>
+                </small>
+              </h5>
+              <p class="list-group-item-text">
+                <%= (board.createdAt).toISOString() %> ,  ,
+                 , <%= board.category %> 
+              </p>
+            </a>
           <% }); %>
+          </div>
         </div>
       </div>
       <!-- end of list form -->

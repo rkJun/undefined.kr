@@ -28,6 +28,6 @@ $(document).ready(function(){
   });
 
   //pjax enabled
-  $(document).pjax('a', '#body-pjax-container');
+  $(document).pjax('a[data-pjax]', '#body-pjax-container');
 
 });

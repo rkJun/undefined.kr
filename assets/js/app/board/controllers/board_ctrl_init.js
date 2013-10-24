@@ -21,14 +21,10 @@ tipJS.controller("board_ctrl_init", {
 				$("#write_area").removeClass("hidden");
 			} else if (btnActName === "btn_create") {
 				tipJS.action.board_ctrl_insert();
+			} else if (btnActName === "btn_preview") {
+				alert(btnActName + "버튼을 눌렀다");
 			} else if (btnActName === "btn_cancel") {
-				// tipJS.action.board_ctrl_update();
-			} else if (btnActName === "btn_update") {
-				
-			} else if (btnActName ==="btn_open_modalc" ) {
-				$("#modalc").modal();
-			} else if (btnActName ==="btn_open_modale" ) {
-
+				alert(btnActName + "버튼을 눌렀다");
 			}
 
 		});
