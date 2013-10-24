@@ -23,7 +23,10 @@ module.exports.policies = {
        'update': 'authenticated'
   },
   QnaboardController: {
-        'writesend': 'authenticated'
+    'writesend': 'authenticated'
+  },
+  BoardController: {
+    'create': 'authenticated'
   }
 
   // AuthController: {
