@@ -1,0 +1,49 @@
+<script src="/js/app/board/app.js"></script>
+
+<section id="section-board">
+  <form action="/board/" method="post" class="form-horizontal" id="frmBoard">
+    <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+    <input type="hidden" name="offlineNo" value="19" />
+
+    <div class="container">
+
+      <!-- read form -->
+      <div class="row" id="read_area">
+        <div class="col-md-12">
+          <div class="page-header">
+            <h4><%=board.title%>
+              <small>
+                <%=board.createdAt%>
+                <label class="label label-default">조회수</label>
+                <span class="badge"><%= board.viewCount %></span>
+                <label class="label label-default">Like</label>
+                <label class="badge"><%= board.likeCount %></label>
+                <label class="label label-default">Unlike</label>
+                <label class="badge"><%= board.unlikeCount %></label>
+                <label class="label label-default">작성자</label>
+                <label class="label label-success"><%=board.authorName%></label>
+              </small>
+            </h4>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <textarea rows="10" class="form-control" disabled><%=board.contents%></textarea>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1"><label  class="label label-default">태그</label></div>
+            <span class="col-md-8">
+              <% _.each(board.tags, function (tag) { %>
+              <label class="label label-success"><%= tag %></label>&nbsp;
+              <% }); %>
+            </span>
+          </div>
+        </div>
+      </div>
+      <!-- end of read form -->
+
+    </div>
+  </form>
+
+</section>

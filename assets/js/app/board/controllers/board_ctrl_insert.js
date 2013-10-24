@@ -21,6 +21,8 @@ tipJS.controller("board_ctrl_insert", {
 
 			if (resultJson.type === "success") {
 				location.href = "/board/list";
+			}else if (resultJson.type === "error") {
+				alert(resultJson.message);
 			}
 		});
 	}

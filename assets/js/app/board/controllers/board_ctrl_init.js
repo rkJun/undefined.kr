@@ -20,7 +20,6 @@ tipJS.controller("board_ctrl_init", {
 				$("#write_area").toggle();
 				$("#write_area").removeClass("hidden");
 			} else if (btnActName === "btn_create") {
-				alert("btn_create");
 				tipJS.action.board_ctrl_insert();
 			} else if (btnActName === "btn_cancel") {
 				// tipJS.action.board_ctrl_update();

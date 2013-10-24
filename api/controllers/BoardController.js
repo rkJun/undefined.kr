@@ -30,12 +30,12 @@ module.exports = {
   },
   list: function(req, res) {
 
-    // var category = req.param('category');
-    // category = category ? category:'tech-tip';
+    var category = req.param('category');
+    category = category ? category:'tech-tip';
 
     Board.find()
     .where({ isDelete: false })
-    // .where({ category: category })
+    .where({ category: category })
     .limit(25)
     .sort( { 'createdAt': -1 } )
     .exec(function(err, boards) {
@@ -49,17 +49,52 @@ module.exports = {
     });
   },
   find: function (req, res) {
+    var isPjax = req.header('X-PJAX');
+
+    var id = req.param('id') ? req.param('id') : '';
+
+    Board.findOne(
+      { id: id, 
+        isDelete: false }
+    ).done( function (err, board) {
+      // Error handling
+      if (err) {
+        console.log(err);
+        resultJson.type = 'error';
+        resultJson.message = 'DB Error';
+        return res.json(resultJson);
+      }else {
+        if (board) {
+          resultJson.type = 'success';
+          resultJson.message = '정상 조회되었습니다:'+board.id;
+          resultJson.board = board;
+          // return res.json(resultJson);
+          if(isPjax) {
+            return res.view({'_layoutFile':'../blanklayout.ejs','board':board}, resultJson);
+          } else {
+            return res.view(resultJson);
+          }
+        } else {
+          // 조회된 글이 없음 
+          resultJson.type = 'error';
+          resultJson.message = '조회된 게시물이 없습니다.';
+          return res.json(resultJson);
+        }
+      }
+    });
   },
   create: function(req, res) {
     var board = {};
+    var category = req.param('category');
+    category = category ? category:'tech-tip';
 
     board.authorProvider = req.user.provider;
     board.authorId = req.user.userId;
     board.authorName = req.user.displayName;
-    board.category = req.param('category');
+    board.category = category;
     board.title = sanitize(req.param('title')).xss();
-    board.contents = sanitize(req.param('contents')).xss();    
-    //board.tags = req.param('tag').split(',');
+    board.contents = sanitize(req.param('contents')).xss();
+    board.tags = req.param('tags').split(',');
 
     try {
       check(board.title, '제목은 필수항목입니다.').notEmpty();

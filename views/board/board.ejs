@@ -52,7 +52,7 @@
 
             <div class="input-group">
               <span class="input-group-addon">태그</span>
-              <input type="text" class="form-control" placeholder="태그 쉼표 , 로 구분" name="userNick" id="txtUserNick">
+              <input type="text" class="form-control" placeholder="태그 쉼표 , 로 구분" name="tags" id="txtTags">
             </div>
             <span class="help-block">태그와 태그 사이에는 쉼표 (,) 를 넣어 구분해 주세요.</span>
 
@@ -85,9 +85,9 @@
               <br/>
             </div>
             <div class="col-md-8">
-              <%= board.title %> <br/>
+              <a href="/board/find?id=<%=board.id%>"><%= board.title %></a> <br/>
               <%= board.createdAt %> , <i class="icon-<%= board.authorProvider %>-sign"></i> ,
-              <%= board.authorId %> , <%= board.category %> 
+              <%= board.authorName %> , <%= board.category %> 
             </div>
           </div>
           <% }); %>
