@@ -41,7 +41,7 @@ module.exports = {
     offline.userName = req.param('userName');
     offline.userNick = req.param('userNick');
     offline.password = req.param('password');
-    offline.offlineNo = "18";
+    offline.offlineNo = req.param('offlineNo');
     offline.email = req.param('email');
 
     offline.comment = req.param('comment');
@@ -59,7 +59,9 @@ module.exports = {
       return res.json(resultJson);
     }
 
-    Offline.findOne({ email: offline.email, isDelete: false }, function(err, existUser) {
+    Offline.findOne({ offlineNo: offline.offlineNo, 
+                      email: offline.email, 
+                      isDelete: false }, function(err, existUser) {
       // Error handling
       if (err) {
         console.log(err);
@@ -113,8 +115,9 @@ module.exports = {
   find: function(req, res) {
 
     var isRdy = req.param('isRdy') || false; //대기자조회여부
+    var offlineNo = req.param('offlineNo') || '19';
 
-    Offline.find({isDelete: false})
+    Offline.find({offlineNo: offlineNo, isDelete: false})
     .skip(isRdy?24:0)
     .limit(24)
     .sort('createdAt')
@@ -130,6 +133,66 @@ module.exports = {
         resultJson.offlines = offlines;
         Offline.subscribe( req.socket );
         return res.json(resultJson);
+      }
+    });
+  },
+  off: function(req, res) {
+
+    //pjax check
+    var isPjax = req.header('X-PJAX');
+    var offlineNo = req.param('no') || '19';
+
+    if (offlineNo == '1') {
+      return res.redirect('http://www.okjsp.net/seq/186829');
+    } else if (offlineNo == '2') {
+      return res.redirect('http://onoffmix.com/event/6842');
+    } else if (offlineNo == '3') {
+      return res.redirect('http://onoffmix.com/event/7596');
+    } else if (offlineNo == '4') {
+      return res.redirect('http://onoffmix.com/event/8080');
+    } else if (offlineNo == '5') {
+      return res.redirect('http://onoffmix.com/event/8861');
+    } else if (offlineNo == '6') {
+      return res.redirect('http://onoffmix.com/event/9574');
+    } else if (offlineNo == '7') {
+      return res.redirect('http://onoffmix.com/event/10613');
+    } else if (offlineNo == '8') {
+      return res.redirect('http://onoffmix.com/event/10917');
+    } else if (offlineNo == '9') {
+      return res.redirect('http://onoffmix.com/event/11813');
+    } else if (offlineNo == '10') {
+      return res.redirect('http://onoffmix.com/event/12375');
+    } else if (offlineNo == '11') {
+      return res.redirect('http://onoffmix.com/event/13177');
+    } else if (offlineNo == '12') {
+      return res.redirect('http://onoffmix.com/event/14242');
+    } else if (offlineNo == '13') {
+      return res.redirect('http://onoffmix.com/event/15462');
+    } else if (offlineNo == '13plus') { // 13+
+      return res.redirect('http://onoffmix.com/event/16077');
+    } else if (offlineNo == '14') {
+      return res.redirect('http://onoffmix.com/event/16335');
+    } else if (offlineNo == '15') {
+      return res.redirect('http://onoffmix.com/event/17274');
+    } else if (offlineNo == '16') {
+      return res.redirect('http://onoffmix.com/event/18469');
+    } else if (offlineNo == '17') {
+      return res.redirect('http://onoffmix.com/event/19253');
+    }
+
+    Offline.find()
+    .where({ offlineNo: offlineNo, isDelete: false })
+    .limit(24)
+    .sort('createdAt')
+    .exec(function(err, offlines) {
+      resultJson.type = 'success';
+      resultJson.message = '정상조회했습니다.';
+      resultJson.offlines = offlines;
+
+      if(isPjax) {
+        return res.view({'_layoutFile':'../blanklayout.ejs' ,'offlines':offlines}, resultJson);
+      } else {
+        return res.view('offline/offline'+offlineNo, resultJson);
       }
     });
   },
@@ -159,6 +222,7 @@ module.exports = {
 
     offlineInput.password = req.param('password');
     offlineInput.email = req.param('email');
+    offlineInput.offlineNo = req.param('offlineNo');
 
      try {
        check(offlineInput.email, { len: '이메일주소는 최소 6자리, 최대 64자리입니다.', isEmail: '이메일 형식이 맞지 않습니다.'}).len(6,64).isEmail();
@@ -172,6 +236,7 @@ module.exports = {
 
 
     Offline.findOne({
+       offlineNo: offlineInput.offlineNo,
        email: offlineInput.email,
        isDelete: false
     }).done(function(err, offline) {

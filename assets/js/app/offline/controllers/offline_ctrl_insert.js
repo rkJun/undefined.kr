@@ -20,7 +20,7 @@ tipJS.controller("offline_ctrl_insert", {
 			$("#returnMessage").html(" "+resultJson.message);
 
 			if (resultJson.type === "success") {
-				location.href = "/offline/off18";
+				location.href = "/offline/off?no=" + $("#hdn_offlineNo").val();
 			}
 		});
 	}

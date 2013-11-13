@@ -1,73 +1,51 @@
 <script src="/js/app/offline/app.js"></script>
 
-<script>
- socket.get('/offline', function (response) {
-  $("#span_personCount").html(response.offlines.length);
- });
-</script>
-
 <section id="section-offline">
   <form action="/offline/" method="post" class="form-horizontal" id="frmOffline">
     <input type="hidden" name="_csrf" value="<%= _csrf %>" />
-    <input type="hidden" name="offlineNo" value="19" />
+    <input type="hidden" name="offlineNo" id="hdn_offlineNo" value="19" />
 
     <div class="container">
       <div class="row">
         <div class="col-md-8">
           <div class="page-header">
-            <h3>undefine:D 18번째 모임 안내 <small>(2013년 10월 25일)</small></h3>
+            <h3>undefine:D 19번째 모임 안내 <small>(2013년 11월 20일)</small></h3>
           </div>
 
-          <h5>일시 : 2013년 10월 25일 (금) 오후 7시반 ~ 9시반</h5>
+          <h5>일시 : 2013년 11월 20일 (수) 오후 7시반 ~ 9시반</h5>
           <h5>장소 : 토즈 강남 2호점 (신논현역 인근) <small><a href="http://place.map.daum.net/8563513" target="_blank">약도보기</a></small></h5>
           <h5>( 장소후원 : 정보통신산업진흥원 <a href="http://www.nipa.kr">http://www.nipa.kr</a> )</h5>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-10">
           <div class="page-header">
-            <h4>Time table <small>18번째 모임계획</small></h4>
+            <h4>19번째 모임 주제</h4>
           </div>
 
           <table class="table table-striped table-bordered">
             <thead>
-              <th>시간</th>
+              <th>발표자</th>
+              <th>주제</th>
               <th>내용</th>
             </thead>
             <tbody>
               <tr>
-                <td>19:30 - 19:40 (10분)</td>
-                <td>모임소개</td>
-              </tr>
-              <tr>
-                <td>19:40 - 19:50 (10분)</td>
-                <td>참가자 자기소개</td>
-              </tr>
-              <tr>
-                <td>19:50 - 20:40 (50분)</td>
-                <td>김성원님 - Asdf.js JavaScript Library 소개<br/>
-                JavaScript Functional Programming 가능성과 방향성에 대해 논의
+                <td><a href="https://www.facebook.com/hika00" target="_blank">Hika Maeng</a>, <br/>Bsidesoft CEO<br/>
+                  <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/c20.20.320.320/37115_165430986805702_1477741_n.jpg?lvh=1"
+                  width="140" height="140" class="img-circle">
                 </td>
-              </tr>
-              <tr>
-                <td>20:40 - 20:45 (05분)</td>
-                <td>휴식</td>
-              </tr>
-              <tr>
-                <td>20:45 - 21:05 (20분)</td>
-                <td>rkJun - www.undefined.kr 사이트 기반 프레임워크 소개<br/>
-                  <a href="http://tipjs-team.github.io/tipJS/">tipJS 2</a> (frontend), node on <a href="http://sailsjs.org/">sails</a> (backend) 를 잠깐 맛만 본 경험을 간단하게 소개합니다.
+                <td>bs 라이브러리 소개 및 구조 설명</td>
+                <td>
+                  bs 라이브러리의 구조를 설명합니다.<br/>
+                  bs는 오픈소스로 진행하는 자바스크립트 라이브러리입니다.<br/>
+                  생산성에 주안점을 둬 브라우저 간의 차이를 매꾸고, <br/>
+                  호스트 코드를 짧게 만드는데 역점을 두고 있습니다. <br/>
+                  github : <a href="http://goo.gl/FLI7te">http://goo.gl/FLI7te</a>
                 </td>
-              </tr>
-              <tr>
-                <td>21:05 - 21:30 (25분)</td>
-                <td>미정</td>
               </tr>
            </tbody>
           </table>
-
-          <p>김성원님 - 
-            SK컴즈 재직중, 사내 JavaScript Framework, Library, Web Editor, Web Application 개발</p>
 
         </div>
       </div>
@@ -76,7 +54,7 @@
         <div class="col-md-7">
 
           <div class="page-header">
-            <h4>참가자 목록 <span id="span_personCount"></span> <small>최대 24인까지 참여가능합니다.</small></h4>
+            <h4>참가자 목록 <small>최대 22인까지 참여가능합니다.</small></h4>
           </div>
 
           <ol id="ol_confirmlist">
@@ -107,13 +85,13 @@
           </ol>
 
           <div class="page-header">
-            <h4>참여율 <span id="span_personCount"></span> <small>참여신청 <%=offlines.length%>명 / 정원 24명</small></h4>
+            <h4>참여율 <span id="span_personCount"></span> <small>참여신청 <%=offlines.length%>명 / 정원 22명</small></h4>
           </div>
 
-          <% var joinProgressValue = (offlines.length / 24)*100 %>
+          <% var joinProgressValue = (offlines.length / 22)*100 %>
           <div class="progress progress-striped">
             <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%=joinProgressValue%>" aria-valuemin="0" aria-valuemax="100" style="width: <%=joinProgressValue%>%;">
-              <span class="sr-only">정원 24명중 <%=offlines.length%>명 참여중</span>
+              <span class="sr-only">정원 22명중 <%=offlines.length%>명 참여중</span>
             </div>
           </div>
 
@@ -124,13 +102,11 @@
           -->
         </div>
       </div>
-
-      <!--
   
       <div class="row">
         <div class="col-md-7">
           <div class="page-header">
-            <h4>참가신청 <span id="span_personCount"></span></h4>
+            <h4>참가신청</h4>
           </div>
 
             <div id="divAlert" class="alert">
@@ -169,8 +145,7 @@
              <button class="btn btn-default btn-lg" type="submit" id="btn_open_modalc">참가취소</button>
            </div>
         </div>
-         -->
-
+        
       </div>
     </div>
   </form>
