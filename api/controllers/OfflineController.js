@@ -119,7 +119,7 @@ module.exports = {
 
     Offline.find({offlineNo: offlineNo, isDelete: false})
     .skip(isRdy?24:0)
-    .limit(24)
+    // .limit(24)
     .sort('createdAt')
     .exec(function(err, offlines) {
       if (err) {
