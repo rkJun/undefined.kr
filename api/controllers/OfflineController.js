@@ -182,7 +182,7 @@ module.exports = {
 
     Offline.find()
     .where({ offlineNo: offlineNo, isDelete: false })
-    .limit(24)
+//    .limit(24)
     .sort('createdAt')
     .exec(function(err, offlines) {
       resultJson.type = 'success';
