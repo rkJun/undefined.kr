@@ -10,5 +10,5 @@ and code base design. undefine:D is not undefined, undefine:D is the
 Front-end Developer & Designer Group and HTML5, JavaScript
 Intensive Study Group.
 
-http://undefined.kr (undefine:D)
+http://www.undefined.kr (undefine:D)
 
