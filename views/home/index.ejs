@@ -23,17 +23,17 @@
     </a>
   -->
 
-      <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-          <p class="well" align="center">
-            2013월 11월 20일 (수)<br/> 
-            오후 7시 30분 ~ 오후 9시 30분<br/>
-            토즈 강남 2호점
-          </p>
+       <div class="row">
+<!--         <div class="col-md-8"></div> -->
+        <div class="col-md-12">
+          <p class="">
+            <h2>페이스북 그룹 <a href="" id="fbgUrl">undefine:D</a> 소개</h2><br/> 
+            <span id="fbgDesc"></span><br/>
+           </p>
         </div>
       </div>
-      <div class="row">
+
+<!--       <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
           <p align="center">
@@ -45,6 +45,20 @@
           </p>
         </div>
       </div>
+ -->
+<script>
+  $.getJSON("http://graph.facebook.com/188080051308169", function(data) {
+    //JSON.stringify(data);
+    var returnHtml = "";
+    //$("#top-section-list").html(returnHtml);
+
+    $("#fbgUrl").attr("href", "http://facebook.com/" +data.id).html(data.name);
+    $("#fbgDesc").html(data.description);
+
+
+  });
+
+</script>
   </section>
 </div>
 <!-- /container -->
