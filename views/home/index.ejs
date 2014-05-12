@@ -27,8 +27,19 @@
 <!--         <div class="col-md-8"></div> -->
         <div class="col-md-12">
           <p class="">
-            <h2>페이스북 그룹 <a href="" id="fbgUrl">undefine:D</a> 소개</h2><br/> 
+            <h2>프로그래머들의 기술과 정보, 지식공유의 장, undefine:D (undefined.kr)</h2><br/> 
             <span id="fbgDesc"></span><br/>
+           </p>
+          <p>
+            <span id='fbtest'>
+              그간 바쁘다는 핑계로 몇개월이 넘도록 사이트 업데이트를 하지 못했습니다.<br/>
+              이제 그나마 짬이 남아, 본격적으로 사이트 개발에 매진해 보려고 합니다.<br/>
+              조금만 더 기다려 주세요. :D
+            </span>
+          </p>
+        </div>
+      </div>
+
            </p>
         </div>
       </div>
@@ -54,9 +65,46 @@
 
     $("#fbgUrl").attr("href", "http://facebook.com/" +data.id).html(data.name);
     $("#fbgDesc").html(data.description);
+  });
 
+var fbUrl ="https://graph.facebook.com/188080051308169/feed?access_token=CAACEdEose0cBAKy1H4v3IIPkuYgITFlzomH1ClW0HQyhZANKvCJpZBRyh0cBPb3oJPLzasbgaV8rjiIQvq3f0Y0gjun7ZBGZBv1uQUgucfOSIT3aGHriTWElpsMKY6OtE49Ux4PL7hnQoR3OL1qQ1l1dRTiKs5otcCTxUA0r11E42A7Alyp8s1YaZBtPpKfwZD";
+
+  var global;
+  $.getJSON(fbUrl, function (data2) {
+    var a = JSON.stringify(data2);
+    console.log('hi');
+
+    global = data2;
+
+    var users = { id, name, wcnt:0 };
+    var arr;
+    $(global.data).each(function(index) {
+      // this.id
+      //this.message 주제
+      // this.comments 
+      // this.from.id , name
+      /// this.likes id, name
+      // this.
+      // 
+      //console.log ( this.message );
+      if (this.from.id.indexOf(users.id) > -1) {
+          arr[0] = 
+          users.wcnt
+
+      }
+
+    });
+
+    //$("#fbtest").text(a);
+
+    //while ( data2.paging.next != null && data2.paging.next != "") {
+
+      //} 
+
+    console.log('hi2');
 
   });
+
 
 </script>
   </section>
