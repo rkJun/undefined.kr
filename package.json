@@ -4,8 +4,8 @@
   "version": "0.0.1",
   "description": "undefined.kr community site",
   "dependencies": {
-    "sails": "0.9.7",
-    "sails-mongo": "0.9.5",
+    "sails": "0.9.16",
+    "sails-mongo": "0.9.8",
     "grunt": "0.4.1",
     "optimist": "0.6.0",
     "password-hash": "1.2.1",
