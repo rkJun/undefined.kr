@@ -28,9 +28,9 @@
       ///////////////////////////////////////////////////////////
       log('New comet message received :: ', message);
       //////////////////////////////////////////////////////
-      if (message.data.id === 'offCreated') {
-        $("head title").text("["+message.data.name+"] 님 오프신청 undefine:D");
-      }
+      // if (message.data.id === 'offCreated') {
+        // $("head title").text("["+message.data.name+"] 님 오프신청 undefine:D");
+      // }
 
     });
 

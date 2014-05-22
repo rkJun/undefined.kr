@@ -7,11 +7,11 @@
   Site: http://undefined.kr
 
 /* SITE */
-  Last update: 10/24/2013 (dd/mm/yyyy)
+  Last update: 05/22/2014 (dd/mm/yyyy)
   Doctype: HTML5
-  IDE: Sublime Text 2, Spring Tool Suite
+  IDE: Sublime Text 2, Spring Tool Suite, Eclipse
   Back-end: nodejs, sailsjs, mongodb, sails-mongo
-  Front-end: jquery, bootstrap, tipJS
+  Front-end: jquery, bootstrap, font-awesome
 
 /* SPECIAL THANKS */
   //Designer: undefined
