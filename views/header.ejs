@@ -24,6 +24,14 @@
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+          
+          <% 
+            if ( process.env.NODE_ENV === "development" ) { 
+              userName = "rkjun_test";
+              req.user = { userId:"111", displayName:"john test", photoUrl:"1.jpg",userName:"john" }; 
+            }
+          %>
+
           <% var userId = req.user ? req.user.userId : null;
              if ( userId != null) { %>
              <li class="dropdown">
@@ -33,9 +41,9 @@
                   <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                  <!--
-                  <li><a href="/user/<%= userId %>">User Info</a></li>
-                  -->
+                  <li><a href="/user/<%= userName %>">User Info</a></li>
+                  <li><a href="">내가 좋아하는 글</a></li>
+                  <li><a href="">글쓰기</a></li>
                   <li><a href="/logout">LogOut</a></li>
                 </ul>
               </li>
