@@ -16,7 +16,8 @@
     "passport-twitter": "~1.0.2",
     "passport-github": "~0.1.5",
     "bcrypt": "~0.7.8",
-    "markdown": "~0.5.0"
+    "markdown": "~0.5.0",
+    "usage": "0.3.10"
   },
   "scripts": {
     "start": "node app.js",
