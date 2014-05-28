@@ -21,10 +21,28 @@ module.exports = {
 
 	var usage = require('usage');
 
-	var pid = process.pid // you can use any valid PID instead
-	usage.lookup(pid, function(err, result) {
-      res.json(result);
-	});
+  var util = require('util');
+
+  var pid =process.pid;
+
+  // setInterval(function() {
+
+    // var options =  { keepHistory: true };
+    usage.lookup(pid, function(err, stat) {
+
+      console.log(err, stat);
+      var result = {};
+      result.stat = stat;
+      result.process = process;
+      result.pid = pid;
+
+      result.mu = util.inspect(process.memoryUsage());
+
+
+      res.view("usage/index", result);
+
+    });
+  // }, 2000);
 
 
   },
