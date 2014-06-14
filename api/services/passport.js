@@ -6,7 +6,7 @@ var passport    = require('passport'),
     TwitterStrategy = require('passport-twitter').Strategy,
     FacebookStrategy = require('passport-facebook').Strategy;
 
-var oauth = require('/config/local').oauth;
+var oauth = require('../../config/local').oauth;
 
 // helper functions
 function findById(id, fn) {
