@@ -1,24 +1,21 @@
-<script src="/js/app/board/app.js"></script>
-
 <section id="section-board">
   <form action="/board/" method="post" class="form-horizontal" id="frmBoard">
     <input type="hidden" name="_csrf" value="<%= _csrf %>" />
-    <input type="hidden" name="offlineNo" value="19" />
-
+    
     <div class="container">
       <div class="row col-md-12">
         <div class="col-md-12">
-          <div class="page-header">
-            <h3>Temporary Board<small> test only</small></h3>
-          </div>
+            <h3>전체 글 목록<small></small></h3>
         </div>
       </div>
 
-      <div class="col-md-12">
-        <button class="btn btn-primary pull-right" id="btn_write_view">
-          글쓰기
-        </button>
+      <div class="row">
+        <div class="col-md-12">
+          <button class="btn btn-primary pull-right" id="btn_write_view">글쓰기
+          </button>
+        </div>
       </div>
+
 
       <!-- write form -->
       <div class="row hidden" id="write_area">
@@ -49,44 +46,76 @@
            <div class="text-center" id="div_btn_area">
              <button class="btn btn-default btn-sm" type="submit" id="btn_create">글 올리기</button>
              <button class="btn btn-default btn-sm" type="submit" id="btn_preview">미리보기</button>
-             <button class="btn btn-default btn-sm" type="submit" id="btn_cancel">참가취소</button>
+             <button class="btn btn-default btn-sm" type="submit" id="btn_cancel">취소</button>
            </div>
 
         </div>
       </div>
       <!-- end of write form -->
 
+ 
+
+  </a>
+
       <!-- list form -->
-      <div class="row" id="list_area">
-        <div class="col-md-12">
-          <div class="page-header">
-            <h4>글목록</h4>
+      <div id="list_area">
+
+        <!-- template
+        <div class="row" id="반복">
+          <div class="col-md-1">
+            <img src="https://pbs.twimg.com/profile_images/2265920309/image.jpg" 
+                 alt="rkjun" class="img-rounded" style="height:65px;">
           </div>
-          <div class="list-group">
-          <% _.each(boards, function (board) { %>
-            <a href="/board/find?id=<%=board.id%>" class="list-group-item">
-              <h5 class="list-group-item-heading"><%= board.title %>
-                <small>
-                  <label class="label label-default">조회수</label>
-                  <span class="badge"><%= board.viewCount %></span>
-                  <label class="label label-default">Like</label>
-                  <span class="badge"><%= board.likeCount %></span>
-                  <label class="label label-default">Unlike</label>
-                  <label class="badge"><%= board.unlikeCount %></label>
-                  <label class="label label-primary">
-                    <i class="icon-<%= board.authorProvider %>-sign"></i> 
-                    <%= board.authorName %>
-                  </label>
-                </small>
-              </h5>
-              <p class="list-group-item-text">
-                <%= (board.createdAt).toISOString() %> ,  ,
-                 , <%= board.category %> 
-              </p>
-            </a>
-          <% }); %>
+
+          <div class="col-md-10">
+            <div class="list-group">
+              <div class="list-group-item">
+                <h4 class="list-group-item-heading">
+                  <label class="label label-primary">공지사항</label>
+                  <a href="/board/find?id=AAAAAAAAA" class="">
+                  2014년 6월 26일 오프모임 안내.</a>
+                </h4>
+                <p class="list-group-item-text">
+                  글쓴 일시 : 2014년 06월 14일 (월) 06시 10분 &middot;
+                  글쓴 이 : <i class="fa fa-github-square"></i> rkjun &middot; 
+                  조회 : <span class="badge">222</span> &middot; 
+                  댓글 : <span class="badge">222</span>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
+      -->
+
+        <% _.each(boards, function (board) { %>
+ 
+          <div class="row" id="<%=board.id%>">
+            <div class="col-md-1">
+              <img src="/favicon.ico" alt="rkjun" class="img-rounded" style="height:65px;">
+            </div>
+
+            <div class="col-md-10">
+              <div class="list-group">
+                <div class="list-group-item">
+                  <h4 class="list-group-item-heading">
+                    <label class="label label-primary"><%=board.category%></label>
+                    <a href="/board/find?id=<%=board.id%>"> <%= board.title %>
+                    </a>
+                  </h4>
+                  <p class="list-group-item-text">
+                    글쓴 일시 : <%= (new Date(board.createdAt)) %> &middot;
+                    글쓴 이 : <i class="fa fa-<%= board.authorProvider %>-square"></i> 
+                    <%= board.authorName %> &middot; 
+                    조회 : <span class="badge"><%= board.viewCount %></span> &middot; 
+                    댓글 : <span class="badge">0</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <% }); %>
+ 
       </div>
       <!-- end of list form -->
 
@@ -94,3 +123,48 @@
   </form>
 
 </section>
+
+<script>
+    $("#frmBoard").submit(function(e) {
+      e.preventDefault();
+    });
+
+    // add button event handler (tipJS.action)
+    $("body")
+    .on("click", "button", function(e) {
+    
+      var btnActName = $(this).attr("id");
+
+      if (btnActName === "btn_write_view") {
+        $("#write_area").toggle();
+        $("#write_area").removeClass("hidden");
+      } else if (btnActName === "btn_create") {
+
+          // join
+          var reqData = $("#frmBoard").serialize();
+
+          $.ajax({
+            type: "POST",
+            url: "/board/create",
+            data: reqData
+          }).done(function( resultJson ) {
+            $("#divAlert").addClass("alert-"+resultJson.type).show();
+            $("#returnType").html(resultJson.type);
+            $("#returnMessage").html(" "+resultJson.message);
+
+            if (resultJson.type === "success") {
+              location.href = "/board/list";
+            }else if (resultJson.type === "error") {
+              alert(resultJson.message);
+            }
+          });
+
+      } else if (btnActName === "btn_preview") {
+        alert(btnActName + "버튼을 눌렀다");
+      } else if (btnActName === "btn_cancel") {
+        alert(btnActName + "버튼을 눌렀다");
+      }
+
+    });
+
+</script>

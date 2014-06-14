@@ -15,8 +15,10 @@
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
 
-var check = require('validator').check,
-    sanitize = require('validator').sanitize;
+var validator = require('validator');
+var markdown = require( "markdown" ).markdown;
+var ent = require('ent');
+var moment = require('moment');
 
 var resultJson = {
   type: '',
@@ -31,7 +33,7 @@ module.exports = {
   list: function(req, res) {
 
     var category = req.param('category');
-    category = category ? category:'tech-tip';
+    category = category ? category:'공지사항';
 
     Board.find()
     .where({ isDelete: false })
@@ -68,7 +70,18 @@ module.exports = {
           resultJson.type = 'success';
           resultJson.message = '정상 조회되었습니다:'+board.id;
           resultJson.board = board;
-          // return res.json(resultJson);
+
+          //조회수 증가
+          board.viewCount++;
+          board.save(function(err){});
+
+          // date
+          board.createdAt = moment( board.createdAt ).lang('ko').format( 'LLLL' );
+
+          //text area 처리
+          //board.contents = ent.decode(markdown.toHTML(board.contents));
+          //resultJson.board = board;
+
           if(isPjax) {
             return res.view({'_layoutFile':'../blanklayout.ejs','board':board}, resultJson);
           } else {
@@ -86,23 +99,30 @@ module.exports = {
   create: function(req, res) {
     var board = {};
     var category = req.param('category');
-    category = category ? category:'tech-tip';
+    category = category ? category:'공지사항';
 
-    board.authorProvider = req.user.provider;
-    board.authorId = req.user.userId;
-    board.authorName = req.user.displayName;
+    board.authorProvider = 'github';
+    board.authorId = 'rkjun';
+    board.authorName = 'Juntai Park';
     board.category = category;
-    board.title = sanitize(req.param('title')).xss();
-    board.contents = sanitize(req.param('contents')).xss();
+    // board.authorProvider = req.user.provider;
+    // board.authorId = req.user.userId;
+    // board.authorName = req.user.displayName;
+    // board.category = category;
+    board.title = req.param('title');
+    board.contents = req.param('contents');
     board.tags = req.param('tags').split(',');
 
-    try {
-      check(board.title, '제목은 필수항목입니다.').notEmpty();
-      check(board.contents, '내용은 필수항목입니다.').notEmpty();
-    } catch (e) {
-      console.log('error:'+e.message);
+    var rtnMsg = '';
+    if (validator.isNull(board.title)) {
+        rtnMsg = '제목은 필수항목입니다.';
+    } else if (validator.isNull(board.contents)) {
+        rtnMsg = '내용은 필수항목입니다.';
+    }
+    if ( rtnMsg !== '' ) {
+      console.log('error:'+rtnMsg);
       resultJson.type = 'error';
-      resultJson.message = e.message;
+      resultJson.message = rtnMsg;
       return res.json(resultJson);
     }
 

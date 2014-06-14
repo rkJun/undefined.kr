@@ -3,7 +3,7 @@
  */
 module.exports = function (req, res, ok) {
 
- console.log('auto go?');
+ console.log('auth go?');
   // User is allowed, proceed to controller
   // if (req.session.authenticated) {
   if (req.isAuthenticated()) {

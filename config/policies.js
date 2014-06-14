@@ -26,7 +26,7 @@ module.exports.policies = {
     'writesend': 'authenticated'
   },
   BoardController: {
-    'create': 'authenticated'
+    // 'create': 'authenticated'
   }
 
   // AuthController: {

@@ -18,6 +18,7 @@
           <li><a rel="tooltip" target="_blank" href="https://www.facebook.com/groups/html5jsstudy/"
                 title="undefine:D facebook group">
                 <i class="fa fa-facebook-square"></i> 언디파인드 페이스북그룹 이동</a></li>
+          <li><a href="/board/list">전체 글 목록</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right" id="main-menu-right">
           <li>
@@ -25,13 +26,6 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           
-          <% 
-            if ( process.env.NODE_ENV === "development" ) { 
-              userName = "rkjun_test";
-              req.user = { userId:"111", displayName:"john test", photoUrl:"1.jpg",userName:"john" }; 
-            }
-          %>
-
           <% var userId = req.user ? req.user.userId : null;
              if ( userId != null) { %>
              <li class="dropdown">
@@ -41,9 +35,9 @@
                   <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a href="/user/<%= userName %>">User Info</a></li>
-                  <li><a href="">내가 좋아하는 글</a></li>
-                  <li><a href="">글쓰기</a></li>
+<!--                   <li><a href="/user/<%= userName %>">User Info</a></li> -->
+<!--                   <li><a href="">내가 좋아하는 글</a></li> -->
+<!--                   <li><a href="/write">글쓰기</a></li> -->
                   <li><a href="/logout">LogOut</a></li>
                 </ul>
               </li>

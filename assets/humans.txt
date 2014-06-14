@@ -7,7 +7,7 @@
   Site: http://undefined.kr
 
 /* SITE */
-  Last update: 05/22/2014 (dd/mm/yyyy)
+  Last update: 06/13/2014 (dd/mm/yyyy)
   Doctype: HTML5
   IDE: Sublime Text 2, Spring Tool Suite, Eclipse
   Back-end: nodejs, sailsjs, mongodb, sails-mongo
