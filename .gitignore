@@ -43,3 +43,4 @@ nbproject
 # local config
 ########################
 local.js
+config/local.js
