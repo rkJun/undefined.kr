@@ -6,7 +6,20 @@ var passport    = require('passport'),
     TwitterStrategy = require('passport-twitter').Strategy,
     FacebookStrategy = require('passport-facebook').Strategy;
 
-var oauth = require('../../config/local').oauth;
+// var oauth = require('../../config/local').oauth;
+var oauth = {
+    github: {
+      clientID: '530b3ed11df8a2ccc2bb',
+      clientSecret: '30ce23b422ead825267ee6dc7bb82ef4ea6179ad',
+      callbackURL: 'http://www.undefined.kr/auth/github/callback'
+    },
+    twitter: {
+      TWITTER_CONSUMER_KEY: '0zoezCSbstZBlx8Qth3iA',
+      TWITTER_CONSUMER_SECRET: 'WueqCRdg4wc8aTeBX2YU6qsyYNaG8zdq7SdxeJVQw',
+      callbackURL: 'http://www.undefined.kr/auth/twitter/callback'
+    }
+};
+
 
 // helper functions
 function findById(id, fn) {
