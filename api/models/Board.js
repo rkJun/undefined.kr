@@ -22,6 +22,10 @@ module.exports = {
       type: 'string',
       required: true
     },
+    authorDispName: {
+      type: 'string',
+      required: true
+    },
     category: {
       type: 'string'
     },
@@ -46,6 +50,10 @@ module.exports = {
     isDelete: {
         type: 'boolean',
         defaultsTo: false
+    },
+    // user 에서 get
+    photoUrl: {
+      type: 'string'
     }
   }
 

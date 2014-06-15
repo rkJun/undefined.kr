@@ -41,7 +41,21 @@ module.exports = {
     .limit(25)
     .sort( { 'createdAt': -1 } )
     .exec(function(err, boards) {
-      console.log(boards);
+
+      // for (var i=0; i < boards.length; i++) {
+
+      //   User.findOne({provider: boards[i].authorProvider, userId: boards[i].authorId}
+      //     ).done(function (err,user) {
+      //       if(!err) {
+      //         if(user) {
+      //           boards[i].title = user.photoUrl;
+      //         }
+      //       } else {
+      //         boards[i].title = '/favicon.ico';
+      //       }
+      //   });
+      // } // end for
+
       resultJson.type = 'success';
       resultJson.message = '정상 조회되었습니다.';
       resultJson.boards = boards;
@@ -82,11 +96,29 @@ module.exports = {
           //board.contents = ent.decode(markdown.toHTML(board.contents));
           //resultJson.board = board;
 
-          if(isPjax) {
-            return res.view({'_layoutFile':'../blanklayout.ejs','board':board}, resultJson);
-          } else {
-            return res.view(resultJson);
-          }
+          //댓글 가져오기
+          Comment.find({ 
+              boardId: board.id,
+              isDelete: false 
+          }).done(function(err, comments) {
+            if(err){
+              resultJson.type = 'error';
+              resultJson.message = 'DB Error';
+              return res.json(resultJson);
+            }else {
+              if(comments) {
+                resultJson.comments = comments;
+              }
+
+              if(isPjax) {
+                return res.view({'_layoutFile':'../blanklayout.ejs','board':board, 'comments':comments}, resultJson);
+              } else {
+                return res.view(resultJson);
+              }
+              
+            }
+          }); 
+        
         } else {
           // 조회된 글이 없음 
           resultJson.type = 'error';
@@ -106,7 +138,8 @@ module.exports = {
     // board.authorName = 'Juntai Park';
     board.authorProvider = req.user.provider;
     board.authorId = req.user.userId;
-    board.authorName = req.user.displayName;
+    board.authorName = req.user.username;
+    board.authorDispName = req.user.displayName;
     board.category = category;
     board.title = req.param('title');
     board.contents = req.param('contents');

@@ -1,6 +1,7 @@
 <section id="section-board">
   <form action="/board/" method="post" class="form-horizontal" id="frmBoard">
     <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+    <input type="hidden" id="boardId" name="boardId" value="<%= board.id %>" />
 
     <div class="container">
       <!-- read form -->
@@ -35,6 +36,50 @@
     </div>
   </form>
 
+  <% if (comments) { 
+     _.each(comments, function (comment) { %>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="col-md-2">
+            <i class="fa fa-<%= comment.authorProvider %>-square"></i> 
+            <%= comment.authorName %>
+          </div>
+          <div class="col-md-6">
+            <%= comment.comment %>
+          </div>
+          <div class="col-md-2">
+            <%= new Date(comment.createdAt).toISOString().substring(0,10) %>
+          </div>
+          <div class="col-md-2">
+  <!--           <button class="btn btn-default btn-sm">댓글 수정</button>
+            <button class="btn btn-default btn-sm">댓글 삭제</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <% });  } %>
+
+ <!-- 댓글 남기기 login user 만. -->
+  <% var userId = req.user ? req.user.userId : null;
+     if ( userId != null) { %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+        <%= req.user.userName %>
+      </div>
+      <div class="col-md-8">
+        <textarea row="2" class="col-md-12" id="txt_comment"></textarea>
+      </div>
+      <div class="col-md-3">
+        <button class="btn btn-default btn-sm" id="btn_comment_save">댓글 남기기</button>
+      </div>
+
+    </div>
+  </div>
+  <% } %>
+
 </section>
 
 <script>
@@ -43,6 +88,32 @@
     });
 
     $(document).ready(function(){
+      // comments get.
+    });
+
+    $("#btn_comment_save").click(function(e) {
+
+         $.ajax({
+           type: "POST",
+           url: "/comment/create",
+           data: { boardId: $("#boardId").val(), 
+                   comment: $("#txt_comment").val()
+           },
+           dataType:'json'
+         }).done(function( resultJson ) {
+           $("#divAlert").addClass("alert-"+resultJson.type).show();
+           $("#returnType").html(resultJson.type);
+           $("#returnMessage").html(" "+resultJson.message);
+
+           if (resultJson.type === "success") {
+             location.href = "/board/" + $("#boardId").val();
+           }else if (resultJson.type === "error") {
+             alert(resultJson.message);
+           }
+         });
+
 
     });
+
+
 </script>
