@@ -214,32 +214,19 @@ module.exports = {
     res.view('500', { errors: {error:'Access Denied'} });
   },
   twitter: function(req, res) {
-    console.log('twitter start');
-
     passport.authenticate('twitter', { failureRedirect: '/login' },
-        function (err, user) {
-            req.logIn(user, function (err) {
-                if (err) {
-                    res.view();
-                    return;
-                }
-
-                res.redirect('/');
-                return;
-            });
-        })(req, res);
-
-    console.log('twitter end');
-    // return res.send('hi');
-
+       new Function() )(req, res);      
   },
   'twitter/callback': function(req, res) {
       console.log ('hello, twitterCallback')
-      return passport.authenticate('twitter',
-          function (req) {
-              return res.send({message: 'ok'});
-          })(req, res, new Function());
-      return res.send({message: 'return'});
+      return passport.authenticate('twitter', function (err, user) {
+          req.logIn(user, function (err) {
+            if (err) {
+              return res.view('500');
+            }
+            return res.redirect('/');
+          });
+        })(req, res, new Function() );
   },
   'github': function (req, res) {
      passport.authenticate('github', { failureRedirect: '/login' },

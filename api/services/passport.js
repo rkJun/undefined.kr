@@ -109,14 +109,19 @@ passport.use(new TwitterStrategy({
   callbackURL: oauth.twitter.callbackURL
 }, function (token, tokenSecret, profile, done) {
     process.nextTick(function () {
-      User.findOne({twitterId:profile.username}, function (err, user) {
+      User.findOne({
+        provider: 'twitter',
+        userId:profile.username
+      }, function (err, user) {
         if (user) {
           return done(null, user);
         } else {
+          console.log (user);
           User.create({
-            twitterId: profile.username,  // id number
-            userName: profile.displayName,
-            email: profile._json.email,
+            provider: 'twitter',
+            userId: profile.id,
+            userName: profile.username,
+            displayName: profile.displayName,
             photoUrl: profile.photos[0].value
           }).done(function (err, user) {
             if (err) {
