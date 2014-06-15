@@ -105,7 +105,7 @@
                   <p class="list-group-item-text">
                     글쓴 일시 : <%= (new Date(board.createdAt)) %> &middot;
                     글쓴 이 : <i class="fa fa-<%= board.authorProvider %>-square"></i> 
-                    <%= board.authorName %> &middot; 
+                    <%= board.authorDispName %> &middot; 
                     조회 : <span class="badge"><%= board.viewCount %></span> &middot; 
                     댓글 : <span class="badge">0</span>
                   </p>

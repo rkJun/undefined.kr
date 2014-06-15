@@ -10,7 +10,7 @@
           <h4><%=board.title%>
              <label class="label label-primary"><%=board.category%></label>
             <small>
-              <%=board.createdAt%>, by <%=board.authorName%>,
+              <%=board.createdAt%>, by <%=board.authorDispName%>,
               조회 <span class="badge"><%= board.viewCount %></span>
             </small>
           </h4>
@@ -43,7 +43,7 @@
         <div class="col-md-12">
           <div class="col-md-2">
             <i class="fa fa-<%= comment.authorProvider %>-square"></i> 
-            <%= comment.authorName %>
+            <%= comment.authorDispName %>
           </div>
           <div class="col-md-6">
             <%= comment.comment %>
@@ -67,7 +67,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-1">
-        <%= req.user.userName %>
+        <%= req.user.authorDispName %>
       </div>
       <div class="col-md-8">
         <textarea row="2" class="col-md-12" id="txt_comment"></textarea>
