@@ -12,6 +12,7 @@
     "moment": "^2.7.0",
     "optimist": "0.6.1",
     "passport": "latest",
+    "passport-facebook": "^1.0.3",
     "passport-github": "~0.1.5",
     "passport-local": "latest",
     "passport-twitter": "~1.0.2",

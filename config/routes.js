@@ -98,6 +98,14 @@ module.exports.routes = {
     controller : 'UserController',
     action : 'github/callback'
   },
+  'get /auth/facebook': {
+    controller : 'UserController',
+    action : 'facebook'
+  },
+  'get /auth/facebook/callback': {
+    controller : 'UserController',
+    action : 'facebook/callback'
+  },
 
   // 'get /board/write': {
   //   view: 'qnaboard/write'

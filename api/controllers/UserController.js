@@ -240,7 +240,20 @@ module.exports = {
          }
          return res.redirect('/');
        });
-
+     })(req, res, new Function() );
+  },
+  'facebook': function (req, res) {
+     passport.authenticate('facebook', { failureRedirect: '/login' },
+       new Function() )(req, res);
+  },
+  'facebook/callback': function (req, res) {
+     passport.authenticate('facebook', function (err, user) {
+       req.logIn(user, function (err) {
+         if (err) {
+           return res.view('500');
+         }
+         return res.redirect('/');
+       });
      })(req, res, new Function() );
   }
 };

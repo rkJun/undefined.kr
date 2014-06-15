@@ -3,7 +3,8 @@ var passport    = require('passport'),
     passwordHash = require('password-hash'),
     LocalStrategy = require('passport-local').Strategy,
     GitHubStrategy = require('passport-github').Strategy,
-    TwitterStrategy = require('passport-twitter').Strategy;
+    TwitterStrategy = require('passport-twitter').Strategy,
+    FacebookStrategy = require('passport-facebook').Strategy;
 
 var oauth = require('../../config/local').oauth;
 
@@ -110,15 +111,15 @@ passport.use(new TwitterStrategy({
 }, function (token, tokenSecret, profile, done) {
     process.nextTick(function () {
       User.findOne({
-        provider: 'twitter',
-        userId:profile.username
+        provider: profile.provider,
+        userId: profile.id
       }, function (err, user) {
         if (user) {
           return done(null, user);
         } else {
           console.log (user);
           User.create({
-            provider: 'twitter',
+            provider: profile.provider,
             userId: profile.id,
             userName: profile.username,
             displayName: profile.displayName,
@@ -171,6 +172,50 @@ passport.use(new GitHubStrategy({
                 return done(err, user);
             }
             console.log("git auth OK");
+            return done(null, user);
+          });
+        }
+      })
+    })
+}));
+
+//Facebook
+passport.use(new FacebookStrategy({
+  clientID: oauth.facebook.clientID,
+  clientSecret: oauth.facebook.clientSecret,
+  callbackURL: oauth.facebook.callbackURL
+}, function (token, tokenSecret, profile, done) {
+    process.nextTick(function () {
+      console.log(profile);
+      User.findOne({ 
+        provider: profile.provider,
+        userId: ''+profile.id
+      }).done(function(err, user) {
+        if (err) {
+          return done(err, user);
+        }
+        if (user) {
+            console.log("facebook auth OK - user exist"); //update Date 예정
+          return done(null, user);
+        } else {
+          User.create({
+            provider: profile.provider,
+            userId:   profile.id,
+            userName: profile.username,
+            displayName: profile.displayName,
+            profileUrl: profile.profileUrl,
+            photoUrl: 'https://graph.facebook.com/'+profile.username+'/picture',
+            blog: profile._json.blog,
+            company: profile._json.company,
+            bio: profile._json.bio
+          }).done(function (err, user) {
+
+            if (err) {
+                console.log(err);
+                // throw err;
+                return done(err, user);
+            }
+            console.log("facebook auth OK");
             return done(null, user);
           });
         }
