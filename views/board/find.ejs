@@ -66,10 +66,11 @@
      if ( userId != null) { %>
   <div class="container">
     <div class="row">
-      <div class="col-md-1">
+      <div class="col-md-2">
+        <i class="fa fa-<%= req.user.provider %>-square"></i> 
         <%= req.user.displayName %>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-7">
         <textarea row="2" class="col-md-12" id="txt_comment"></textarea>
       </div>
       <div class="col-md-3">
