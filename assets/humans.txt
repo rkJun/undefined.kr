@@ -12,9 +12,29 @@
   IDE: Sublime Text 2, Spring Tool Suite, Eclipse
   Back-end: nodejs, sailsjs, mongodb, sails-mongo
   Front-end: jquery, bootstrap, font-awesome
+  Official logo and favicon: iMaZiNe
+
+/* ORGANIZERS */
+ 16thetower,
+ Coma,
+ IMaZiNe,
+ Roaster Kay,
+ mniktw,
+ rkJun,
+ zziroho
 
 /* SPECIAL THANKS */
-  //Designer: undefined
-  official logo and favicon: iMaZiNe
-
-  And, of course, all undefine:D Organizers!
+ Hanghee Yi
+ HwaYoung Kang
+ Hwanki Kang
+ Hyesun Choi
+ Jaewook Lee
+ Jeado Ko
+ Jimin Nam
+ KwangUn Ahn
+ SeungHyun Paek
+ WooJung Seok
+ Yohan Park
+ YongHoon Byun
+ Yongsung Yang
+ 
