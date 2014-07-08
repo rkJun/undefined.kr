@@ -24,17 +24,18 @@
  zziroho
 
 /* SPECIAL THANKS */
- Hanghee Yi
- HwaYoung Kang
- Hwanki Kang
+ Hanghee Yi (javarouka)
+ HwaYoung Kang (piki)
+ Hwanki Kang (kangki)
  Hyesun Choi
  Jaewook Lee
  Jeado Ko
  Jimin Nam
- KwangUn Ahn
- SeungHyun Paek
+ KwangUn Ahn (kuahn)
+ Sue Kim (redcracker)
+ SeungHyun Paek (tipJS)
  WooJung Seok
  Yohan Park
- YongHoon Byun
+ YongHoon Byun (river)
  Yongsung Yang
  
