@@ -16,8 +16,8 @@
 
 /* ORGANIZERS */
  16thetower,
- Coma,
- IMaZiNe,
+ coma333ryu,
+ iMaZiNe,
  Roaster Kay,
  mniktw,
  rkJun,
