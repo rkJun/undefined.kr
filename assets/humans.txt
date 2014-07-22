@@ -21,12 +21,12 @@
  Roaster Kay,
  mniktw,
  rkJun,
- zziroho
+ zziroho,
+ kangki
 
 /* SPECIAL THANKS */
  Hanghee Yi (javarouka)
  HwaYoung Kang (piki)
- Hwanki Kang (kangki)
  Hyesun Choi
  Jaewook Lee
  Jeado Ko
