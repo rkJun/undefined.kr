@@ -182,6 +182,8 @@ module.exports = {
       return res.redirect('http://onoffmix.com/event/25877');
     } else if (offlineNo == '21') {
       return res.redirect('http://onoffmix.com/event/29392');
+    } else if (offlineNo == '22') {
+      return res.redirect('http://onoffmix.com/event/31122');
     }
 
     Offline.find()
