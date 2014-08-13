@@ -1,0 +1,18 @@
+<h2>Listing posts</h2>
+
+<% @posts.each do | post | %>
+    <div class='post'>
+      <div class='title'><%= post.title %></div>
+      <div class='content'><%= simple_format post.content %></div>
+      <div class='tag'><%= post.tag_id %></div>
+      <div>
+        <%= link_to 'Show', post, class: 'btn btn-default' %>
+        <%= link_to 'Edit', edit_post_path(post), class: 'btn btn-default' %>
+        <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' %>
+      </div>
+    </div>
+<% end %>
+
+<br>
+
+<%= link_to 'New Post', new_post_path, class: 'btn btn-default' %>

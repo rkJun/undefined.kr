@@ -1,0 +1,27 @@
+<h2>Preview Tag</h2>
+
+<table class='table table-bordered'>
+<tr>
+  <th>Name: </th>
+  <td><%= @tag.name %></td>
+</tr>
+<tr>
+  <th>Description</th>
+  <td><%= @tag.description %></td>
+</tr>
+<tr>
+  <th>url</th>
+  <td><%= @tag.url %></td>
+</tr>
+<tr>
+  <th>Created at</th>
+  <td><%= @tag.created_at %></td>
+</tr>
+<tr>
+  <th>Updated at</th>
+  <td><%= @tag.updated_at %></td>
+</tr>
+</table>
+
+<%= link_to 'Edit', edit_tag_path(@tag), class: 'btn btn-default' %>
+<%= link_to 'Back', tags_path, class: 'btn btn-default'  %>
