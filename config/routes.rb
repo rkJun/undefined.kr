@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
 
-  resources :tags
+  resources :posts do
+    resources :comments, only: [:create, :destroy, :edit]
+  end
 
-  resources :posts
+  resources :bulletins do
+    resources :posts
+  end
 
   root 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.

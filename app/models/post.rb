@@ -1,3 +1,5 @@
 class Post < ActiveRecord::Base
-  has_and_belongs_to_many :tags
+  acts_as_taggable
+  belongs_to :bulletin
+  has_many :comments, dependent: :destroy
 end

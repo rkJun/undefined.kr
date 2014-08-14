@@ -1,0 +1,16 @@
+<h2>Listing posts</h2>
+
+<% @posts.each do |post| %>
+  <tr>
+    <td><%= post.title %> <small>( <%= post.comments.size %> )</small></td>
+    <td>
+      <%= link_to 'Show', [post.bulletin, post], class:'btn btn-default' %>
+      <%= link_to 'Edit', edit_bulletin_post_path(post.bulletin, post), class:'btn btn-default' %>
+      <%= link_to 'Destroy', [post.bulletin, post], method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-default' %>
+    </td>
+  </tr>
+<% end %>
+
+<br>
+
+<%= link_to 'New Post', new_bulletin_post_path, class: 'btn btn-default' %>

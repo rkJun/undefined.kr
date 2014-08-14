@@ -1,4 +1,4 @@
-<%= simple_form_for(@post) do |f| %>
+<%= simple_form_for([@bulletin, @post]) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-group">
@@ -6,6 +6,9 @@
   </div>
   <div class="form-group">
     <%= f.input :content,input_html: { class: 'form-control', rows: 10 } %>
+  </div>
+  <div class="form-group">
+    <%= f.input :tag_list, placeholder: '하나 이상의 태그는 콤마(,)로 구분하여 입력하세요.', input_html: { class: 'form-control' } %>
   </div>
 
   <%= f.button :submit, class: 'btn btn-default' %>

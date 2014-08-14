@@ -1,16 +1,17 @@
-<%= simple_form_for(@tag) do |f| %>
+<%= simple_form_for(@bulletin) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-group">
-    <%= f.input :name, input_html: { class: 'form-control' } %>
+    <%= f.input :title, input_html: { class: 'form-control' } %>
   </div>
   <div class="form-group">
     <%= f.input :description, input_html: { class: 'form-control', rows: 5 } %>
   </div>
-  <div class="form-group">
-    <%= f.input :url, input_html: { class: 'form-control', rows: 5 } %>
-  </div>
 
+  <div class="form-group">
+    <%= f.input :post_type, collection: [ ['게시판', 'bulletin'], ['블로그', 'blog']], input_html:{ class:'form-control'} %>
+  </div>
+  
   <%= f.button :submit, class: 'btn btn-default' %>
 
 <% end %>
