@@ -34,6 +34,7 @@ gem 'simple_form'
 gem 'friendly_id', '~> 5.0.0'
 gem 'acts-as-taggable-on'
 
+gem 'dotenv-rails', groups: [:development, :test]
 gem 'omniauth-facebook'
 
 # Use ActiveModel has_secure_password
