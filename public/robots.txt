@@ -3,3 +3,15 @@
 # To ban all spiders from the entire site uncomment the next two lines:
 # User-agent: *
 # Disallow: /
+# undefine:D robots.txt
+
+User-agent: *
+Disallow: /login/
+Disallow: /signup/
+Disallow: /tmp/
+Disallow: /mypage/
+Disallow: /admin/
+Disallow: /private/
+
+#Sitemap: http://www.undefined.kr/sitemap.xml
+

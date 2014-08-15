@@ -1,0 +1,41 @@
+
+ undefine:D
+
+/* MAIN */
+  Develop & Main Design : Juntai Park
+  Twitter: rkJun
+  Site: http://undefined.kr
+
+/* SITE */
+  Last update: 08/16/2014 (dd/mm/yyyy)
+  Doctype: HTML5
+  Editor: Sublime Text, vim
+  Back-end: Ruby on Rails, postgresql
+  Front-end: jquery, bootstrap, font-awesome
+  Official logo and favicon: iMaZiNe
+
+/* ORGANIZERS */
+ 16thetower,
+ coma333ryu,
+ iMaZiNe,
+ kangki,
+ mniktw,
+ Roaster Kay,
+ rkJun,
+ zziroho
+
+/* SPECIAL THANKS */
+ Hanghee Yi (javarouka)
+ HwaYoung Kang (piki)
+ Hyesun Choi
+ Jaewook Lee
+ Jeado Ko
+ Jimin Nam
+ KwangUn Ahn (kuahn)
+ Sue Kim (redcracker)
+ SeungHyun Paek (tipJS)
+ WooJung Seok
+ Yohan Park
+ YongHoon Byun (river)
+ Yongsung Yang
+ 
