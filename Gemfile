@@ -33,6 +33,7 @@ gem 'bootstrap-sass', '~> 3.1.1'
 gem 'simple_form'
 gem 'friendly_id', '~> 5.0.0'
 gem 'acts-as-taggable-on'
+gem 'redcarpet'
 
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'omniauth-facebook'
