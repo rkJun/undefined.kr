@@ -1,5 +1,5 @@
-<h2>undefined.kr<small> ruby on rails</small></h2>
-<p>: <%= Time.now %></p>
-<p><%= link_to 'Users:', users_path %> <%= User.count %> registered</p>
+<h1>undefined.kr<small> 언디파인드</small></h1>
+<p>각자의 관심사를 공부하고, 공유합니다.</p>
+<p>사용자 수 : <%= link_to User.count, users_path %> 명 등록함.</p>
 <br />
-<%= link_to "글작성", posts_path, class:'btn btn-default' %>
+<%= link_to "전체 글 목록 (#{Post.count})", posts_path, class:'btn btn-default' %>

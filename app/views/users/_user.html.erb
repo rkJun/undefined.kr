@@ -1,1 +1,3 @@
-<td><%= link_to user.name, user %></td>
+<td><%= user.id %> | 
+<i class="fa fa-<%= user.provider %>-square"></i>
+<%= link_to user.name, user %> | <%= user.created_at %></td>
