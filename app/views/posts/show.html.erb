@@ -15,7 +15,7 @@
 </tr>
 <tr>
   <th>Created at</th>
-  <td><%= @post.created_at %></td>
+  <td><%= I18n.l @post.created_at, format: :default %> <!-- <%= @post.created_at %> --> </td>
 </tr>
 </table>
 

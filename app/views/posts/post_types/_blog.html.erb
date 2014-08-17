@@ -3,7 +3,7 @@
 <% @posts.each do | post | %>
     <div class='post'>
       <div class='title'><%= post.title %></div>
-      <div class='content'><%= simple_format post.content %></div>
+      <div class='content'><%= simple_format markdown(post.content) %></div>
       <% if post.tag_list.size > 0 %>
         <div class='tag_list'><%= icon('tags') + " " + tag_icons(post.tag_list) %></div>
       <% end %>
