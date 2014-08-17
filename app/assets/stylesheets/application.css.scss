@@ -6,6 +6,9 @@ $navbar-default-link-active-color: $light-orange;
 $navbar-default-link-hover-color: white;
 $navbar-default-link-hover-bg: black;
 
+$navbar-height: 35px;
+$font-size-base: 13px;
+
 @import 'bootstrap';
 @import 'posts';
 @import 'comments';
