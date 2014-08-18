@@ -14,6 +14,10 @@
   <td><%= tag_icons @post.tag_list %></td>
 </tr>
 <tr>
+  <th>User</th>
+  <td><img src="<%=@post.user.image%>"><%= @post.user.nickname %></td>
+</tr>
+<tr>
   <th>Created at</th>
   <td><%= I18n.l @post.created_at, format: :default %> <!-- <%= @post.created_at %> --> </td>
 </tr>
