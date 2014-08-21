@@ -7,8 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # 디폴트 게시판 생성
-Bulletin.create! title: 'notice'
-Bulletin.create! title: 'news'
-Bulletin.create! title: 'knowledge', post_type: 'blog'
-Bulletin.create! title: 'devlife', post_type: 'blog'
-Bulletin.create! title: 'untitled', post_type: 'blog'
+Bulletin.create! title: 'notice', description: '공지사항'
+Bulletin.create! title: 'news', description: '새소식'
+Bulletin.create! title: 'knowledge', description: '기술공유', post_type: 'blog'
+Bulletin.create! title: 'devlife', description: '개발자의 삶', post_type: 'blog'
+Bulletin.create! title: 'untitled', description: '잡담', post_type: 'blog'
