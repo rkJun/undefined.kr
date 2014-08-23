@@ -1,30 +1,29 @@
-<h2><%= @bulletin.description %> (<%= params[:bulletin_id] %>)</h2>
+<div class="row">
+  <article class="col-md-12">
+    <section>
+    <h2>
+    <img src="<%=@post.user.image%>" style="height:50px" class="img-rounded">
+    <%= @post.title %>
+    </h2>
+    <p><%= @post.user.nickname %>, <%= I18n.l @post.created_at, format: :long_custom %> 작성
+       <%= tag_icons @post.tag_list %></p>
+    <hr>
+    <p>
+      <%= markdown @post.content %>
+    </p>
+    </section>
+    <section class="col-md-6 hide">
+    <h3><%= @post.title %> <small><%= tag_icons @post.tag_list %></small></span></h3>
+    <p class="preline">
+      <%= @post.content %>"
+    </p>
+    </section>
 
-<table class='table'>
-<tr>
-  <th>Title</th>
-  <td><%= @post.title %></td>
-</tr>
-<tr>
-  <th>Content</th>
-  <td><%= markdown @post.content %></td>
-</tr>
-<tr>
-  <th>Tag list</th>
-  <td><%= tag_icons @post.tag_list %></td>
-</tr>
-<tr>
-  <th>User</th>
-  <td><img src="<%=@post.user.image%>" style="height:70px" class="img-rounded"><%= @post.user.nickname %></td>
-</tr>
-<tr>
-  <th>Created at</th>
-  <td><%= I18n.l @post.created_at, format: :default %> <!-- <%= @post.created_at %> --> </td>
-</tr>
-</table>
+  </article>
 
+</div>
 
-<%= link_to 'Edit', edit_bulletin_post_path(@post.bulletin, @post), class: 'btn btn-default' %>
+ <%= link_to 'Edit', edit_bulletin_post_path(@post.bulletin, @post), class: 'btn btn-default' %>
 <%= link_to 'Back', bulletin_posts_path, class: 'btn btn-default' %>
 
 <%= render "comments/comments" %>

@@ -4,7 +4,7 @@
   <% if params[:tag] %>
   <h2>Posts tagged with "<%= params[:tag] %>" <small>( <%= @posts.size %> )</small></h2>
   <% else %>
-  <h2>All Posts <small>( <%= @posts.size %> )</small></h2>
+  <h2>모든 글 <small>( <%= @posts.size %> )</small></h2>
   <% end %>
   <ul id='posts_tagged'>
     <%= render @posts %>

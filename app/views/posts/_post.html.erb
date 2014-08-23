@@ -3,4 +3,5 @@
   <%= link_to post.title, [post.bulletin, post] %>
   <%= time_ago_in_words(post.created_at) %> 전
   <%= icon('tags') + ' ' + tag_icons(post.tag_list) %>
+  <%= post.user.nickname %>
 </li>

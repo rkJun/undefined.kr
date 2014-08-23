@@ -1,16 +1,41 @@
-<h2><%= params[:bulletin_id] %></h2>
+<div class="row">
+<h2><%= @bulletin.description %> (<%= params[:bulletin_id] %>)</h2>
 
-<% @posts.each do |post| %>
-  <tr>
-    <td><%= post.title %> <small>( <%= post.comments.size %> )</small></td>
-    <td>
-      <%= link_to 'Show', [post.bulletin, post], class:'btn btn-default' %>
-      <%= link_to 'Edit', edit_bulletin_post_path(post.bulletin, post), class:'btn btn-default' %>
-      <%= link_to 'Destroy', [post.bulletin, post], method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-default' %>
-    </td>
-  </tr>
-<% end %>
+<table class='table table-condensed table-hover'>
+  <thead>
+    <tr>
+      <th>seq</th>
+      <th>author</th>
+      <th class="col-md-5">title</th>
+      <th>date</th>
+      <th>tags</th>
+      <th>actions</th>
+  </thead>
+  <tbody>
+  <% @posts.each_with_index do |post, index| %>
+    <tr>
+      <td><%= @posts.length - index %></td>
+      <td><img src="<%= post.user.image if post.user.image %>" style="height:50px" class="img-rounded" />
+        <%= link_to post.user.nickname, user_path(post.user) %></td>
+      <td>
+      <%= link_to post.title, [post.bulletin, post] %> <small>( <%= post.comments.size %> )</small>
+      </td>
+      <td>
+      <%= time_ago_in_words(post.created_at) %> 전 <br>(<%= I18n.l post.created_at, format: :long_custom %>)
+      </td>
+      <td>
+        <%= tag_icons post.tag_list %>
+      </td>
+      <td>
+        <%= link_to 'Edit', edit_bulletin_post_path(post.bulletin, post), class:'btn btn-default' %>
+        <%= link_to 'Destroy', [post.bulletin, post], method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-default' %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
 
 <br>
 
 <%= link_to 'New Post', new_bulletin_post_path, class: 'btn btn-default' %>
+</div>
