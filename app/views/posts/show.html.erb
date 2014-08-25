@@ -2,6 +2,7 @@
   <article class="col-md-12">
     <section>
     <h2>
+    <i class="fa fa-<%= @post.user.provider if @post.user.provider %>"></i>
     <img src="<%=@post.user.image%>" style="height:50px" class="img-rounded">
     <%= @post.title %>
     </h2>

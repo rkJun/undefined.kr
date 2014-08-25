@@ -1,5 +1,14 @@
 <li id="comment_<%=comment.id %>">
-  <%= comment.body %>,
-  <%= time_ago_in_words(comment.created_at) %> 전
+
+  <%= comment.body %>
+  <span class="label label-info"><%= time_ago_in_words(comment.created_at) %> 전</span>
+  
+  <i class="fa fa-<%= comment.user.provider if comment.user.provider %>"></i>
+  <a rel="tooltip" title="<%= comment.user.nickname if comment.user.nickname %>">
+    <img  src="<%= comment.user.image if comment.user.image %>" style="height:30px" 
+     class="img-circle" />
+  </a>
+  <span class="label label-primary"><%= comment.user.nickname if comment.user.nickname %></span>
+
   <%= link_to icon('remove-circle'), [comment.post, comment], method: :delete, remote: true, data: { confirm: "Are you sure?" } %>
 </li>

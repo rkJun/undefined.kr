@@ -15,7 +15,8 @@
   <% @posts.each_with_index do |post, index| %>
     <tr>
       <td><%= @posts.length - index %></td>
-      <td><img src="<%= post.user.image if post.user.image %>" style="height:50px" class="img-rounded" />
+      <td>
+      <img src="<%= post.user.image if post.user.image %>" style="height:50px" class="img-rounded" />
         <%= link_to post.user.nickname, user_path(post.user) %></td>
       <td>
       <%= link_to post.title, [post.bulletin, post] %> <small>( <%= post.comments.size %> )</small>
