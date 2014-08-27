@@ -39,7 +39,10 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'omniauth-facebook'
 gem 'omniauth-github'
 gem 'omniauth-twitter'
-gem 'devise', '~> 3.0.1'
+gem 'devise'
+gem 'cancancan'
+gem 'enum_help'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
