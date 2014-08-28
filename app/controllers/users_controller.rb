@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
  before_filter :authenticate_user!
+ before_filter :user_signed_in?, only: [:edit, :update, :destroy]
+ before_filter :correct_user?, :except => [:index, :show]
  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-#  before_filter :correct_user?, :except => [:index]
 
   def index
     @users = User.all
@@ -31,7 +32,11 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.friendly.find(params[:id])
+      if params[:id]
+        @user = User.friendly.find(params[:id])
+      else
+        @user = current_user
+      end
     end
 
 end

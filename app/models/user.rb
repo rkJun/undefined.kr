@@ -1,23 +1,30 @@
 class User < ActiveRecord::Base
   extend FriendlyId
-  # friendly_id :nickname, :use_slug => true
+  friendly_id :slug_candidates, use: :slugged
 
-# Include default devise modules. Others available are:
-# :token_authenticatable, :confirmable,
-# :lockable, :timeoutable and :omniauthable
-devise :database_authenticatable, :registerable,
-       :recoverable, :rememberable, :trackable, :validatable, 
-       :omniauthable, :omniauth_providers => [:facebook, :github]
+  def slug_candidates
+    [
+      :nickname,
+      [:nickname, :uid]
+    ]
+  end
+
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :confirmable,
+  # :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable, 
+         :omniauthable, :omniauth_providers => [:facebook, :github]
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
-
 
   ROLE = {admin: "admin", 
           organizer: "organizer",
           vip: "vip",
           member: "member", 
           newbie: "newbie" }
+
 
   def self.find_for_omniauth(auth)
 
@@ -52,4 +59,5 @@ devise :database_authenticatable, :registerable,
       end
     end
   end
+  
 end
