@@ -1,6 +1,36 @@
 class User < ActiveRecord::Base
+# Include default devise modules. Others available are:
+# :token_authenticatable, :confirmable,
+# :lockable, :timeoutable and :omniauthable
+devise :database_authenticatable, :registerable,
+       :recoverable, :rememberable, :trackable, :validatable, 
+       :omniauthable, :omniauth_providers => [:facebook, :github]
+
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+
+  ROLE = {admin: "admin", member: "member"}
+
+  def self.find_for_omniauth(auth)
+
+    if auth.info.email
+      user = User.where(email: auth.info.email).first
+    else
+      user = User.where(prodiver: auth.provider, uid: auth.uid).first
+    end
+  
+    unless user
+      user = User.create(name:     auth.info.name,
+                         provider: auth.provider,
+                         uid:      auth.uid,
+                         email:    auth.info.email,
+                         nickname: auth.info.nickname,
+                         image:    auth.info.image,
+                         # token:    auth.credentials.token,
+                         password: Devise.friendly_token[0, 20])
+    end
+    user
+  end
 
   def self.create_with_omniauth(auth)
     create! do |user|
