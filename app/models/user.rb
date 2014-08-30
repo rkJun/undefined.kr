@@ -1,12 +1,19 @@
 class User < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
+  before_save :default_values
 
   def slug_candidates
     [
       :nickname,
-      [:nickname, :uid]
+      [:nickname, :uid],
+      [:nickname, :uid, :name]
     ]
+  end
+
+  def default_values
+    self.provider ||= 'local'
+    self.uid ||=SecureRandom.hex(3)
   end
 
   # Include default devise modules. Others available are:
@@ -18,6 +25,9 @@ class User < ActiveRecord::Base
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+
+  validates :nickname, presence: true, uniqueness: true
+  validates :name, presence: true
 
   ROLE = {admin: "admin", 
           organizer: "organizer",

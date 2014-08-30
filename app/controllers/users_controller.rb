@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
- before_filter :authenticate_user!
- before_filter :user_signed_in?, only: [:edit, :update, :destroy]
- before_filter :correct_user?, :except => [:index, :show]
- before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+  before_filter :authenticate_user!
+  before_filter :user_signed_in?, only: [:edit, :update, :destroy]
+  before_filter :correct_user?, :except => [:index, :show]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @users = User.all
@@ -12,6 +12,10 @@ class UsersController < ApplicationController
   def show
     # @user = User.find(params[:id])
   end
+
+  # def create
+  #   User.create(user_params)
+  # end
 
   def update
     respond_to do |format|
@@ -26,6 +30,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
+    # params.require(:user).permit(:nickname)
     params.require(:user).permit(:nickname)
   end
 
