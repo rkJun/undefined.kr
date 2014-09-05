@@ -24,3 +24,9 @@ body { padding-top: 60px; }
 .preline {
   white-space: pre-line;
 }
+
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open > .btn-default.dropdown-toggle {
+  color: #FFFFFF;
+  background-color: #563d7c;
+  border-color: #563d7c;
+}
