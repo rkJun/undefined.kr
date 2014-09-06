@@ -33,11 +33,12 @@
           <li class="<%= params[:bulletin_id] == 'news' ? 'active' : '' %>"><%= link_to '새소식', bulletin_posts_path('news') %></li>
           <li class="<%= params[:bulletin_id] == 'knowledge' ? 'active' : '' %>"><%= link_to '기술공유', bulletin_posts_path('knowledge') %></li>
           <li class="<%= params[:bulletin_id] == 'untitled' ? 'active' : '' %>"><%= link_to '잡담', bulletin_posts_path('untitled') %></li>
-          <li><a rel="tooltip" target="_blank" href="https://www.facebook.com/groups/html5jsstudy/"
-                title="undefine:D facebook group">
-                <i class="fa fa-facebook-square"></i> 언디파인드 페이스북그룹 이동</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+
+        <li><a rel="tooltip" target="_blank" href="https://www.facebook.com/groups/html5jsstudy/"
+              title="undefine:D facebook group">
+              <i class="fa fa-facebook-square"></i> 언디파인드 페이스북그룹 이동</a></li>
 
         <% if current_user %>
            <li class="dropdown">
