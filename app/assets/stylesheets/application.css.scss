@@ -1,21 +1,34 @@
 $light-orange: #ff8c00;
-$navbar-default-color: $light-orange;
+$weight-blue: #563d7c;
+$navbar-default-color: $weight-blue;
 $navbar-default-bg: white;
-$navbar-default-link-color: gray;
-$navbar-default-link-active-color: $light-orange;
+$navbar-default-link-color: $weight-blue;
+$navbar-default-link-active-color: $weight-blue;
 $navbar-default-link-hover-color: white;
-$navbar-default-link-hover-bg: black;
+$navbar-default-link-hover-bg: $weight-blue;
 
 $navbar-height: 35px;
-$font-size-base: 14px;
+$font-size-base: 13px;
 
 @import 'bootstrap';
 @import 'posts';
 @import 'comments';
+@import url(//www.openhiun.com/hangul/nanumbarungothic.css);
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(//www.openhiun.com/hangul/nanumbarungothic.css);
 
-@import 'font-awesome/font-awesome';
+@import url(//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
 
-body { padding-top: 60px; }
+// @import 'font-awesome/font-awesome';
+
+
+body { 
+  padding-top: 60px; 
+  font-family: "Helvetica Neue", "Nanum Barun Gothic", "NanumBarunGothicOTF", "Nanum Gothic", Helvetica, Arial, sans-serif;
+  color: "#563d7c";
+}
 
 .table > tbody > tr > td {
   vertical-align: middle;
@@ -29,4 +42,8 @@ body { padding-top: 60px; }
   color: #FFFFFF;
   background-color: #563d7c;
   border-color: #563d7c;
+}
+
+.navbar-brand {
+  font-family: "verdana"
 }
