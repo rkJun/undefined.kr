@@ -1,12 +1,13 @@
+<%=javascript_include_tag "https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js", 'data-turbolinks-track'=> true %>
+
 <div class="row">
   <article class="col-md-12">
     <section>
-    <h2>
-    <i class="fa fa-<%= @post.user.provider if @post.user.provider %>"></i>
-    <img src="<%=@post.user.image%>" style="height:50px" class="img-rounded">
-    <%= @post.title %>
-    </h2>
-    <p><%= @post.user.nickname %>, <%= I18n.l @post.created_at, format: :long_custom %> 작성
+    <h1>
+      <img src="<%=@post.user.image%>" style="height:50px" class="img-rounded">
+      <%= @post.title %>
+    </h1>
+    <p><i class="fa fa-<%= @post.user.provider if @post.user.provider %>"></i><%= @post.user.nickname %>, <%= I18n.l @post.created_at, format: :long_custom %> 작성
        <%= tag_icons @post.tag_list %></p>
     <hr>
     <p>
@@ -24,7 +25,7 @@
 
 </div>
 
- <%= link_to 'Edit', edit_bulletin_post_path(@post.bulletin, @post), class: 'btn btn-default' %>
+ <%= link_to 'Edit', edit_bulletin_post_path(@post.bulletin, @post), class: 'btn btn-default', 'data-no-turbolink'=> true  %>
 <%= link_to 'Back', bulletin_posts_path, class: 'btn btn-default' %>
 
 <%= render "comments/comments" %>

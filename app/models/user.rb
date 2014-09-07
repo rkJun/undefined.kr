@@ -29,6 +29,9 @@ class User < ActiveRecord::Base
   validates :nickname, presence: true, uniqueness: true
   validates :name, presence: true
 
+  validates_length_of :nickname, :maximum => 30
+  validates_length_of :bio, :maximum => 100
+
   ROLE = {admin: "admin", 
           organizer: "organizer",
           vip: "vip",

@@ -34,7 +34,7 @@ module ApplicationHelper
       # (ignored by default)
       hard_wrap:       true, 
       # hash for extra link options, for example 'nofollow'
-      link_attributes: { rel: 'nofollow' }
+      link_attributes: { rel: 'nofollow' },
       # more
       # will remove <img> tags from output
       # no_images: true
@@ -45,6 +45,7 @@ module ApplicationHelper
       # generate links for only safe protocols
       # safe_links_only: true
       # and more ... (prettify, with_toc_data, xhtml)
+      prettify: true
     }
     renderer = Redcarpet::Render::HTML.new(render_options)
 

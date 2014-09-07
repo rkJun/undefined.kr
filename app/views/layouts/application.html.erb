@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
   <%= csrf_meta_tags %>
   <meta name="description" content="undefine:D, 언디파인드 - 프로그래머를 위한 지식저장소입니다.">
   <meta name="author" content="rkJun">
@@ -23,7 +24,7 @@
             <span class="icon-bar"></span>
           </button>
           <!-- <a class="navbar-brand" href="#">undefined<i>.kr</i></a> -->
-          <a class="navbar-brand" href="/">
+          <a class="navbar-brand" href="/" data-no-turbolink='true'>
             undef<img height="14px" width="12px" src="/favicon.ico" alt="i" title="i" />ned<i>.kr</i>
           </a>
         </div>

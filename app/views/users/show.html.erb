@@ -1,9 +1,13 @@
 <div class="row">
-  <div class="col-md-12">
-    <h3>User</h3>
-    <p><img src="<%= @user.image if @user.image %>"></p>
-    <p>Name: <%= @user.name if @user.name %></p> 
-    <p>provider: <%= @user.provider if @user.provider %></p>
+  <div class="col-md-3 text-center">
+    <h3><i class="fa fa-<%= @user.provider if @user.provider %>-square"></i>
+       <%= @user.name if @user.name %>
+    </h3>
+    <p><img src="<%= @user.image if @user.image %>" class="img-thumbnail" style="height:150px;width:150px">
+</p>
+  </div>
+  <div class="col-md-9">
+    <p><h3><%=@user.nickname if @user.nickname %></h3></p> 
     <p>
 
     <% if current_user == @user %>
@@ -15,21 +19,27 @@
             <input class="form-control" type="text" name="user[nickname]" id="nickname" 
                 value="<%= @user.nickname if @user.nickname %>" placeholder="Enter nickname">
           </div>
+          <!-- <%= f.button :submit, class: 'btn btn-default' %> -->
         </div>
-        <button type="submit" class="btn btn-default">Update</button>
-
-          <%#= f.input :nickname, input_html: { placeholder:'Nickname'} %>
-          <%#= f.button :submit, class: 'btn btn-default' %>
+  
+        <p><%= f.input :bio, :as=> :text, label: '자기소개', input_html: { class: 'form-control', cols:50, rows: 5 } %>
+        </p><p>
+        <%= f.button :submit, class: 'btn btn-default' %></p>
       <% end %>
     <% else %>
-      nickname: <%= @user.nickname if @user.nickname %>
+      <pre><%= @user.bio %></pre>
     <% end %>
     </p>
     <!-- <p>uid: <%#= @user.uid if @user.uid %></p> -->
     <!-- <p>email: <%#= @user.email if @user.email %></p> -->
-
-    <p>created_at: <%= @user.created_at if @user.created_at %></p>
-    <p>updated_at: <%= @user.updated_at if @user.updated_at %></p>
+    <p>
+      <span title="<%= I18n.l @user.created_at, format: :long_custom if @user.created_at %>">
+        <%= time_ago_in_words(@user.created_at) %>전 가입,
+      </span>
+      <span title="<%= I18n.l @user.updated_at, format: :long_custom if @user.updated_at %>">
+        <%= time_ago_in_words(@user.updated_at) %>전 정보수정함.
+      </span>
+    </p>
   </div>
 </div>
 

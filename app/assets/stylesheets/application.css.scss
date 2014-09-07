@@ -13,6 +13,8 @@ $font-size-base: 13px;
 @import 'bootstrap';
 @import 'posts';
 @import 'comments';
+@import "pagedown_bootstrap";
+
 @import url(//www.openhiun.com/hangul/nanumbarungothic.css);
 @import url(//fonts.googleapis.com/earlyaccess/hanna.css);
 @import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
@@ -46,4 +48,12 @@ body {
 
 .navbar-brand {
   font-family: "verdana"
+}
+
+section h1 {
+  font-size: 20px;
+}
+
+.wmd-input{
+  height:300px;
 }
