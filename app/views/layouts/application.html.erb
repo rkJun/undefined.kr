@@ -30,10 +30,11 @@
         </div>
         <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          <li class="<%= params[:bulletin_id] == 'notice' ? 'active' : '' %>"><%= link_to '공지사항', bulletin_posts_path('notice') %></li>
-          <li class="<%= params[:bulletin_id] == 'news' ? 'active' : '' %>"><%= link_to '새소식', bulletin_posts_path('news') %></li>
-          <li class="<%= params[:bulletin_id] == 'knowledge' ? 'active' : '' %>"><%= link_to '기술공유', bulletin_posts_path('knowledge') %></li>
-          <li class="<%= params[:bulletin_id] == 'untitled' ? 'active' : '' %>"><%= link_to '잡담', bulletin_posts_path('untitled') %></li>
+<!--           <li class="<%= params[:bulletin_id] == 'notice' ? 'active' : '' %>"><%= link_to '공지사항', bulletin_posts_path('notice') %></li>
+          <li class="<%= params[:bulletin_id] == 'news' ? 'active' : '' %>"><%= link_to '새소식', bulletin_posts_path('news') %></li> -->
+<!--           <li class="<%= params[:bulletin_id] == 'knowledge' ? 'active' : '' %>"><%= link_to '기술공유', bulletin_posts_path('knowledge') %></li>
+          <li class="<%= params[:bulletin_id] == 'untitled' ? 'active' : '' %>"><%= link_to '잡담', bulletin_posts_path('untitled') %></li> -->
+          <li class="<%= params[:bulletin_id] == 'selfintro' ? 'active' : '' %>"><%= link_to '자기소개', bulletin_posts_path('selfintro') %></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
 
@@ -60,10 +61,10 @@
                 <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                <li><%= link_to " 가입한 계정으로 로그인", new_user_session_path, 
+<!--                 <li><%= link_to " 가입한 계정으로 로그인", new_user_session_path, 
                       id: "sign_in_local", class: "" %>
                 </li>
-
+ -->
                 <li><%= link_to " Facebook계정으로 로그인", user_omniauth_authorize_path("facebook"), 
                       id: "sign_in_fb", class: "fa fa-facebook-square" %>
                 </li>

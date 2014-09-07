@@ -10,7 +10,7 @@
         <% end %>
         <div>
             <%= link_to 'Show', [post.bulletin, post], class:'btn btn-default' %>
-            <%= link_to 'Edit', edit_bulletin_post_path(post.bulletin, post), class:'btn btn-default' %>
+            <%= link_to 'Edit', edit_bulletin_post_path(post.bulletin, post), class:'btn btn-default', data: { no_turbolink: true } %>
             <%= link_to 'Destroy', [post.bulletin, post], method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-default' %>
         </div>
       </div>
@@ -18,6 +18,6 @@
 
   <br>
 
-  <%= link_to 'New Post', new_bulletin_post_path, class: 'btn btn-default' %>
+  <%= link_to 'New Post', new_bulletin_post_path, class: 'btn btn-default', data: { no_turbolink: true } %>
 
 </div>
