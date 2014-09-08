@@ -81,5 +81,6 @@ test:
 production:
   <<: *default
   database: undefined_kr_production
-  username: undefined_kr
-  password: <%= ENV['UNDEFINED_KR_DATABASE_PASSWORD'] %>
+  username: rkjun
+  # username: undefined_kr
+  # password: <%= ENV['UNDEFINED_KR_DATABASE_PASSWORD'] %>
