@@ -35,7 +35,7 @@ gem 'friendly_id', '~> 5.0.0'
 gem 'acts-as-taggable-on'
 gem 'redcarpet'
 
-gem 'dotenv-rails', groups: [:development, :test]
+gem 'dotenv-rails', groups: [:development, :test, :production]
 gem 'omniauth-facebook'
 gem 'omniauth-github'
 gem 'omniauth-twitter'
