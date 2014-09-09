@@ -1,0 +1,61 @@
+<div class="row">
+
+  <article class="col-md-9">
+    <section>
+    <h1>
+      페이스북 그룹 원글
+      <a href="<%= @fblog.actions[0]["link"] %>">링크 바로가기</a><br>
+      
+    </h1>
+    <p>
+      작성 : <%= @fblog.created_time.slice(0...10) %> <br>
+      수정 : <%= @fblog.updated_time.slice(0...10) %> <br>
+      작성자 : <%= link_to @fblog.from["name"], "http://facebook.com/#{@fblog.from["id"]}"%>
+    </p>
+    <hr>
+    <p>
+      <pre><%= @fblog.message%></pre>
+    </p>
+    <p>
+      좋아요 <span class="badge"><%= "#{@fblog.likes["data"].length}" if @fblog.likes %></span>
+      <div>
+        <% if @fblog.likes %>
+          <% @fblog.likes["data"].each do |like| %>
+          <span class="glyphicon glyphicon-user"></span>
+            <span class="label">
+              <%= link_to like["name"], "http://facebook.com/#{like["id"]}" %>
+            </span>
+          <% end %>
+        <% else %>
+        없음
+        <% end %>
+      </div>
+    </p>
+    <p>
+      댓글 <span class="badge"><%= "#{@fblog.comments["data"].length}" if @fblog.comments %></span>
+      <div>
+
+        <% if @fblog.comments %>
+          <% @fblog.comments["data"].each do |comment| %>
+
+            <ul class="list-group">
+              <li class="list-group-item">
+                <span class="badge"><%= comment["like_count"] %></span>
+                <span class="glyphicon glyphicon-user"></span>
+                <span class="label">
+                  <%= link_to comment["from"]["name"], "http://facebook.com/#{comment["from"]["id"]}" %>
+                </span>
+                <%= link_to comment["message"], "http://facebook.com/#{comment["id"]}" %>
+                - <%= comment["created_time"].slice(0...10) %>
+              </li>
+            </ul>        
+          <% end %>
+        <% else %>없음
+        <% end %>
+      </div>
+    </p>
+    </section>
+  </article>  
+</div>
+
+<%= link_to 'Back', fblogs_path %>

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  # resources :fblogs
+  get '/fblogs' => 'fblogs#index'
+  get 'fblogs/:id' => 'fblogs#show', :as => :fblog
+
   devise_for :users, controllers: {
      omniauth_callbacks: "users/omniauth_callbacks"
    }, path_names: { sign_in: 'login', 

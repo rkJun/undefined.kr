@@ -1,0 +1,41 @@
+<div class="row">
+  <h2>Facebook 백업 글 목록</h1>
+
+  <%= simple_form_for :fblog, :url => fblogs_path, :method => :get do |f| %>
+    <%= f.error_notification %>
+    <div class="form-group">
+      <%= f.input :message, label:"Search Message", input_html: { class: 'form-control' } %>
+    </div>
+    <%= f.button :submit, "Search", class: 'btn btn-default' %>
+  <% end %>
+
+  <table class='table table-condensed table-hover'>
+    <thead>
+      <tr>
+        <th>no</th>
+        <th>FB Original link</th>
+        <th>Message</th>
+        <th>Created Time</th>
+        <th>Updated Time</th>
+        <th>Author</th>
+        <th>Likes</th>
+        <th>Comments</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @fblogs.each_with_index do |fblog, index| %>
+        <tr>
+          <td><%= link_to @fblogs.length - index, fblog %></td>
+          <td><%= link_to "Open FB Link", fblog.actions[0]["link"], class:"btn btn-default" %></td>
+          <td><%= fblog.message%></td>
+          <td><%= fblog.created_time.slice(0...10) %></td>
+          <td><%= fblog.updated_time.slice(0...10) %></td>
+          <td><%= link_to fblog.from["name"], "http://facebook.com/#{fblog.from["id"]}"%></td>
+          <td><%= fblog.likes["data"].length if fblog.likes%></td>
+          <td><%= fblog.comments["data"].length if fblog.comments %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
