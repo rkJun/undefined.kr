@@ -17,7 +17,9 @@ class FblogsController < ApplicationController
     end
 
     @fblogs = Fblog.index(message, author, comment, comment_author)
+
     @fblog = Fblog.new
+    @fblog.message = message
   end
 
   # GET /fblogs/1

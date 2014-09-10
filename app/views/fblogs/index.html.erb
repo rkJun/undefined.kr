@@ -1,7 +1,7 @@
 <div class="row">
   <h2>Facebook 백업 글 목록</h1>
 
-  <%= simple_form_for :fblog, :url => fblogs_path, :method => :get do |f| %>
+  <%= simple_form_for @fblog, :url => fblogs_path, :method => :get do |f| %>
     <%= f.error_notification %>
     <div class="form-group">
       <%= f.input :message, label:"Search Message", input_html: { class: 'form-control' } %>
