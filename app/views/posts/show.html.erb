@@ -4,10 +4,13 @@
   <article class="col-md-9">
     <section>
     <h1>
-      <img src="<%=@post.user.image%>" style="height:50px" class="img-rounded">
+      <img src="<%=@post.user.image%>" style="height:30px" class="img-rounded">
       <%= @post.title %>
     </h1>
-    <p><i class="fa fa-<%= @post.user.provider if @post.user.provider %>"></i><%= @post.user.nickname %>, <%= I18n.l @post.created_at, format: :long_custom %> 작성
+    <p><i class="fa fa-<%= @post.user.provider if @post.user.provider %>"></i> 
+     <span><%= link_to @post.user.nickname, user_path(@post.user)  %></span>
+      , <%= I18n.l @post.created_at, format: :long_custom %> 작성
+      , <%= I18n.l @post.updated_at, format: :long_custom %> 수정
        <%= tag_icons @post.tag_list %></p>
     <hr>
     <p>
@@ -20,7 +23,7 @@
       <%= @post.content %>"
     </p>
     </section>
-
+    <hr>
   </article>
 
 </div>
