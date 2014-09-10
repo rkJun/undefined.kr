@@ -1,34 +1,37 @@
 <%=javascript_include_tag "https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js", 'data-turbolinks-track'=> true %>
 
 <div class="row">
-  <article class="col-md-9">
-    <section>
-    <h1>
-      <img src="<%=@post.user.image%>" style="height:30px" class="img-rounded">
-      <%= @post.title %>
-    </h1>
-    <p><i class="fa fa-<%= @post.user.provider if @post.user.provider %>"></i> 
-     <span><%= link_to @post.user.nickname, user_path(@post.user)  %></span>
-      , <%= I18n.l @post.created_at, format: :long_custom %> 작성
-      , <%= I18n.l @post.updated_at, format: :long_custom %> 수정
-       <%= tag_icons @post.tag_list %></p>
-    <hr>
-    <p>
-      <%= markdown @post.content %>
-    </p>
-    </section>
-    <section class="col-md-6 hide">
-    <h3><%= @post.title %> <small><%= tag_icons @post.tag_list %></small></span></h3>
-    <p class="preline">
-      <%= @post.content %>"
-    </p>
-    </section>
-    <hr>
-  </article>
+  <div class="col-md-9">
+    <article>
+      <section>
+      <h1>
+        <img src="<%=@post.user.image%>" style="height:30px" class="img-rounded">
+        <%= @post.title %>
+      </h1>
+      <p><i class="fa fa-<%= @post.user.provider if @post.user.provider %>"></i> 
+       <span><%= link_to @post.user.nickname, user_path(@post.user)  %></span>
+        , <%= I18n.l @post.created_at, format: :long_custom %> 작성
+        , <%= I18n.l @post.updated_at, format: :long_custom %> 수정
+         <%= tag_icons @post.tag_list %></p>
+      <hr>
+      <p>
+        <%= markdown @post.content %>
+      </p>
+      </section>
+      <section class="col-md-6 hide">
+      <h3><%= @post.title %> <small><%= tag_icons @post.tag_list %></small></span></h3>
+      <p class="preline">
+        <%= @post.content %>"
+      </p>
+      </section>
+      <hr>
+    </article>
+  <% if current_user == @post.user %>
+    <%= link_to 'Edit', edit_bulletin_post_path(@post.bulletin, @post), class: 'btn btn-default', 'data-no-turbolink'=> true  %>
+  <% end %>
+  <%= link_to 'Back', bulletin_posts_path, class: 'btn btn-default' %>
 
+  <%= render "comments/comments" %>
+  </div>
 </div>
 
- <%= link_to 'Edit', edit_bulletin_post_path(@post.bulletin, @post), class: 'btn btn-default', 'data-no-turbolink'=> true  %>
-<%= link_to 'Back', bulletin_posts_path, class: 'btn btn-default' %>
-
-<%= render "comments/comments" %>

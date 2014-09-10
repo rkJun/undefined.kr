@@ -19,7 +19,7 @@
       <img src="<%= post.user.image if post.user.image %>" style="height:50px" class="img-rounded" />
         <%= link_to post.user.nickname, user_path(post.user) %></td>
       <td>
-      <%= link_to post.title, [post.bulletin, post] %> <small>( <%= post.comments.size %> )</small>
+      <%= link_to post.title, [post.bulletin, post], 'data-no-turbolink'=> true %> <small>( <%= post.comments.size %> )</small>
       </td>
       <td>
       <%= time_ago_in_words(post.created_at) %> 전 <br>(<%= I18n.l post.created_at, format: :long_custom %>)
