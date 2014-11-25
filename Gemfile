@@ -54,6 +54,8 @@ gem 'bson_ext'
 # Use unicorn as the app server
 gem 'unicorn'
 
+gem 'simple-rss'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

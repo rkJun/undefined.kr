@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'apps/index'
+
   # resources :fblogs
   get '/fblogs' => 'fblogs#index'
   get 'fblogs/:id' => 'fblogs#show', :as => :fblog
