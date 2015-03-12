@@ -15,16 +15,17 @@
   Official logo and favicon: iMaZiNe
 
 /* ORGANIZERS */
- 16thetower,
- coma333ryu,
- iMaZiNe,
- kangki,
- mniktw,
- Roaster Kay,
- rkJun,
- zziroho
+ ByoungCheol Kwon (Roaster Kay),
+ CheolHo Lee (zziroho)
+ Hwanki Kang (kangki),
+ InGyoung Song (paranbaram),
+ Irho Park (iMaZiNe),
+ Jeongbu Yun (coma333ryu),
+ Juntai Park (rkJun),
+ YongHoon Byun (river)
 
 /* SPECIAL THANKS */
+ Eunmi Lee (16thetower)
  Hanghee Yi (javarouka)
  HwaYoung Kang (piki)
  Hyesun Choi
@@ -34,8 +35,8 @@
  KwangUn Ahn (kuahn)
  Sue Kim (redcracker)
  SeungHyun Paek (tipJS)
+ Taewon Kim (mniktw)
  WooJung Seok
  Yohan Park
- YongHoon Byun (river)
  Yongsung Yang
  
