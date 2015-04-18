@@ -22,6 +22,7 @@
  Irho Park (iMaZiNe),
  Jeongbu Yun (coma333ryu),
  Juntai Park (rkJun),
+ Taewon Kim (mniktw)
  YongHoon Byun (river)
 
 /* SPECIAL THANKS */
