@@ -1,9 +1,9 @@
 undefined.kr
 ============
 
-# undefined.kr - Developer's Technical Knowedge Sharing Service.
+# undefined.kr - 언디파인드
 
-개발자를 위한 지식 공유 저장소. 
+개발자를 위한 지식 공유 저장소. (Developer's Technical Knowedge Sharing Service.)
 
 ### Version dependencies
 

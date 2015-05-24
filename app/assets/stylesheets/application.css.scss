@@ -10,16 +10,15 @@ $navbar-default-link-hover-bg: $weight-blue;
 $navbar-height: 35px;
 $font-size-base: 13px;
 
+// @import "bootstrap-sprockets";
 @import 'bootstrap';
 @import 'posts';
 @import 'comments';
 @import "pagedown_bootstrap";
 
-@import url(//www.openhiun.com/hangul/nanumbarungothic.css);
 @import url(//fonts.googleapis.com/earlyaccess/hanna.css);
 @import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
 @import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
-@import url(//www.openhiun.com/hangul/nanumbarungothic.css);
 
 @import url(//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
 

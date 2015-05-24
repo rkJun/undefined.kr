@@ -1,5 +1,24 @@
 module ApplicationHelper
 
+  # Sets the html title
+  # Returns the html title when called without arguments
+  # Current project name and app_title and automatically appended
+  # Exemples:
+  #   html_title 'Foo', 'Bar'
+  #   html_title # => 'Foo - Bar - My Project - undefined.kr'
+  def html_title(*args)
+    if args.empty?
+      title = @html_title || []
+      title << @project.name if @project
+      title << "undefined.kr - 언디파인드" 
+      # title << Setting.app_title unless Setting.app_title == title.last
+      title.reject(&:blank?).join(' - ')
+    else
+      @html_title ||= []
+      @html_title += args
+    end
+  end
+
   def bootstrap_class_for(flash_type)
     case flash_type
       when "success"
