@@ -15,18 +15,14 @@ ActiveRecord::Schema.define(version: 20140906041633) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
- 
-  create_table "posts", force: :cascade do |t|
+
+  create_table "bulletins", force: :cascade do |t|
     t.string   "title",       limit: 255
-    t.text     "content"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "bulletin_id"
-    t.integer  "user_id"
+    t.string   "post_type",   limit: 255, default: "bulletin"
   end
-  
-  add_index "posts", ["bulletin_id"], name: "index_posts_on_bulletin_id", using: :btree
-  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "comments", force: :cascade do |t|
     t.integer  "post_id"
@@ -38,6 +34,18 @@ ActiveRecord::Schema.define(version: 20140906041633) do
 
   add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "posts", force: :cascade do |t|
+    t.string   "title",       limit: 255
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "bulletin_id"
+    t.integer  "user_id"
+  end
+
+  add_index "posts", ["bulletin_id"], name: "index_posts_on_bulletin_id", using: :btree
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
