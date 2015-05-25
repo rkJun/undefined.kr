@@ -2,10 +2,6 @@ Rails.application.routes.draw do
 
   get 'apps/index'
 
-  # resources :fblogs
-  get '/fblogs' => 'fblogs#index'
-  get 'fblogs/:id' => 'fblogs#show', :as => :fblog
-
   devise_for :users, controllers: {
      omniauth_callbacks: "users/omniauth_callbacks"
    }, path_names: { sign_in: 'login', 
@@ -20,12 +16,12 @@ Rails.application.routes.draw do
 
   resources :users
 
+  get '/:id' => 'user#show'
+
+  resources :posts
+
   resources :posts do
     resources :comments, only: [:create, :destroy, :edit]
-  end
-
-  resources :bulletins do
-    resources :posts
   end
 
   # authenticated :user do
