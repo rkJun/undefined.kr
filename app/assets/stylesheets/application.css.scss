@@ -10,7 +10,7 @@ $navbar-default-link-hover-bg: $weight-blue;
 $navbar-height: 35px;
 $font-size-base: 13px;
 
-// @import "bootstrap-sprockets";
+@import "bootstrap-sprockets";
 @import 'bootstrap';
 @import 'posts';
 @import 'comments';
@@ -55,4 +55,22 @@ section h1 {
 
 .wmd-input{
   height:200px;
+}
+
+/* mixins, variables, etc. */
+$gray-medium-light: #eaeaea;
+
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
+/* miscellaneous */
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
 }
