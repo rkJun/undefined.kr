@@ -43,10 +43,17 @@ group :development, :test do
   gem 'spring'
 end
 
+group :test do
+  gem 'minitest-reporters'
+#  gem 'mini_backtrace'
+#  gem 'guard-minitest'
+end
+
 # for Heroku
 # gem 'rails_12factor', group: :production
 
 gem 'bootstrap-sass', '~> 3.3.4'
+
 gem 'simple_form'
 gem 'friendly_id'
 gem 'acts-as-taggable-on'
