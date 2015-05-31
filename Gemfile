@@ -42,6 +42,8 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
+  # Test Data
+  gem 'faker'
 end
 
 group :development do
@@ -63,6 +65,11 @@ end
 # gem 'rails_12factor', group: :production
 
 gem 'bootstrap-sass', '~> 3.3.4'
+
+gem 'will_paginate', '~> 3.0.6'
+gem 'will_paginate-bootstrap'
+# === check
+
 
 gem 'simple_form'
 gem 'friendly_id'
