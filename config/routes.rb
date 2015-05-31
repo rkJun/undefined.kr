@@ -16,13 +16,17 @@ Rails.application.routes.draw do
 
   resources :users
 
-  get '/:id' => 'user#show'
-
   resources :posts
 
-  resources :posts do
-    resources :comments, only: [:create, :destroy, :edit]
+  get '/:id' => 'users#show'
+
+  resource :users do
+    resource :posts, only: [:show]
   end
+
+  # resources :posts do
+  #   resources :comments, only: [:create, :destroy, :edit]
+  # end
 
   # authenticated :user do
   #  root to: "users#index", as: :authenticated_root, via: :get

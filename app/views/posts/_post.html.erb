@@ -1,7 +1,14 @@
-<li>
-  <span class='label label-default'><%= post.try(:bulletin).try(:title) %></span>
-  <%= link_to post.title, [post.bulletin, post], 'data-no-turbolink'=> true  %>
-  <%= time_ago_in_words(post.created_at) %> 전
-  <%= icon('tags') + ' ' + tag_icons(post.tag_list) %>
-  <%= post.user.nickname %>
+<li id="post-<%= post.id%>">
+  <!--<span class='label label-default'></span>-->
+  <span class="picture"><%= image_tag post.user.image, alt: post.user.nickname %></span>
+  <span class="title"><%= link_to post.title, post, 'data-no-turbolink'=> true  %></span>
+  <span class="timestamp">
+    <%= time_ago_in_words(post.created_at) %> <%= "전" %>
+  </span>
+  <span class="user">
+    <%= link_to post.user.nickname, post.user %>
+  </span>
+  <span class="tag">
+    <%= icon('tags') + ' ' + tag_icons(post.tag_list) %>
+  </span>
 </li>

@@ -4,9 +4,10 @@
   <% if params[:tag] %>
   <h2>Posts tagged with "<%= params[:tag] %>" <small>( <%= @posts.size %> )</small></h2>
   <% else %>
-  <h2>모든 글 <small>( <%= @posts.size %> )</small></h2>
+  <h2>모든 글 <small>( <%= @posts.count %> )</small></h2>
   <% end %>
   <ul id='posts_tagged'>
     <%= render @posts %>
   </ul>
+    <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
 <% end %>
