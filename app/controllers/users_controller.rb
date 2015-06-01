@@ -3,14 +3,14 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
   before_filter :user_signed_in?, only: [:edit, :update, :destroy]
   before_filter :correct_user?, :except => [:index, :show]
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  # before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @users = User.all
   end
 
   def show
-    # @user = User.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   # def create

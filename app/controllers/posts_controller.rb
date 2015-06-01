@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  # before_filter :authenticate_user!, :except => [:index, :show]
+  before_action :authenticate_user!, :except => [:index, :show]
   # before_filter :correct_user?, :except => [:index, :show]
   # before_action :set_post, only: [:show, :edit, :update, :destroy]
 
@@ -12,7 +12,7 @@ class PostsController < ApplicationController
       if params[:tag]
         @posts = Post.tagged_with(params[:tag])
       else
-        @posts = Post.paginate(:page => params[:page], :per_page => 4)
+        @posts = Post.paginate(:page => params[:page], :per_page => 10)
       end
     end
   end
