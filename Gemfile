@@ -80,14 +80,17 @@ gem 'dotenv-rails', groups: [:development, :test, :production]
 gem 'omniauth-facebook'
 gem 'omniauth-github'
 gem 'omniauth-twitter'
+
 gem 'devise'
+gem 'devise-i18n'
+
 gem 'cancancan'
 gem 'enum_help'
 
 gem 'pagedown-bootstrap-rails'
 
 # gem 'mongoid'
-gem 'bson_ext'
+# gem 'bson_ext'
 
 gem 'simple-rss'
 
