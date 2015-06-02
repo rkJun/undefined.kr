@@ -64,10 +64,15 @@ end
 # for Heroku
 # gem 'rails_12factor', group: :production
 
+# i18n
+gem 'rails-i18n'
+gem 'devise-i18n'
+
 gem 'bootstrap-sass', '~> 3.3.4'
 
 gem 'will_paginate', '~> 3.0.6'
 gem 'will_paginate-bootstrap'
+
 # === check
 
 
@@ -82,7 +87,7 @@ gem 'omniauth-github'
 gem 'omniauth-twitter'
 
 gem 'devise'
-gem 'devise-i18n'
+
 
 gem 'cancancan'
 gem 'enum_help'
