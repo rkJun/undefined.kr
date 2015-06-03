@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   get 'apps/index'
 
-  devise_for :users, controllers: {
+  devise_for :users,
+             :path => '/',
+             controllers: {
      omniauth_callbacks: "users/omniauth_callbacks"
    }, path_names: { sign_in: 'login', 
                   sign_out: 'logout', 
@@ -11,8 +13,6 @@ Rails.application.routes.draw do
                   unlock: 'unblock', 
                   registration: 'register', 
                   sign_up: 'signup' }
-
-
 
   resources :users
 
