@@ -66,14 +66,24 @@ end
 
 # i18n
 gem 'rails-i18n'
-gem 'devise-i18n'
 
+# Front-end framework
 gem 'bootstrap-sass', '~> 3.3.4'
 
 gem 'will_paginate', '~> 3.0.6'
 gem 'will_paginate-bootstrap'
 
-# === check
+# Authentication
+gem 'devise'
+gem 'devise-i18n'
+gem 'omniauth-facebook'
+gem 'omniauth-github'
+gem 'omniauth-twitter'
+
+
+# TODO-GEM
+# management
+# gem 'activeadmin', github: 'activeadmin'
 
 
 gem 'simple_form'
@@ -82,20 +92,11 @@ gem 'acts-as-taggable-on'
 gem 'redcarpet'
 
 gem 'dotenv-rails', groups: [:development, :test, :production]
-gem 'omniauth-facebook'
-gem 'omniauth-github'
-gem 'omniauth-twitter'
-
-gem 'devise'
-
 
 gem 'cancancan'
 gem 'enum_help'
 
 gem 'pagedown-bootstrap-rails'
-
-# gem 'mongoid'
-# gem 'bson_ext'
 
 gem 'simple-rss'
 
