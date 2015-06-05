@@ -26,8 +26,8 @@ class User < ActiveRecord::Base
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  validates :nickname, presence: true, uniqueness: true
-  validates :name, presence: true
+  validates :nickname, uniqueness: true
+  # validates :name, presence: true
 
   validates_length_of :nickname, :maximum => 30
   validates_length_of :bio, :maximum => 100

@@ -6,6 +6,7 @@ ko:
       long_custom: '%Y년 %m월 %d일 %H시 %M분'
   user:
     Log in: '로그인'
+    Log out: '로그아웃'
     Sign up: '가입하기'
     Forgot your password?: '비밀번호를 잊으셨나요?'
     Sign in with Facebook: 'Facebook 계정으로 로그인'

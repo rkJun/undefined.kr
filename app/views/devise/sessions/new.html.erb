@@ -21,15 +21,13 @@
             </div>
         <% end -%>
 
-        <div class="actions"><p>
+        <p><div class="actions">
           <%= f.submit (t 'user.Log in'), class: 'btn btn-default' %>
-        </p>
-        </div>
+        </div></p>
     <% end %>
 
   </div>
-  <div class="col-md-4">
-    <%= render "devise/shared/links" %>
-  </div>
+
+  <%= render "devise/shared/links" %>
 
 </div>
