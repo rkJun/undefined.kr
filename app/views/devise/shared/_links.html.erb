@@ -1,13 +1,13 @@
 <%- if controller_name != 'sessions' %>
-  <p><%= link_to "Log in", new_session_path(resource_name), class: 'btn btn-default' %></p>
+  <p><%= link_to t('user.Log in'), new_session_path(resource_name), class: 'btn btn-default' %></p>
 <% end -%>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <p><%= link_to "Sign up", new_registration_path(resource_name), class: 'btn btn-default' %></p>
+  <p><%= link_to t("user.Sign up"), new_registration_path(resource_name), class: 'btn btn-default' %></p>
 <% end -%>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <p><%= link_to "Forgot your password?", new_password_path(resource_name), class: 'btn btn-default' %></p>
+  <p><%= link_to t("user.Forgot your password?"), new_password_path(resource_name), class: 'btn btn-default' %></p>
 <% end -%>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
@@ -20,7 +20,7 @@
 
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
-    <p><%= link_to " Sign in with #{provider.to_s.titleize}",
+    <p><%= link_to " " + t("user.Sign in with #{provider.to_s.titleize}"),
                 omniauth_authorize_path(resource_name, provider),
                 class: "btn btn-default fa fa-#{provider.to_s}-square"
     %></p>
