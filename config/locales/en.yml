@@ -37,3 +37,11 @@ en:
     Send me reset password instructions: 'Send me reset password instructions'
     Change your password: 'Change your password'
     Change my password: 'Change my password'
+    Edit User: 'Edit User'
+    Cancel my account: 'Cancel my account'
+  btn:
+    Back: 'Back'
+    Update: 'Update'
+  msg:
+    Are you sure?: 'Are you sure?'
+    Cancel my account msg: 'Unhappy?'

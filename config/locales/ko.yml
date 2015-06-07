@@ -15,3 +15,11 @@ ko:
     Send me reset password instructions: '비밀번호 재설정 지침 메일 보내기'
     Change your password: '비밀번호 변경하기'
     Change my password: '비밀번호 변경하기'
+    Edit User: '사용자 정보 변경하기'
+    Cancel my account: '계정 탈퇴하기'
+  btn:
+    Back: '뒤로'
+    Update: '변경하기'
+  msg:
+    Are you sure?: '정말 진행합니까? 이 작업은 취소할 수 없습니다.'
+    Cancel my account msg: '계정을 지우고, 탈퇴하겠습니다.'
