@@ -26,7 +26,7 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = @bulletin.posts.new
+    @post = Post.new
   end
 
   # GET /posts/1/edit
@@ -36,12 +36,12 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = @bulletin.posts.new(post_params)
+    @post = Post.new(post_params)
     @post.user = current_user
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to [@post.bulletin, @post], notice: 'Post was successfully created.' }
+        format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
@@ -57,7 +57,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if current_user == @post.user
         if @post.update(post_params)
-          format.html { redirect_to [@post.bulletin, @post], notice: 'Post was successfully updated.' }
+          format.html { redirect_to @post, notice: 'Post was successfully updated.' }
           format.json { render :show, status: :ok, location: @post }
         else
           format.html { render :edit }
@@ -83,16 +83,9 @@ class PostsController < ApplicationController
   end
 
   private
-    def set_bulletin
-      @bulletin = Bulletin.friendly.find(params[:bulletin_id]) if params[:bulletin_id]
-    end
 
     def set_post
-      if params[:bulletin_id]
-        @post = @bulletin.posts.find(params[:id])
-      else
-        @post = Post.find(params[:id])
-      end
+      @post = Post.find(params[:id])
     end
 
     def post_params
