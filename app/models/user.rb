@@ -14,6 +14,17 @@ class User < ActiveRecord::Base
   def default_values
     self.provider ||= 'local'
     self.uid ||=SecureRandom.hex(3)
+
+    if self.nickname.nil?
+      if User.where(nickname: email.split('@')[0]).empty?
+        self.nickname = email.split('@')[0]
+    else
+        self.nickname = email.gsub! '.', '-'
+      end
+    end
+
+    self.slug = self.nickname
+
   end
 
   # Include default devise modules. Others available are:
@@ -32,11 +43,11 @@ class User < ActiveRecord::Base
   validates_length_of :nickname, :maximum => 30
   validates_length_of :bio, :maximum => 100
 
-  ROLE = {admin: "admin", 
-          organizer: "organizer",
-          vip: "vip",
-          member: "member", 
-          newbie: "newbie" }
+  # ROLE = {admin: "admin",
+  #         organizer: "organizer",
+  #         vip: "vip",
+  #         member: "member",
+  #         newbie: "newbie" }
 
 
   def self.find_for_omniauth(auth)
@@ -65,10 +76,10 @@ class User < ActiveRecord::Base
       user.provider = auth['provider']
       user.uid = auth['uid']
       if auth['info']
-         user.name = auth['info']['name'] || ""
-         user.email = auth['info']['email'] || ""
-         user.nickname = auth['info']['nickname'] || ""
-         user.image = auth['info']['image'] || ""
+         user.name = auth['info']['name']
+         user.email = auth['info']['email']
+         user.nickname = auth['info']['nickname']
+         user.image = auth['info']['image']
       end
     end
   end
