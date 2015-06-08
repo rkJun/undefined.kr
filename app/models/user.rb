@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
     self.uid ||=SecureRandom.hex(3)
 
     if self.nickname.nil?
-      if User.where(nickname: email.split('@')[0]).empty?
+      if User.where(nickname: email.split('@')[0].downcase).empty?
         self.nickname = email.split('@')[0]
     else
         self.nickname = email.gsub! '.', '-'
