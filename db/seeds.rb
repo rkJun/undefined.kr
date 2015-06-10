@@ -15,8 +15,8 @@
 # Bulletin.create! title: 'selfintro', description: '자기소개'
 
 
-User.create! id: 2, provider: 'facebook', uid: '999999999', name: 'FirstName LastName',
-             email: 'email@address.com', nickname: '빵줘맨', image: 'http://image.com/jpg', password: '1234abcd'
+User.create! provider: 'facebook', uid: '999999999', name: 'FirstName LastName',
+             email: 'email@address.com', nickname: '빵줘맨', image: 'http://undefined.kr/favicon.ico', password: '12341234'
 
 
 users = User.order(:created_at).take(6)
