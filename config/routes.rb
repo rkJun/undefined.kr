@@ -16,15 +16,26 @@ Rails.application.routes.draw do
                            sign_up: 'signup'
              }
 
-  resources :users
 
-  resources :posts
+  resources :posts, except: [:show]
 
-  get '/:id' => 'users#show'
+  resources :users, only: [:index, :create, :new, :edit, :update, :destroy]
 
-  resource :users do
-    resource :posts, only: [:show]
-  end
+  get '/:id' => 'users#show' #, as: 'user'
+
+  # patch '/users/:id'  => 'users#update', as: 'user'
+  # put '/users/:id'    => 'users#update', as: 'user'
+  # delete '/users/:id' => 'users#destroy', as: 'user'
+  # get  '/users' => 'users#index', as: 'users'
+  # post '/users' => 'users#create', as: 'users'
+  # get '/users/new' => 'users#new', as: 'new_user'
+  # get '/users/:id/edit' => 'users#edit', as: 'edit_user'
+
+  # get '/:user_id/posts/:id' => 'posts#show'
+
+  # resource :users do
+  #   resource :posts, except: [:show]
+  # end
 
   # resources :posts do
   #   resources :comments, only: [:create, :destroy, :edit]
@@ -39,6 +50,7 @@ Rails.application.routes.draw do
   # end
 
   root 'welcome#index'
+
 
 #  get '/auth/:provider/callback' => 'sessions#create'
 #  get '/signin' => 'sessions#new', :as => :signin
