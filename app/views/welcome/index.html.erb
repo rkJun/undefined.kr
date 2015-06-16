@@ -8,11 +8,31 @@
          data-action="like" data-show-faces="true" data-share="true" data-no-turbolink></div>
   </div>
   <div class="col-md-12">
-    <p>각자의 관심사를 공부하고, 공유합니다.</p>
-    <p>사용자 수 : <%= link_to User.count, users_path %> 명 등록함.</p>
-    <br />
-    <%= link_to "전체 글 목록 (#{Post.count})", posts_path, class:'btn btn-default' %>
+    <p>프론트엔드 기술 공유 커뮤니티 - 각자의 관심사를 공부하고, 공유합니다.</p>
+    <p>등록된 사용자 수 : <span class="label label-default"><%= User.count %></span> 명</p>
+    <p>등록된 글 수 : <span class="label label-default"><%= Post.count%></span></p>
+    <p>
+      <% @tags = Post.tag_counts_on(:tags) %>
+      등록된 태그 수 : <span class="label label-default"><%= @tags.size %></span>
 
-    <%#= link_to "페이스북 저장 글 목록 보기 (#{Fblog.count})", fblogs_path, class:'btn btn-default' %>
+        <div class="row">
+            <div class="col-md-3">
+              <ul class="list-group">
+                <%
+                   @tags.each do |tag|
+                %>
+                    <li class="list-group-item">
+                      <span class="badge"><%= tag.taggings_count %></span>
+                      <%= tag.name %>
+                    </li>
+                <%
+                   end
+                %>
+              </ul>
+
+            </div>
+        </div>
+
+    </p>
   </div>
 </div>

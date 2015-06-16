@@ -1,7 +1,7 @@
 <li id="post-<%= post.id%>">
   <!--<span class='label label-default'></span>-->
   <span class="picture"><%= image_tag post.user.image, alt: post.user.nickname %></span>
-  <span class="title"><%= link_to post.title, post, 'data-no-turbolink'=> true  %></span>
+  <span class="title"><%= link_to post.title, user_post_path(post.user.nickname, post.id) , 'data-no-turbolink'=> true  %></span>
   <span class="timestamp">
     <%= time_ago_in_words(post.created_at) %> <%= "전" %>
   </span>

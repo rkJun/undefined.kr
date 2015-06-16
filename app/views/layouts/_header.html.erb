@@ -34,7 +34,8 @@
                 <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                <li><%= link_to "User Info", user_path(current_user) %></li>
+                <li><%= link_to "사용자 정보", user_path(current_user) %></li>
+                <li><%= link_to "글쓰기", new_user_post_path(current_user) %></li>
                 <li><%= link_to (t "user.Log out"), destroy_user_session_path, method: :delete  %></li>
               </ul>
             </li>

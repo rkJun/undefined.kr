@@ -3,7 +3,7 @@ undefined.kr
 
 # undefined.kr - 언디파인드
 
-개발자를 위한 지식 공유 저장소. (Developer's Technical Knowedge Sharing Service.)
+프론트엔드 기술 공유 커뮤니티. (Frontend Technical Knowledge's Sharing Community.)
 
 ### Version dependencies
 

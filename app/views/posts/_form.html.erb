@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-9">
-    <%= simple_form_for([@bulletin, @post]) do |f| %>
+    <%= simple_form_for [current_user, @post] do |f| %>
       <%= f.error_notification %>
 
       <div class="form-group">

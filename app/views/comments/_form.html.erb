@@ -1,7 +1,7 @@
 <% comment = @post.comments.new %>
 <% if current_user %>
   <div id="comments_form_<%=@post.id%>">
-  <%= simple_form_for([@post, comment], remote: true ) do | f | %>
+  <%= simple_form_for([@post.user, @post, comment], remote: true ) do | f | %>
     <div class='form-group'>
       <%= f.input :body, as: :pagedown, label: false, placeholder: 'Add a comment.',  input_html: { :preview => true, class: 'form-control', rows: 5 } %>
     </div>

@@ -3,5 +3,5 @@
 <%= render 'form' %>
 
 <hr>
-<%= link_to 'Show', [@post.bulletin, @post], class: 'btn btn-default' %>
-<%= link_to 'Back', bulletin_posts_path, class: 'btn btn-default' %>
+<%= link_to 'Show', [current_user, @post], class: 'btn btn-default' %>
+<%= link_to 'Back', user_posts_path, class: 'btn btn-default' %>

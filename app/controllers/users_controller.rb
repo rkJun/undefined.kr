@@ -1,12 +1,14 @@
 class UsersController < ApplicationController
 
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index]
   before_action :user_signed_in?, only: [:edit, :update, :destroy]
   before_action :correct_user?, :except => [:index, :show]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.all
+    # @users = User.all
+    # @users = []
+    render 'welcome/index'
   end
 
   def show
