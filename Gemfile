@@ -74,7 +74,7 @@ gem 'will_paginate', '~> 3.0.6'
 gem 'will_paginate-bootstrap'
 
 # Authentication
-gem 'devise'
+gem 'devise', '~> 3.5.1'
 gem 'devise-i18n'
 gem 'omniauth-facebook'
 gem 'omniauth-github'
