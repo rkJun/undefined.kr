@@ -16,7 +16,8 @@
 
 
 User.create! provider: 'facebook', uid: '999999999', name: 'FirstName LastName',
-             email: 'email@address.com', nickname: '빵줘맨', image: 'http://undefined.kr/favicon.ico', password: '12341234'
+             email: 'email@address.com', nickname: '빵줘맨', image: 'http://undefined.kr/favicon.ico', password: '12341234',
+             confirmed_at: DateTime.now
 
 
 users = User.order(:created_at).take(6)
