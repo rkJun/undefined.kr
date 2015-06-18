@@ -28,9 +28,9 @@ class User < ActiveRecord::Base
   end
 
   # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
+  # :token_authenticatable,
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, 
          :omniauthable, :omniauth_providers => [:facebook, :github]
 
@@ -42,13 +42,6 @@ class User < ActiveRecord::Base
 
   validates_length_of :nickname, :maximum => 30
   validates_length_of :bio, :maximum => 100
-
-  # ROLE = {admin: "admin",
-  #         organizer: "organizer",
-  #         vip: "vip",
-  #         member: "member",
-  #         newbie: "newbie" }
-
 
   def self.find_for_omniauth(auth)
 
