@@ -36,7 +36,6 @@
  KwangUn Ahn (kuahn)
  Sue Kim (redcracker)
  SeungHyun Paek (tipJS)
- Taewon Kim (mniktw)
  WooJung Seok
  Yohan Park
  Yongsung Yang
