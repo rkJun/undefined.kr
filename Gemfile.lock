@@ -146,6 +146,7 @@ GEM
     pagedown-bootstrap-rails (2.1.2)
       railties (> 3.1)
     pg (0.18.2)
+    puma (2.13.4)
     rack (1.6.1)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -250,6 +251,7 @@ DEPENDENCIES
   omniauth-twitter
   pagedown-bootstrap-rails
   pg
+  puma
   rails (= 4.2.1)
   rails-i18n
   redcarpet
@@ -263,3 +265,6 @@ DEPENDENCIES
   web-console (~> 2.0)
   will_paginate (~> 3.0.6)
   will_paginate-bootstrap
+
+BUNDLED WITH
+   1.10.6
