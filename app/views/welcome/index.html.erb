@@ -15,24 +15,14 @@
       <% @tags = Post.tag_counts_on(:tags) %>
       등록된 태그 수 : <span class="label label-default"><%= @tags.size %></span>
 
-        <div class="row">
-            <div class="col-md-3">
-              <ul class="list-group">
-                <%
-                   @tags.each do |tag|
-                %>
-                    <li class="list-group-item">
-                      <span class="badge"><%= tag.taggings_count %></span>
-                      <%= tag.name %>
-                    </li>
-                <%
-                   end
-                %>
-              </ul>
 
-            </div>
-        </div>
+    </p>
 
+    <p>
+    <h3>최신 글 <small>( <%= @posts.count %> )</small></h3>
+    <ul id='posts_tagged'>
+      <%= render @posts %>
+    </ul>
     </p>
   </div>
 </div>

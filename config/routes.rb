@@ -16,34 +16,17 @@ Rails.application.routes.draw do
                            sign_up: 'signup'
              }
 
-  # resources :users, only: [:index, :create, :new, :edit, :update, :destroy]
-  resources :users, path: "/"
-
-  # get '/:id' => 'users#show', as: 'user_show'
-  # match "/users/:id" => redirect("%{id}")
-
-
-  # patch '/users/:id'  => 'users#update', as: 'user'
-  # put '/users/:id'    => 'users#update', as: 'user'
-  # delete '/users/:id' => 'users#destroy', as: 'user'
-  # get  '/users' => 'users#index', as: 'users'
-  # post '/users' => 'users#create', as: 'users'
-  # get '/users/new' => 'users#new', as: 'new_user'
-  # get '/users/:id/edit' => 'users#edit', as: 'edit_user'
-
-  # get '/:user_id/posts/:id' => 'posts#show'
-
-
-
-  resources :users, path: "/" do
+  resources :users
+  
+  resources :users do
     resources :posts do #, except: [:show]
       resources :comments, only: [:create, :destroy, :edit]
     end
   end
 
-  # resources :posts do
-  #   resources :comments, only: [:create, :destroy, :edit]
-  # end
+  resources :posts do
+    resources :comments, only: [:create, :destroy, :edit]
+  end
 
   # authenticated :user do
   #  root to: "users#index", as: :authenticated_root, via: :get
@@ -53,7 +36,7 @@ Rails.application.routes.draw do
   #   root 'welcome#index'
   # end
 
-  # root 'welcome#index'
+  root 'welcome#index'
 
 
 #  get '/auth/:provider/callback' => 'sessions#create'
