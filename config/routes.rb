@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   get 'apps/index'
 
   devise_for :users,
-             :path => '',
              controllers: {
                  omniauth_callbacks: "users/omniauth_callbacks"
              },
