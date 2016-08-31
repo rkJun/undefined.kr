@@ -75,8 +75,8 @@ gem 'dotenv-rails', groups: [:development, :test, :production]
 # Need checking gem if it use
 # Front-end framework
 gem 'bootstrap-sass', '~> 3.3.4'
-gem 'will_paginate', '~> 3.0.6'
-gem 'will_paginate-bootstrap'
+# gem 'will_paginate', '~> 3.0.6'
+# gem 'will_paginate-bootstrap'
 gem 'simple_form'
 gem 'friendly_id'
 gem 'acts-as-taggable-on'
