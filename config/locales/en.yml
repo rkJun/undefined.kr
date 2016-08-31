@@ -20,28 +20,4 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  undefined:
-    title: "undefine:D"
   hello: "Hello world"
-  time:
-    formats:
-      long_custom: "%Y %B %d, %Y %H:%M"
-  user:
-    Log in: 'Log in'
-    Log out: 'Log out'
-    Sign up: 'Sign up'
-    Forgot your password?: 'Forgot your password?'
-    Sign in with Facebook: 'Sign in with Facebook'
-    Sign in with Github: 'Sign in with Github'
-    Remember me: 'Remember me'
-    Send me reset password instructions: 'Send me reset password instructions'
-    Change your password: 'Change your password'
-    Change my password: 'Change my password'
-    Edit User: 'Edit User'
-    Cancel my account: 'Cancel my account'
-  btn:
-    Back: 'Back'
-    Update: 'Update'
-  msg:
-    Are you sure?: 'Are you sure?'
-    Cancel my account msg: 'Unhappy?'
